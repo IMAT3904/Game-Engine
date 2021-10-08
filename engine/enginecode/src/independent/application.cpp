@@ -14,10 +14,15 @@ namespace Engine {
 		{
 			s_instance = this;
 		}
+
+		//Start
+
+		log->start();
 	}
 
 	Application::~Application()
 	{
+		log->stop();
 	}
 
 

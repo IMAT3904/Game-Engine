@@ -26,4 +26,29 @@ namespace	Engine {
 		static std::shared_ptr<spdlog::logger> consolelogger;
 	};
 
+	template<class ...Args>
+	static void Log::debug(Args&&...args) {
+		consolelogger->debug(std::forward<Args>(args))
+	}
+
+	template<class ...Args>
+	static void Log::error(Args&&...args) {
+		consolelogger->debug(std::forward<Args>(args))
+	}
+
+	template<class ...Args>
+	static void Log::info(Args&&...args) {
+		consolelogger->debug(std::forward<Args>(args))
+	}
+
+	template<class ...Args>
+	static void Log::trace(Args&&...args) {
+		consolelogger->debug(std::forward<Args>(args))
+	}
+
+	template<class ...Args>
+	static void Log::warn(Args&&...args) {
+		consolelogger->debug(std::forward<Args>(args))
+	}
+
 }
