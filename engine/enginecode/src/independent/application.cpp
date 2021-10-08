@@ -3,7 +3,6 @@
 
 #include "engine_pch.h"
 #include "core/application.h"
-#include "systems/log.h"
 
 namespace Engine {
 	// Set static vars

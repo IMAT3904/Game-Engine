@@ -1,9 +1,10 @@
 #pragma once
 #include "systems/system.h"
+#include "spdlog/spdlog.h"
 
 namespace	Engine {
 	class Log : public System {
-	public: 
+	public:
 		virtual void start(SystemSignal init = SystemSignal::None, ...);
 		virtual void stop(SystemSignal close = SystemSignal::None, ...);
 
@@ -21,5 +22,8 @@ namespace	Engine {
 
 		template <class ...Args>
 		static void debug(Args&&...args);
+	private:
+		static std::shared_ptr<spdlog::logger> consolelogger;
 	};
+
 }
