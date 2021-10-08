@@ -22,8 +22,12 @@ namespace	Engine {
 
 		template <class ...Args>
 		static void debug(Args&& ...args);
+
+		template <class ...Args>
+		static void file(Args&& ...args);
 	private:
 		static std::shared_ptr<spdlog::logger> consolelogger;
+		static std::shared_ptr<spdlog::logger> filelogger;
 	};
 
 	template<class ...Args>
@@ -33,22 +37,34 @@ namespace	Engine {
 
 	template<class ...Args>
 	static void Log::error(Args&& ...args) {
+#ifdef NG_DEBUG
 		consolelogger->debug(std::forward<Args>(args) ...);
+#endif // NG_DEBUG
 	}
 
 	template<class ...Args>
 	static void Log::info(Args&& ...args) {
+#ifdef NG_DEBUG
 		consolelogger->debug(std::forward<Args>(args) ...);
+#endif // NG_DEBUG
 	}
 
 	template<class ...Args>
 	static void Log::trace(Args&& ...args) {
+#ifdef NG_DEBUG
 		consolelogger->debug(std::forward<Args>(args) ...);
+#endif // NG_DEBUG
 	}
 
 	template<class ...Args>
 	static void Log::warn(Args&& ...args) {
+#ifdef NG_DEBUG
 		consolelogger->debug(std::forward<Args>(args) ...);
+#endif // NG_DEBUG
 	}
 
+	template<class ...Args>
+	static void Log::file(Args&& ...args) {
+		filelogger->trace(std::forward<Args>(args) ...);
+	}
 }
