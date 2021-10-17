@@ -24,6 +24,4 @@ namespace Engine {
 		consolelogger->info("stopping");
 		consolelogger.reset();
 	}
-
-
 }
