@@ -22,4 +22,5 @@ TEST(Events, ResizeConstructor) {
 	EXPECT_TRUE(e.isincategory(Engine::EventCategoryWindow));
 	EXPECT_EQ(type, statictype);
 	EXPECT_EQ(type, Engine::EventType::WindowResize);
+	EXPECT_TRUE(false);
 }
