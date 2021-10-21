@@ -5,8 +5,9 @@
 namespace Engine {
 	enum class EventType {
 		None = 0,
-		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved, KeyPressed, KeyReleased, WindowMoved, KeyPressed,
-		KeyReleased, KeyTyped, MouseButtonPressed, MouseButtonReleased, Mousemoved, MouseScrolled
+		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
+		KeyPressed, KeyReleased, WindowMoved, MouseButtonPressed, MouseButtonReleased,
+		MouseMoved, MouseScrolled
 	};
 
 	enum class EventCategory {
