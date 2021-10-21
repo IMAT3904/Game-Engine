@@ -18,6 +18,8 @@ namespace Engine {
 		//Start
 		log.reset(new Log);
 		log->start();
+
+		handler.setonclosecallback(std::bind(&Application::onclose,this,std::placeholders::_1))
 	}
 
 	Application::~Application()
@@ -34,4 +36,9 @@ namespace Engine {
 		};
 	}
 
+	bool Application::onclose(WindowsCloseEvent& e) {
+		e.handle(true);
+		m_running = false;
+		return e.handled();
+	}
 }

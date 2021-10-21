@@ -3,6 +3,8 @@
 #pragma once
 
 #include "systems/log.h"
+#include "events/EventHandler.h"
+#include "events/event.h"
 
 
 namespace Engine {
@@ -22,10 +24,14 @@ namespace Engine {
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
 		bool m_running = true; //!< Is the application running?
+		EventHandler handler;
+
+		bool onclose(WindowCloseEvent& c);
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
 		void run(); //!< Main loop
+		
 	};
 
 	// To be defined in users code

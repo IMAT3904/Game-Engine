@@ -34,17 +34,23 @@ namespace Engine {
 
 	class MouseButtonPressedEvent : public Event {
 	public:
-		MouseButtonPressedEvent() {};
+		MouseButtonPressedEvent(int button) : mousebutton(button) {};
 		static EventType getstatictype() { return EventType::MouseButtonPressed; }
 		virtual inline EventType gettype() const override { return EventType::MouseButtonPressed; }
 		virtual inline int32_t getcategoryflags() const override { return EventCategoryMouse; }
+		inline int getbutton() const { return mousebutton; }
+	private:
+		int mousebutton;
 	};
 
 	class MouseButtonReleasedEvent : public Event {
 	public:
-		MouseButtonReleasedEvent() {};
+		MouseButtonReleasedEvent(int button) : mousebutton(button) {};
 		static EventType getstatictype() { return EventType::MouseButtonReleased; }
 		virtual inline EventType gettype() const override { return EventType::MouseButtonReleased; }
 		virtual inline int32_t getcategoryflags() const override { return EventCategoryMouse; }
+		inline int getbutton() const { return mousebutton; }
+	private:
+		int mousebutton;
 	};
 }

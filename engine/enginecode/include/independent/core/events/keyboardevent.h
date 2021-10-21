@@ -9,17 +9,23 @@ namespace Engine {
 
 	class KeyPressed : public Event {
 	public:
-		KeyPressed() {};
+		KeyPressed(int key) : keycode(key){};
 		static EventType getstatictype() { return EventType::KeyPressed; }
 		virtual inline EventType gettype() const override { return EventType::KeyPressed; }
 		virtual inline int32_t getcategoryflags() const override { return EventCategoryKeyboard; }
+		inline int getkeycode() const { return keycode; }
+	private:
+		int keycode;
 	};
 
 	class KeyReleased : public Event {
 	public:
-		KeyReleased() {};
+		KeyReleased(int key) : keycode(key) {};
 		static EventType getstatictype() { return EventType::KeyReleased; }
 		virtual inline EventType gettype() const override { return EventType::KeyReleased; }
 		virtual inline int32_t getcategoryflags() const override { return EventCategoryKeyboard; }
+		inline int getkeycode() const { return keycode; }
+	private:
+		int keycode;
 	};
 }
