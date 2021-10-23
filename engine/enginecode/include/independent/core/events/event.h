@@ -10,7 +10,7 @@ namespace Engine {
 		MouseMoved, MouseScrolled
 	};
 
-	enum class EventCategory {
+	enum EventCategory {
 		None = 0,
 		EventCategoryWindow = 1 << 0, //00000001
 		EventCategoryInput = 1 << 1, //00000010
