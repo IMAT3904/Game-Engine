@@ -3,6 +3,10 @@
 
 #include "engine_pch.h"
 #include "core/application.h"
+#ifdef NG_PLATFORM_WINDOWS
+#include "platform/GLFWSystem.h"
+#endif // NG_PLATFORM_WINDOWS
+
 
 namespace Engine {
 	// Set static vars
@@ -19,7 +23,13 @@ namespace Engine {
 		log.reset(new Log);
 		log->start();
 
-		handler.setonclosecallback(std::bind(&Application::onclose,this,std::placeholders::_1))
+		windowsystem.reset(new GLFWSystem);
+		windowsystem->start();
+
+		WindowProperties props("My Engine", 1024, 768);
+		Window::create(props);
+
+		window->gethandler().setonclosecallback(std::bind(&Application::onclose, this, std::placeholders::_1));
 	}
 
 	Application::~Application()

@@ -5,6 +5,10 @@
 #include "systems/log.h"
 #include "events/EventHandler.h"
 #include "events/event.h"
+#include "events/windowsevent.h"
+#include "events/keyboardevent.h"
+#include "events/mouseevent.h"
+#include "../../include/platform/window.h"
 
 
 namespace Engine {
@@ -21,12 +25,14 @@ namespace Engine {
 		Application(); //!< Constructor
 
 		std::shared_ptr<Log> log;
+		std::shared_ptr<System> windowsystem;
+		std::shared_ptr<Window> window;
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
 		bool m_running = true; //!< Is the application running?
 		EventHandler handler;
 
-		bool onclose(WindowCloseEvent& c);
+		bool onclose(WindowCloseEvent& e);
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
