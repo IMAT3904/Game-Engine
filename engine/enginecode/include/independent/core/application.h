@@ -9,6 +9,7 @@
 #include "events/keyboardevent.h"
 #include "events/mouseevent.h"
 #include "../../include/platform/window.h"
+#include "../../include/platform/inputpoller.h"
 
 
 namespace Engine {
@@ -27,12 +28,22 @@ namespace Engine {
 		std::shared_ptr<Log> log;
 		std::shared_ptr<System> windowsystem;
 		std::shared_ptr<Window> window;
+
+		bool onclose(WindowCloseEvent& e);
+		bool onresize(WindowResizeEvent& e);
+		bool onmoved(WindowMovedEvent& e);
+		bool ongainfocus(WindowFocusEvent& e);
+		bool onlostfocus(WindowLostFocusEvent& e);
+		bool onkeypressed(KeyPressed& e);
+		bool onkeyreleased(KeyReleased& e);
+		bool onmousepressed(MouseButtonPressedEvent& e);
+		bool onmousereleased(MouseButtonPressedEvent& e);
+		bool onmousewheel(MouseScrolledEvent& e);
+		bool onmousemoved(MouseMovedEvent& e);
 	private:
 		static Application* s_instance; //!< Singleton instance of the application
 		bool m_running = true; //!< Is the application running?
 		EventHandler handler;
-
-		bool onclose(WindowCloseEvent& e);
 	public:
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern

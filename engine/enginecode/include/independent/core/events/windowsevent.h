@@ -15,6 +15,7 @@ namespace Engine {
 			static EventType getstatictype() { return EventType::WindowResize; }
 			virtual inline EventType gettype() const override { return EventType::WindowResize; }
 			virtual int32_t getcategoryflags() const override { return EventCategoryWindow; }
+			inline glm::vec2 getsize() const {return glm::vec2{m_width,m_height}; }
 		private:
 			int32_t m_width;
 			int32_t m_height;
@@ -42,9 +43,9 @@ namespace Engine {
 		static EventType getstatictype() { return EventType::WindowMoved; }
 		virtual inline EventType gettype() const override { return EventType::WindowMoved; }
 		virtual inline int32_t getcategoryflags() const override { return EventCategoryWindow; }
-
 		inline int32_t getx() const { return xpos; }
 		inline int32_t gety() const { return ypos; }
+		inline glm::vec2 getpos() const { return glm::vec2{ xpos,ypos }; }
 	private:
 		int32_t xpos;
 		int32_t ypos;
