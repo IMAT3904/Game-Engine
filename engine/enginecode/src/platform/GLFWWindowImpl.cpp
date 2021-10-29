@@ -1,11 +1,12 @@
 #pragma once
-#include "..\..\include\platform\GLFWWindowImpl.h"
 #include "engine_pch.h"
+#include "platform/GLFWWindowImpl.h"
+
 #include "systems/log.h"
 
 namespace Engine {
 #ifdef NG_PLATFORM_WINDOWS
-	Window* Window::create(const WindowProperties& newprops = WindowProperties()) {
+	Window* Window::create(const WindowProperties& newprops) {
 		return new GLFWWindowImpl(newprops);
 	}
 #endif

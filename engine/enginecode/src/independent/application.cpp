@@ -27,7 +27,7 @@ namespace Engine {
 		windowsystem->start();
 
 		WindowProperties props("My Engine", 1024, 768);
-		Window::create(props);
+		window.reset(Window::create(props));
 
 		window->gethandler().setonclosecallback(std::bind(&Application::onclose, this, std::placeholders::_1));
 	}
@@ -104,17 +104,13 @@ namespace Engine {
 
 	void Application::run()
 	{
+		float timestep = 0.f; // Put your timer back in
 		while (m_running)
 		{
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
 			Log::file("Hello world! {0} {1}", 42, "I am a string");
+			window->onupdate(timestep);
 		};
-	}
-
-	bool Application::onclose(WindowCloseEvent& e) {
-		e.handle(true);
-		m_running = false;
-		return e.handled();
 	}
 }

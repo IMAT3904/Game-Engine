@@ -29,6 +29,15 @@ namespace Engine {
 		std::shared_ptr<System> windowsystem;
 		std::shared_ptr<Window> window;
 
+
+	private:
+		static Application* s_instance; //!< Singleton instance of the application
+		bool m_running = true; //!< Is the application running?
+		EventHandler handler;
+	public:
+		virtual ~Application(); //!< Deconstructor
+		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
+		void run(); //!< Main loop
 		bool onclose(WindowCloseEvent& e);
 		bool onresize(WindowResizeEvent& e);
 		bool onmoved(WindowMovedEvent& e);
@@ -40,15 +49,6 @@ namespace Engine {
 		bool onmousereleased(MouseButtonPressedEvent& e);
 		bool onmousewheel(MouseScrolledEvent& e);
 		bool onmousemoved(MouseMovedEvent& e);
-	private:
-		static Application* s_instance; //!< Singleton instance of the application
-		bool m_running = true; //!< Is the application running?
-		EventHandler handler;
-	public:
-		virtual ~Application(); //!< Deconstructor
-		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
-		void run(); //!< Main loop
-		
 	};
 
 	// To be defined in users code

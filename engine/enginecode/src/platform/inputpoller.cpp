@@ -1,6 +1,8 @@
+#include "engine_pch.h"
 #include "..\..\include\platform\inputpoller.h"
 
 namespace Engine {
+	GLFWwindow* InputPoller::window = nullptr;
 	bool InputPoller::iskeypressed(int keycode){
 		if (window) {
 			auto answer = glfwGetKey(window, keycode);
@@ -24,21 +26,5 @@ namespace Engine {
 			return glm::vec2(static_cast<float>(x), static_cast<float>(y));
 		}
 		return { -1.f,-1.f };
-	}
-
-	float InputPoller::getmousex() {
-		if (window) {
-			int x;
-			return getmouseposition().x;
-		}
-		return -1.f;
-	}
-
-	float InputPoller::getmousey() {
-		if (window) {
-			int y;
-			return getmouseposition().y;
-		}
-		return -1.f;
 	}
 }
