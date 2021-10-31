@@ -20,20 +20,20 @@ namespace Engine {
 		void setonlostfocuscallback(const std::function<bool(WindowLostFocusEvent&)>& fn) { m_onlostfocuscallback = fn; }
 		std::function<bool(WindowLostFocusEvent&)> getonlostfocuscallback() { return m_onlostfocuscallback; }
 
-		void setonkeypressedcallback(const std::function<bool(KeyPressed&)>& fn) { m_onkeypressedcallback = fn; }
-		std::function<bool(KeyPressed&)> getonkeypressedcallback() { return m_onkeypressedcallback; }
+		//void setonkeypressedcallback(const std::function<bool(KeyPressed&)>& fn) { m_onkeypressedcallback = fn; }
+		//std::function<bool(KeyPressed&)> getonkeypressedcallback() { return m_onkeypressedcallback; }
 
-		void setonkeyreleasedcallback(const std::function<bool(KeyReleased&)>& fn) { m_onkeyreleasedcallback = fn; }
-		std::function<bool(KeyReleased&)> getonkeyreleasedcallback() { return m_onkeyreleasedcallback; }
+		//void setonkeyreleasedcallback(const std::function<bool(KeyReleased&)>& fn) { m_onkeyreleasedcallback = fn; }
+		//std::function<bool(KeyReleased&)> getonkeyreleasedcallback() { return m_onkeyreleasedcallback; }
 
-		void setonmousepressedcallback(const std::function<bool(MouseButtonPressedEvent&)>& fn) { m_onmousepressedcallback = fn; }
-		std::function<bool(MouseButtonPressedEvent&)> getonmousepressedcallback() { return m_onmousepressedcallback; }
+		//void setonmousepressedcallback(const std::function<bool(MouseButtonPressedEvent&)>& fn) { m_onmousepressedcallback = fn; }
+		//std::function<bool(MouseButtonPressedEvent&)> getonmousepressedcallback() { return m_onmousepressedcallback; }
 
-		void setonmousereleasedcallback(const std::function<bool(MouseButtonReleasedEvent&)>& fn) { m_onmousereleasedcallback = fn; }
-		std::function<bool(MouseButtonReleasedEvent&)> getonmousereleasedcallback() { return m_onmousereleasedcallback; }
+		//void setonmousereleasedcallback(const std::function<bool(MouseButtonReleasedEvent&)>& fn) { m_onmousereleasedcallback = fn; }
+		//std::function<bool(MouseButtonReleasedEvent&)> getonmousereleasedcallback() { return m_onmousereleasedcallback; }
 
-		void setonmousemovedcallback(const std::function<bool(MouseMovedEvent&)>& fn) { m_onmousemovedcallback = fn; }
-		std::function<bool(MouseMovedEvent&)> getonmousemovedcallback() { return m_onmousemovedcallback; }
+		//void setonmousemovedcallback(const std::function<bool(MouseMovedEvent&)>& fn) { m_onmousemovedcallback = fn; }
+		//std::function<bool(MouseMovedEvent&)> getonmousemovedcallback() { return m_onmousemovedcallback; }
 
 		
 	private:
@@ -52,19 +52,19 @@ namespace Engine {
 		std::function<bool(WindowLostFocusEvent&)> m_onlostfocuscallback = std::bind(&EventHandler::defaultonlostfocus, this, std::placeholders::_1);
 		bool defaultonlostfocus(WindowLostFocusEvent&) { return false; }
 
-		std::function<bool(KeyPressed&)> m_onkeypressedcallback = std::bind(&EventHandler::defaultonkeypress, this, std::placeholders::_1);
-		bool defaultonkeypress(KeyPressed&) { return false; }
+		//std::function<bool(KeyPressed&)> m_onkeypressedcallback = std::bind(&EventHandler::defaultonkeypress, this, std::placeholders::_1);
+		//bool defaultonkeypress(KeyPressed&) { return false; }
 
-		std::function<bool(KeyReleased&)> m_onkeyreleasedcallback = std::bind(&EventHandler::defaultonkeyreleased, this, std::placeholders::_1);
-		bool defaultonkeyreleased(KeyReleased&) { return false; }
+		//std::function<bool(KeyReleased&)> m_onkeyreleasedcallback = std::bind(&EventHandler::defaultonkeyreleased, this, std::placeholders::_1);
+		//bool defaultonkeyreleased(KeyReleased&) { return false; }
 
-		std::function<bool(MouseButtonPressedEvent&)> m_onmousepressedcallback = std::bind(&EventHandler::defaultonmousepressed, this, std::placeholders::_1);
-		bool defaultonmousepressed(MouseButtonPressedEvent&) { return false; }
+		//std::function<bool(MouseButtonPressedEvent&)> m_onmousepressedcallback = std::bind(&EventHandler::defaultonmousepressed, this, std::placeholders::_1);
+		//bool defaultonmousepressed(MouseButtonPressedEvent&) { return false; }
 
-		std::function<bool(MouseButtonReleasedEvent&)> m_onmousereleasedcallback = std::bind(&EventHandler::defaultonmousereleased, this, std::placeholders::_1);
-		bool defaultonmousereleased(MouseButtonReleasedEvent&) { return false; }
+		//std::function<bool(MouseButtonReleasedEvent&)> m_onmousereleasedcallback = std::bind(&EventHandler::defaultonmousereleased, this, std::placeholders::_1);
+		//bool defaultonmousereleased(MouseButtonReleasedEvent&) { return false; }
 
-		std::function<bool(MouseMovedEvent&)> m_onmousemovedcallback = std::bind(&EventHandler::defaultonmousemoved, this, std::placeholders::_1);
-		bool defaultonmousemoved(MouseMovedEvent&) { return false; }
+		//std::function<bool(MouseMovedEvent&)> m_onmousemovedcallback = std::bind(&EventHandler::defaultonmousemoved, this, std::placeholders::_1);
+		//bool defaultonmousemoved(MouseMovedEvent&) { return false; }
 	};
 }
