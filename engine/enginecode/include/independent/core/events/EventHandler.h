@@ -20,8 +20,8 @@ namespace Engine {
 		void setonlostfocuscallback(const std::function<bool(WindowLostFocusEvent&)>& fn) { m_onlostfocuscallback = fn; }
 		std::function<bool(WindowLostFocusEvent&)> getonlostfocuscallback() { return m_onlostfocuscallback; }
 
-		void setonkeypresscallback(const std::function<bool(KeyPressed&)>& fn) { m_onkeypressedcallback = fn; }
-		std::function<bool(KeyPressed&)> getonkeypresscallback() { return m_onkeypressedcallback; }
+		void setonkeypressedcallback(const std::function<bool(KeyPressed&)>& fn) { m_onkeypressedcallback = fn; }
+		std::function<bool(KeyPressed&)> getonkeypressedcallback() { return m_onkeypressedcallback; }
 
 		void setonkeyreleasedcallback(const std::function<bool(KeyReleased&)>& fn) { m_onkeyreleasedcallback = fn; }
 		std::function<bool(KeyReleased&)> getonkeyreleasedcallback() { return m_onkeyreleasedcallback; }
