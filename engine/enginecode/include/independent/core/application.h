@@ -46,7 +46,7 @@ namespace Engine {
 		bool onkeypressed(KeyPressed& e);
 		bool onkeyreleased(KeyReleased& e);
 		bool onmousepressed(MouseButtonPressedEvent& e);
-		bool onmousereleased(MouseButtonPressedEvent& e);
+		bool onmousereleased(MouseButtonReleasedEvent& e);
 		bool onmousewheel(MouseScrolledEvent& e);
 		bool onmousemoved(MouseMovedEvent& e);
 	};

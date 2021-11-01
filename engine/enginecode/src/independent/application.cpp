@@ -87,7 +87,7 @@ namespace Engine {
 		return e.handled();
 	}
 
-	bool Application::onmousereleased(MouseButtonPressedEvent& e){
+	bool Application::onmousereleased(MouseButtonReleasedEvent& e){
 		e.handle(true);
 		if (e.getbutton() == NG_MOUSE_BUTTON_2) Log::error("RIGHT");
 		return e.handled();

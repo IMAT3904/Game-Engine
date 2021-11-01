@@ -1,6 +1,8 @@
 #pragma once
 
 #include "windowsEvent.h"
+#include "keyboardevent.h"
+#include "mouseevent.h"
 #include <functional>
 namespace Engine {
 	class EventHandler {
