@@ -1,11 +1,15 @@
-#include "include/platform/GLFW_OpenGL_GC.h"
 #include "engine_pch.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "systems/log.h"
+#include "include/platform/GLFW_OpenGL_GC.h"
+
 
 namespace Engine {
 	void GLFW_OpenGL_GC::init() {
+		glfwMakeContextCurrent(m_window);
+		int result = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
 		glEnable(GL_DEBUG_OUTPUT);
 		glDebugMessageCallback(
 			[](
@@ -34,9 +38,11 @@ namespace Engine {
 				}
 			}
 		,nullptr);
+
+
 	}
 
 	void GLFW_OpenGL_GC::swapbuffers() {
-
+		glfwSwapBuffers(m_window);
 	}
 }

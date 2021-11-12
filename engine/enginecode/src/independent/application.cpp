@@ -550,7 +550,7 @@ namespace Engine {
 			//if (InputPoller::isMouseButtonPressed(NG_MOUSE_BUTTON_1)) Log::error("Left Mouse Button Pressed");
 			//Log::trace("Current mouse pos: ({0}, {1})", InputPoller::getMouseX(), InputPoller::getMouseY());
 
-			//for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
+			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
 
 			// Do frame stuff
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -607,6 +607,12 @@ namespace Engine {
 			glBindTexture(GL_TEXTURE_2D, numberTexture);
 
 			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
+
+
+			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
+			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
+			//Log::file("Hello world! {0} {1}", 42, "I am a string");
+			window->onupdate(timestep);
 		}
 
 		glDeleteVertexArrays(1, &cubeVAO);
@@ -623,9 +629,5 @@ namespace Engine {
 		glDeleteTextures(1, &letterTexture);
 		glDeleteTextures(1, &numberTexture);
 
-		if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
-		if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
-		Log::file("Hello world! {0} {1}", 42, "I am a string");
-		window->onupdate(timestep);
 	};
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "engine_pch.h"
 #include "platform/GLFWWindowImpl.h"
-
+#include "platform/GLFW_OpenGL_GC.h"
 #include "systems/log.h"
 
 namespace Engine {
@@ -26,6 +26,10 @@ namespace Engine {
 		else {
 			native = glfwCreateWindow(props.width, props.height, props.title, nullptr, nullptr);
 		}
+
+		m_context.reset(new GLFW_OpenGL_GC(native));
+		m_context->init();
+
 	}
 
 	void GLFWWindowImpl::close(){
@@ -34,6 +38,7 @@ namespace Engine {
 	
 	void GLFWWindowImpl::onupdate(float timestep) {
 		glfwPollEvents();
+		m_context->swapbuffers();
 	}
 
 	void GLFWWindowImpl::setvsync(bool vsync) {

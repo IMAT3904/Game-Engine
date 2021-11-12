@@ -1,5 +1,6 @@
 #pragma once
 #include "core/events/EventHandler.h"
+#include "rendering/graphicsContext.h"
 namespace Engine {
 	struct WindowProperties {
 		char* title;
@@ -28,5 +29,6 @@ namespace Engine {
 		static Window* create(const WindowProperties& newprops = WindowProperties());
 	protected:
 		EventHandler handler;
+		std::shared_ptr<GraphicsContext> m_context;
 	};
 }
