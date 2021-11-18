@@ -27,6 +27,47 @@ namespace Engine {
 			native = glfwCreateWindow(props.width, props.height, props.title, nullptr, nullptr);
 		}
 
+		glfwSetWindowUserPointer(native, static_cast<void*>(&handler)); //Has event handler as void pointer
+
+		glfwSetWindowCloseCallback(native,
+			[](GLFWwindow* window) {
+				EventHandler* handler = static_cast<EventHandler*>(glfwGetWindowUserPointer(window));
+				auto& onclose = handler->getonclosecallback();
+				WindowCloseEvent e;
+				onclose(e);
+			}
+		);
+
+		glfwSetWindowSizeCallback(native,
+			[](GLFWwindow* window,int newwidth,int newheight) {
+				EventHandler* handler = static_cast<EventHandler*>(glfwGetWindowUserPointer(window));
+				auto& onresize = handler->getonresizecallback();
+				WindowResizeEvent e(newwidth,newheight);
+				onresize(e);
+			}
+		);
+
+		glfwSetKeyCallback(native,
+			[](GLFWwindow* window, int keycode, int scancode, int action, int mods) {
+				EventHandler* handler = static_cast<EventHandler*>(glfwGetWindowUserPointer(window));
+				if (action == GLFW_PRESS) {
+					auto& onkeypress = handler->getonkeypressedcallback();
+					KeyPressed e(keycode);
+					onkeypress(e);
+				}
+				else if (action == GLFW_REPEAT) {
+					auto& onkeypress = handler->getonkeypressedcallback();
+					KeyPressed e(keycode);
+					onkeypress(e);
+				}
+				else {
+					auto& onkeyreleased = handler->getonkeyreleasedcallback();
+					KeyReleased e(keycode);
+					onkeyreleased(e);
+				}
+			}
+		);
+
 		m_context.reset(new GLFW_OpenGL_GC(native));
 		m_context->init();
 

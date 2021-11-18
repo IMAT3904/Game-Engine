@@ -64,6 +64,8 @@ namespace Engine {
 
 	bool Application::onresize(WindowResizeEvent& e){
 		e.handle(true);
+		auto& size = e.getsize();
+		Log::info("Window Resize: ({0}, {1})", size.x, size.y);
 		auto& pos = e.getsize();
 		return e.handled();
 	}
@@ -552,11 +554,11 @@ namespace Engine {
 		{
 			timestep = timer->getelapsedtime();
 			timer->reset();
-			Log::trace("FPS {0}", 1.0f / timestep);
 			//Log::trace("FPS {0}", 1.0f / timestep);
-			//if (InputPoller::isKeyPressed(NG_KEY_W)) Log::error("W Pressed");
-			//if (InputPoller::isMouseButtonPressed(NG_MOUSE_BUTTON_1)) Log::error("Left Mouse Button Pressed");
-			//Log::trace("Current mouse pos: ({0}, {1})", InputPoller::getMouseX(), InputPoller::getMouseY());
+
+			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
+			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Left Mouse Button Pressed");
+			//Log::trace("Current mouse pos: ({0}, {1})", InputPoller::getmousex(), InputPoller::getmousey());
 
 			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
 
