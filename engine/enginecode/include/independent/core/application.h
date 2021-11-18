@@ -10,6 +10,7 @@
 #include "events/mouseevent.h"
 #include "../../include/platform/window.h"
 #include "../../include/platform/inputpoller.h"
+#include "include/independent/systems/timer.h"
 
 
 namespace Engine {
@@ -26,6 +27,7 @@ namespace Engine {
 		Application(); //!< Constructor
 
 		std::shared_ptr<Log> log;
+		std::shared_ptr<ChronoTimer> timer;
 		std::shared_ptr<System> windowsystem;
 		std::shared_ptr<Window> window;
 

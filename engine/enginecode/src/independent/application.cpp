@@ -33,6 +33,10 @@ namespace Engine {
 		log.reset(new Log);
 		log->start();
 
+		timer.reset(new ChronoTimer);
+		timer->start();
+		
+
 		windowsystem.reset(new GLFWSystem);
 		windowsystem->start();
 
@@ -123,6 +127,7 @@ namespace Engine {
 
 	void Application::run()
 	{
+		float timestep = 0;
 #pragma region RAW_DATA
 
 			float cubeVertices[8 * 24] = {
@@ -540,11 +545,13 @@ namespace Engine {
 		models[1] = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, -6.f));
 		models[2] = glm::translate(glm::mat4(1.0f), glm::vec3(2.f, 0.f, -6.f));
 
-		float timestep = 0.f;
 		glEnable(GL_DEPTH_TEST);
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		while (m_running)
 		{
+			timestep = timer->getelapsedtime();
+			timer->reset();
+			Log::trace("FPS {0}", 1.0f / timestep);
 			//Log::trace("FPS {0}", 1.0f / timestep);
 			//if (InputPoller::isKeyPressed(NG_KEY_W)) Log::error("W Pressed");
 			//if (InputPoller::isMouseButtonPressed(NG_MOUSE_BUTTON_1)) Log::error("Left Mouse Button Pressed");
