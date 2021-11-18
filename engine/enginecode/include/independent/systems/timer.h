@@ -2,11 +2,18 @@
 #include <chrono>
 
 namespace Engine {
-	class ChronoTimer {
+	class Timer {
 	public:
-		inline void start() { startpoint = std::chrono::high_resolution_clock::now(); }
-		inline void reset() { startpoint = std::chrono::high_resolution_clock::now(); }
-		float getelapsedtime() {
+		virtual void start() = 0;
+		virtual void reset() = 0;
+		virtual float getelapsedtime() = 0;
+	};
+
+	class ChronoTimer : public Timer{
+	public:
+		virtual inline void start() override { startpoint = std::chrono::high_resolution_clock::now(); }
+		virtual inline void reset() override { startpoint = std::chrono::high_resolution_clock::now(); }
+		virtual float getelapsedtime() override{
 			endpoint = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<float, std::milli> elapsed = endpoint - startpoint;
 			return elapsed.count() / 1000.f;
