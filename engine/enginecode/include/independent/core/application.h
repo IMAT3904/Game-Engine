@@ -27,7 +27,7 @@ namespace Engine {
 		Application(); //!< Constructor
 
 		std::shared_ptr<Log> log;
-		std::shared_ptr<ChronoTimer> timer;
+		std::shared_ptr<Timer> timer;
 		std::shared_ptr<System> windowsystem;
 		std::shared_ptr<Window> window;
 

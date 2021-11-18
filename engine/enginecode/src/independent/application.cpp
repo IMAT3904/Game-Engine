@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 
 #include "core/application.h"
+#include "platform/wintimer.h"
 
 #ifdef NG_PLATFORM_WINDOWS
 #include "include/platform/GLFWSystem.h"
@@ -33,7 +34,7 @@ namespace Engine {
 		log.reset(new Log);
 		log->start();
 
-		timer.reset(new ChronoTimer);
+		timer.reset(new WinTimer);
 		timer->start();
 		
 
