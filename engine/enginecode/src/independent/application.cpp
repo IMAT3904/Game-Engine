@@ -88,6 +88,7 @@ namespace Engine {
 
 	bool Application::onkeypressed(KeyPressed& e){
 		e.handle(true);
+		Log::trace("Key Pressed: Key: {0}", e.getkeycode());
 		if (e.getkeycode() == NG_KEY_SPACE) Log::error("SPACEBAR");
 		return e.handled();
 	}
