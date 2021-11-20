@@ -1,30 +1,25 @@
 #include "engine_pch.h"
 #include "..\..\include\platform\inputpoller.h"
+#ifdef NG_PLATFORM_WINDOWS
+#include "platform/GLFWInputPoller.h"
+#endif // NG_PLATFORM_WINDOWS
 
 namespace Engine {
-	GLFWwindow* InputPoller::window = nullptr;
+#ifdef NG_PLATFORM_WINDOWS
 	bool InputPoller::iskeypressed(int keycode){
-		if (window) {
-			auto answer = glfwGetKey(window, keycode);
-			return answer == GLFW_PRESS || answer == GLFW_REPEAT;
-		}
-		return false;
+		return GLFWInputPoller::iskeypressed(keycode);
 	}
 
-	bool InputPoller::ismousebuttonpressed(int button) {
-		if (window) {
-			auto answer = glfwGetMouseButton(window, button);
-			return answer == GLFW_PRESS;
-		}
-		return false;
+	bool InputPoller::ismousebuttonpressed(int mousebutton) {
+		return GLFWInputPoller::ismousebuttonpressed(mousebutton);
 	}
 
 	glm::vec2 InputPoller::getmouseposition() {
-		if (window) {
-			double x, y;
-			glfwGetCursorPos(window, &x, &y);
-			return glm::vec2(static_cast<float>(x), static_cast<float>(y));
-		}
-		return { -1.f,-1.f };
+		return GLFWInputPoller::getmouseposition();
 	}
+
+	void InputPoller::setcurrentwindow(void* nativewin) {
+		GLFWInputPoller::setcurrentwindow(reinterpret_cast<GLFWwindow*>(nativewin));
+	}
+#endif // NG_PLATFORM_WINDOWS
 }

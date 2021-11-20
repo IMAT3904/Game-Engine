@@ -54,6 +54,7 @@ namespace Engine {
 		window->gethandler().setonmousepressedcallback(std::bind(&Application::onmousepressed, this, std::placeholders::_1));
 		window->gethandler().setonmousereleasedcallback(std::bind(&Application::onmousereleased, this, std::placeholders::_1));
 		window->gethandler().setonmousemovedcallback(std::bind(&Application::onmousemoved, this, std::placeholders::_1));
+		InputPoller::setcurrentwindow(window->getnativewindow());
 	}
 
 	bool Application::onclose(WindowCloseEvent& e) {
@@ -88,26 +89,26 @@ namespace Engine {
 
 	bool Application::onkeypressed(KeyPressed& e){
 		e.handle(true);
-		Log::trace("Key Pressed: Key: {0}", e.getkeycode());
-		if (e.getkeycode() == NG_KEY_SPACE) Log::error("SPACEBAR");
+		//Log::trace("Key Pressed: Key: {0}", e.getkeycode());
+		//if (e.getkeycode() == NG_KEY_SPACE) Log::error("SPACEBAR");
 		return e.handled();
 	}
 
 	bool Application::onkeyreleased(KeyReleased& e){
 		e.handle(true);
-		if (e.getkeycode() == NG_KEY_UP) Log::error("UP");
+		//if (e.getkeycode() == NG_KEY_UP) Log::error("UP");
 		return e.handled();
 	}
 
 	bool Application::onmousepressed(MouseButtonPressedEvent& e){
 		e.handle(true);
-		if (e.getbutton() == NG_MOUSE_BUTTON_1) Log::error("LEFT");
+		//if (e.getbutton() == NG_MOUSE_BUTTON_1) Log::error("LEFT");
 		return e.handled();
 	}
 
 	bool Application::onmousereleased(MouseButtonReleasedEvent& e){
 		e.handle(true);
-		if (e.getbutton() == NG_MOUSE_BUTTON_2) Log::error("RIGHT");
+		//if (e.getbutton() == NG_MOUSE_BUTTON_2) Log::error("RIGHT");
 		return e.handled();
 	}
 

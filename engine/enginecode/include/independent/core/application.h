@@ -51,6 +51,8 @@ namespace Engine {
 		bool onmousereleased(MouseButtonReleasedEvent& e);
 		bool onmousewheel(MouseScrolledEvent& e);
 		bool onmousemoved(MouseMovedEvent& e);
+
+		inline std::shared_ptr<Window>& getwindow() { return window; }
 	};
 
 	// To be defined in users code
