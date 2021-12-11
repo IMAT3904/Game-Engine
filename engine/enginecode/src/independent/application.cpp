@@ -17,6 +17,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "rendering/OpenGLVertexArray.h"
+
 
 
 namespace Engine {
@@ -219,7 +221,7 @@ namespace Engine {
 #pragma endregion
 
 #pragma region GL_BUFFERS
-			uint32_t cubeVAO, cubeVBO, cubeIBO;
+			/*uint32_t cubeVAO, cubeVBO, cubeIBO;
 
 			glCreateVertexArrays(1, &cubeVAO);
 			glBindVertexArray(cubeVAO);
@@ -237,7 +239,13 @@ namespace Engine {
 			glEnableVertexAttribArray(1);
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // Normal
 			glEnableVertexAttribArray(2);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
+
+			std::shared_ptr<OpenGLVertexArray> cubeVAO;
+			std::shared_ptr<OpenGLIndexBuffer> cubeIBO;
+			std::shared_ptr<OpenGLVertexBuffer> cubeVBO;
+
+			cubeVAO.reset(new OpenGLVertexArray);
 
 			uint32_t pyramidVAO, pyramidVBO, pyramidIBO;
 
@@ -585,7 +593,7 @@ namespace Engine {
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);
 
 			glUseProgram(TPprogram);
-			glBindVertexArray(cubeVAO);
+			/*glBindVertexArray(cubeVAO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO);
 
 
@@ -618,7 +626,7 @@ namespace Engine {
 
 			glBindTexture(GL_TEXTURE_2D, numberTexture);
 
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);*/
 
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
@@ -626,11 +634,6 @@ namespace Engine {
 			//Log::file("Hello world! {0} {1}", 42, "I am a string");
 			window->onupdate(timestep);
 		}
-
-		glDeleteVertexArrays(1, &cubeVAO);
-		glDeleteBuffers(1, &cubeVBO);
-		glDeleteBuffers(1, &cubeIBO);
-
 		glDeleteVertexArrays(1, &pyramidVAO);
 		glDeleteBuffers(1, &pyramidVBO);
 		glDeleteBuffers(1, &pyramidIBO);

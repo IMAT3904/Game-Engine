@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include "engine_pch.h"
 
 namespace Engine {
 	enum class ShaderDataType {
