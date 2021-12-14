@@ -1,8 +1,8 @@
-#include "rendering/OpenGLVertexBuffer.h"
 #include "engine_pch.h"
+#include "rendering/OpenGLVertexBuffer.h"
 
 namespace Engine {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, BufferLayout layout) {
+	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, BufferLayout layout) : layout(layout){
 		glCreateBuffers(1, &OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, OpenGLID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);

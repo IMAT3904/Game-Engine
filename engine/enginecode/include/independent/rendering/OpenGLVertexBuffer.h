@@ -1,7 +1,7 @@
 #pragma once
+#include "engine_pch.h"
 #include "rendering/bufferlayout.h"
 #include <glad/glad.h>
-#include "engine_pch.h"
 
 namespace Engine {
 	class OpenGLVertexBuffer {

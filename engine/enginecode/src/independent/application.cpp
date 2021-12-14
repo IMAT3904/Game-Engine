@@ -247,6 +247,13 @@ namespace Engine {
 
 			cubeVAO.reset(new OpenGLVertexArray);
 
+			BufferLayout cubeBL = { ShaderDataType::Float3,ShaderDataType::Float3,ShaderDataType::Float2 };
+			cubeVBO.reset(new OpenGLVertexBuffer(cubeVertices,sizeof(cubeVertices),cubeBL));
+
+			cubeIBO.reset(new OpenGLIndexBuffer(cubeIndices,36));
+
+			cubeVAO->AddVertexBuffer(cubeVBO);
+			cubeVAO->SetIndexBuffer(cubeIBO);
 			uint32_t pyramidVAO, pyramidVBO, pyramidIBO;
 
 			glCreateVertexArrays(1, &pyramidVAO);
@@ -593,8 +600,8 @@ namespace Engine {
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);
 
 			glUseProgram(TPprogram);
-			/*glBindVertexArray(cubeVAO);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO);
+			glBindVertexArray(cubeVAO->GetRenderID());
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
 
 
 			uniformLocation = glGetUniformLocation(TPprogram, "u_model");
@@ -619,14 +626,14 @@ namespace Engine {
 			uniformLocation = glGetUniformLocation(TPprogram, "u_texData");
 			glUniform1i(uniformLocation, 0);
 
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 
 			uniformLocation = glGetUniformLocation(TPprogram, "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[2]));
 
 			glBindTexture(GL_TEXTURE_2D, numberTexture);
 
-			glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, nullptr);*/
+			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");

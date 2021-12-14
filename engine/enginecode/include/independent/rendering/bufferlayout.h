@@ -33,18 +33,4 @@ namespace Engine {
 		std::vector<BufferElement> elements;
 		uint32_t stride;
 	};
-
-	void BufferLayout::AddElement(BufferElement element) {
-		elements.push_back(element);
-		CalcStrideAndOffset();
-	}
-
-	void BufferLayout::CalcStrideAndOffset() {
-		uint32_t offset = 0;
-		for (auto& element : elements) {
-			element.offset = offset;
-			offset = element.size;
-		}
-		stride = offset;
-	}
 }

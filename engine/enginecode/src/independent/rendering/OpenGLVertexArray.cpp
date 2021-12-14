@@ -27,7 +27,7 @@ namespace Engine {
 		glBindVertexArray(OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer->GetRenderID());
 
-		auto& layout = vertexbuffer->GetLayout();
+		const auto& layout = vertexbuffer->GetLayout();
 		for (const auto& element : layout) {
 			uint32_t normalised = GL_FALSE;
 			if (element.normalised) { normalised = GL_TRUE; }
@@ -41,5 +41,9 @@ namespace Engine {
 				(void*)element.offset);
 			attributeindex++;
 		}
+	}
+
+	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<OpenGLIndexBuffer>& newindexbuffer) {
+		indexbuffer = newindexbuffer;
 	}
 }
