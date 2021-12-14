@@ -13,8 +13,8 @@ namespace Engine {
 		~OpenGLVertexArray();
 		void AddVertexBuffer(const std::shared_ptr<OpenGLVertexBuffer>& vertexbuffer);
 		void SetIndexBuffer(const std::shared_ptr<OpenGLIndexBuffer>& indexbuffer);
-		inline uint32_t GetRenderID() const { return OpenGLID; }\
-			inline uint32_t GetDrawCount() { if (indexbuffer) { return indexbuffer->GetCount(); } else { return 0; std::cout << "nothing to draw" << std::endl; } }
+		inline uint32_t GetRenderID() const { return OpenGLID; }
+		inline uint32_t GetDrawCount() { if (indexbuffer) { return indexbuffer->GetCount(); } else { return 0; std::cout << "nothing to draw" << std::endl; } }
 	private:
 		uint32_t OpenGLID;
 		uint32_t attributeindex = 0;
