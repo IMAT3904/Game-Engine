@@ -27,8 +27,9 @@ namespace Engine {
 		glBindVertexArray(OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, newvertexbuffer->GetRenderID());
 
-		const auto& layout = newvertexbuffer->GetLayout();
-		for (const auto& element : layout) {
+		auto layout = newvertexbuffer->GetLayout();
+
+		for (auto& element: layout) {
 			uint32_t normalised = GL_FALSE;
 			if (element.normalised) { normalised = GL_TRUE; }
 			glEnableVertexAttribArray(attributeindex);
@@ -38,7 +39,8 @@ namespace Engine {
 				SDT::ToGLType(element.datatype),
 				normalised,
 				layout.GetStride(),
-				(void*)element.offset);
+				(void*)element.offset
+			);
 			attributeindex++;
 		}
 	}

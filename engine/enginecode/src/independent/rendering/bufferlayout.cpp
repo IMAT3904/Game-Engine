@@ -10,8 +10,8 @@ namespace Engine {
 	void BufferLayout::CalcStrideAndOffset() {
 		uint32_t offset = 0;
 		for (auto& element : elements) {
-			element.offset = offset;
-			offset = element.size;
+			element.offset += offset;
+			offset += element.size;
 		}
 		stride = offset;
 	}

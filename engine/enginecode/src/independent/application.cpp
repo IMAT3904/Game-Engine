@@ -242,8 +242,8 @@ namespace Engine {
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
 
 			std::shared_ptr<OpenGLVertexArray> cubeVAO;
-			std::shared_ptr<OpenGLIndexBuffer> cubeIBO;
 			std::shared_ptr<OpenGLVertexBuffer> cubeVBO;
+			std::shared_ptr<OpenGLIndexBuffer> cubeIBO;
 
 			cubeVAO.reset(new OpenGLVertexArray);
 
@@ -271,6 +271,7 @@ namespace Engine {
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0); // Position
 			glEnableVertexAttribArray(1);
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float))); // Colour
+			
 #pragma endregion
 
 
@@ -581,12 +582,13 @@ namespace Engine {
 
 			// Do frame stuff
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+			GLuint uniformLocation;
 			glUseProgram(FCprogram);
+
 			glBindVertexArray(pyramidVAO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO);
 
-			GLuint uniformLocation;
+			
 
 			uniformLocation = glGetUniformLocation(FCprogram, "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[0])); // Must include <glm/gtc/type_ptr.hpp>
@@ -598,8 +600,10 @@ namespace Engine {
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(projection));
 
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);
-
+			
 			glUseProgram(TPprogram);
+			
+
 			glBindVertexArray(cubeVAO->GetRenderID());
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
 

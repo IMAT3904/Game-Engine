@@ -3,6 +3,7 @@
 
 namespace Engine {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, BufferLayout newlayout) : layout(newlayout){
+		layout = newlayout;
 		glCreateBuffers(1, &OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, OpenGLID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_DYNAMIC_DRAW);
