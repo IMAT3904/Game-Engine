@@ -1,4 +1,5 @@
 #pragma once
+#include "engine_pch.h"
 #include <cstdint>
 namespace Engine {
 	class OpenGLIndexBuffer {
