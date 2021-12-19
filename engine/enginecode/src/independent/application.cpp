@@ -373,56 +373,56 @@ namespace Engine {
 			// Do frame stuff
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			GLuint uniformLocation;
-			glUseProgram(FCprogram);
+			glUseProgram(FCShader->GetID());
 
 			glBindVertexArray(pyramidVAO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO);
 
 			
 
-			uniformLocation = glGetUniformLocation(FCprogram, "u_model");
+			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[0])); // Must include <glm/gtc/type_ptr.hpp>
 
-			uniformLocation = glGetUniformLocation(FCprogram, "u_view");
+			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_view");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(view));
 
-			uniformLocation = glGetUniformLocation(FCprogram, "u_projection");
+			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_projection");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(projection));
 
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);
 			
-			glUseProgram(TPprogram);
+			glUseProgram(TPShader->GetID());
 			
 
 			glBindVertexArray(cubeVAO->GetRenderID());
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
 
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_model");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[1]));
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_view");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_view");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(view));
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_projection");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_projection");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(projection));
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_lightColour");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_lightColour");
 			glUniform3f(uniformLocation, 1.f, 1.f, 1.f);
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_lightPos");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_lightPos");
 			glUniform3f(uniformLocation, 1.f, 4.f, 6.f);
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_viewPos");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_viewPos");
 			glUniform3f(uniformLocation, 0.f, 0.f, 0.f);
 
 			glBindTexture(GL_TEXTURE_2D, letterTexture);
-			uniformLocation = glGetUniformLocation(TPprogram, "u_texData");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_texData");
 			glUniform1i(uniformLocation, 0);
 
 			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 
-			uniformLocation = glGetUniformLocation(TPprogram, "u_model");
+			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[2]));
 
 			glBindTexture(GL_TEXTURE_2D, numberTexture);
@@ -438,9 +438,6 @@ namespace Engine {
 		glDeleteVertexArrays(1, &pyramidVAO);
 		glDeleteBuffers(1, &pyramidVBO);
 		glDeleteBuffers(1, &pyramidIBO);
-
-		glDeleteShader(FCprogram);
-		glDeleteShader(TPprogram);
 
 		glDeleteTextures(1, &letterTexture);
 		glDeleteTextures(1, &numberTexture);
