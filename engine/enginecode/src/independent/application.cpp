@@ -19,6 +19,8 @@
 
 #include "rendering/OpenGLVertexArray.h"
 
+#include "rendering/OpenGLShader.h"
+
 
 
 namespace Engine {
