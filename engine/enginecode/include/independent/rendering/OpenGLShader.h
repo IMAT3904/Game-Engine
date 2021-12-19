@@ -1,5 +1,4 @@
 #pragma once
-#include "engine_pch.h"
 #include <glm/glm.hpp>
 #include <cstdint>
 
@@ -10,7 +9,6 @@ namespace Engine {
 		OpenGLShader(const char* filepath);
 		~OpenGLShader();
 		uint32_t GetID() const { return OpenGLID; }
-		void UploadInt(const char* name, int value);
 		void UploadInt(const char* name, int value);
 		void UploadFloat(const char* name, float value);
 		void UploadFloat2(const char* name, const glm::vec2& value);
