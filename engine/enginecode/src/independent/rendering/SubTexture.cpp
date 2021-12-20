@@ -12,14 +12,14 @@ namespace Engine {
 	}
 
 	float SubTexture::transformU(float U) {
-		return UVStart.x + ((UVEnd.x) * U);
+		return UVStart.x + ((UVEnd.x - UVStart.x) * U);
 	}
 
 	float SubTexture::transformV(float V) {
-		return UVStart.y + ((UVEnd.y) * V);
+		return UVStart.y + ((UVEnd.y - UVStart.y) * V);
 	}
 
 	glm::vec2 SubTexture::transformUV(glm::vec2 UV) {
-		return UVStart + ((UVEnd) * UV);
+		return UVStart + ((UVEnd - UVStart) * UV);
 	}
 }
