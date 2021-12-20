@@ -11,7 +11,6 @@
 #include "include/platform/GLFWSystem.h"
 #endif
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -20,6 +19,8 @@
 #include "rendering/OpenGLVertexArray.h"
 
 #include "rendering/OpenGLShader.h"
+#include "rendering/OpenGLTexture.h"
+#include "rendering/SubTexture.h"
 
 
 
@@ -137,6 +138,18 @@ namespace Engine {
 	void Application::run()
 	{
 		float timestep = 0;
+
+#pragma region TEXTURES
+		std::shared_ptr<OpenGLTexture> lettertexture;
+		lettertexture.reset(new OpenGLTexture("assets/textures/letterAndNumberCube.png"));
+		std::shared_ptr<OpenGLTexture> numbertexture;
+		numbertexture.reset(new OpenGLTexture("assets/textures/numberCube.png"));
+
+		SubTexture lettercube(lettertexture, { 0.0f,0.0f }, { 1.0f,0.5f });
+		SubTexture numbercube(numbertexture, { 0.0f,0.5f }, { 1.0f,1.0f });
+
+#pragma endregion
+
 #pragma region RAW_DATA
 
 			float cubeVertices[8 * 24] = {
@@ -256,24 +269,18 @@ namespace Engine {
 
 			cubeVAO->AddVertexBuffer(cubeVBO);
 			cubeVAO->SetIndexBuffer(cubeIBO);
-			uint32_t pyramidVAO, pyramidVBO, pyramidIBO;
 
-			glCreateVertexArrays(1, &pyramidVAO);
-			glBindVertexArray(pyramidVAO);
+			std::shared_ptr<OpenGLVertexArray> pyramidVAO;
+			std::shared_ptr<OpenGLVertexBuffer> pyramidVBO;
+			std::shared_ptr<OpenGLIndexBuffer> pyramidIBO;
 
-			glCreateBuffers(1, &pyramidVBO);
-			glBindBuffer(GL_ARRAY_BUFFER, pyramidVBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidVertices), pyramidVertices, GL_STATIC_DRAW);
+			pyramidVAO.reset(new OpenGLVertexArray);
+			BufferLayout pyramidBL = { ShaderDataType::Float3,ShaderDataType::Float3 };
+			pyramidVBO.reset(new OpenGLVertexBuffer(pyramidVertices, sizeof(pyramidVertices), pyramidBL));
+			pyramidIBO.reset(new OpenGLIndexBuffer(pyramidIndices, 18));
 
-			glCreateBuffers(1, &pyramidIBO);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(pyramidIndices), pyramidIndices, GL_STATIC_DRAW);
-
-			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0); // Position
-			glEnableVertexAttribArray(1);
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float))); // Colour
-			
+			pyramidVAO->AddVertexBuffer(pyramidVBO);
+			pyramidVAO->SetIndexBuffer(pyramidIBO);			
 #pragma endregion
 
 
@@ -286,63 +293,6 @@ namespace Engine {
 
 			
 #pragma endregion 
-
-#pragma region TEXTURES
-
-			uint32_t letterTexture, numberTexture;
-
-			glGenTextures(1, &letterTexture);
-			glBindTexture(GL_TEXTURE_2D, letterTexture);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			int width, height, channels;
-
-			/* Need to add
-	#define STB_IMAGE_IMPLEMENTATION
-	#include "stb_image.h"
-	*/
-			unsigned char* data = stbi_load("assets/textures/letterCube.png", &width, &height, &channels, 0);
-			if (data)
-			{
-				if (channels == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-				else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-				else return;
-				glGenerateMipmap(GL_TEXTURE_2D);
-			}
-			else
-			{
-				return;
-			}
-			stbi_image_free(data);
-
-			glGenTextures(1, &numberTexture);
-			glBindTexture(GL_TEXTURE_2D, numberTexture);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-			data = stbi_load("assets/textures/numberCube.png", &width, &height, &channels, 0);
-			if (data)
-			{
-				if (channels == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-				else if (channels == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-				else return;
-				glGenerateMipmap(GL_TEXTURE_2D);
-			}
-			else
-			{
-				return;
-			}
-			stbi_image_free(data);
-#pragma endregion
 
 		glm::mat4 view = glm::lookAt(
 			glm::vec3(0.f, 0.f, 0.f),
@@ -375,8 +325,8 @@ namespace Engine {
 			GLuint uniformLocation;
 			glUseProgram(FCShader->GetID());
 
-			glBindVertexArray(pyramidVAO);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO);
+			glBindVertexArray(pyramidVAO->GetRenderID());
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO->GetRenderID());
 
 			
 
@@ -416,7 +366,7 @@ namespace Engine {
 			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_viewPos");
 			glUniform3f(uniformLocation, 0.f, 0.f, 0.f);
 
-			glBindTexture(GL_TEXTURE_2D, letterTexture);
+			glBindTexture(GL_TEXTURE_2D, lettertexture->getID());
 			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_texData");
 			glUniform1i(uniformLocation, 0);
 
@@ -425,7 +375,7 @@ namespace Engine {
 			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_model");
 			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[2]));
 
-			glBindTexture(GL_TEXTURE_2D, numberTexture);
+			glBindTexture(GL_TEXTURE_2D, numbertexture->getID());
 
 			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 
@@ -435,12 +385,5 @@ namespace Engine {
 			//Log::file("Hello world! {0} {1}", 42, "I am a string");
 			window->onupdate(timestep);
 		}
-		glDeleteVertexArrays(1, &pyramidVAO);
-		glDeleteBuffers(1, &pyramidVBO);
-		glDeleteBuffers(1, &pyramidIBO);
-
-		glDeleteTextures(1, &letterTexture);
-		glDeleteTextures(1, &numberTexture);
-
 	};
 }
