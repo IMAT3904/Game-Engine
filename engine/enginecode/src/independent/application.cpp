@@ -334,10 +334,8 @@ namespace Engine {
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);			
 			glUseProgram(TPShader->GetID());
 			
-
 			glBindVertexArray(cubeVAO->GetRenderID());
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
-
 
 			TPShader->UploadMat4("u_model", models[1]);
 			TPShader->UploadMat4("u_view", view);
@@ -345,7 +343,7 @@ namespace Engine {
 			TPShader->UploadFloat3("u_lightColour", { 1.0f,1.0f,1.0f });
 			TPShader->UploadFloat3("u_lightPos", { -2.0f,4.0f,6.0f });
 			TPShader->UploadFloat3("u_viewPos", { 0.0f,0.0f,0.0f });
-			TPShader->UploadFloat4("u_tint", { 1.0f,0.0f,1.0f,0.0f });
+			TPShader->UploadFloat4("u_tint", { 1.0f,1.0f,1.0f,1.0f });
 			TPShader->UploadInt("u_texData", 0);
 
 			glBindTexture(GL_TEXTURE_2D, lettertexture->getID());
