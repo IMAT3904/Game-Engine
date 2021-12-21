@@ -23,6 +23,7 @@
 #include "rendering/SubTexture.h"
 #include "rendering/IndexBuffer.h"
 #include "rendering/VertexBuffer.h"
+#include "rendering/Shader.h"
 
 
 
@@ -282,11 +283,11 @@ namespace Engine {
 
 
 #pragma region SHADERS
-			std::shared_ptr<OpenGLShader> FCShader;
-			FCShader.reset(new OpenGLShader("./assets/shaders/flatcolour.glsl"));
+			std::shared_ptr<Shader> FCShader;
+			FCShader.reset(Shader::create("./assets/shaders/flatcolour.glsl"));
 
-			std::shared_ptr<OpenGLShader> TPShader;
-			TPShader.reset(new OpenGLShader("./assets/shaders/texturedphong.glsl"));
+			std::shared_ptr<Shader> TPShader;
+			TPShader.reset(Shader::create("./assets/shaders/texturedphong.glsl"));
 
 			
 #pragma endregion 

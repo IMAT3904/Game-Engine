@@ -1,20 +1,21 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <cstdint>
+#include "Shader.h"
 
 namespace Engine {
-	class OpenGLShader {
+	class OpenGLShader : public Shader{
 	public:
 		OpenGLShader(const char* vertexpath, const char* fragpath);
 		OpenGLShader(const char* filepath);
-		~OpenGLShader();
-		uint32_t GetID() const { return OpenGLID; }
-		void UploadInt(const char* name, int value);
-		void UploadFloat(const char* name, float value);
-		void UploadFloat2(const char* name, const glm::vec2& value);
-		void UploadFloat3(const char* name, const glm::vec3& value);
-		void UploadFloat4(const char* name, const glm::vec4& value);
-		void UploadMat4(const char* name, const glm::mat4& value);
+		virtual ~OpenGLShader();
+		virtual uint32_t GetID() const override { return OpenGLID; }
+		virtual void UploadInt(const char* name, int value) override;
+		virtual void UploadFloat(const char* name, float value) override;
+		virtual void UploadFloat2(const char* name, const glm::vec2& value) override;
+		virtual void UploadFloat3(const char* name, const glm::vec3& value) override;
+		virtual void UploadFloat4(const char* name, const glm::vec4& value) override;
+		virtual void UploadMat4(const char* name, const glm::mat4& value) override;
 	private:
 		uint32_t OpenGLID;
 		void CompileAndLink(const char* vertexpath, const char* fragpath);
