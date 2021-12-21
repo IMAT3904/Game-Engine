@@ -4,6 +4,8 @@
 #include "rendering/OpenGLIndexBuffer.h"
 #include "rendering/OpenGLVertexBuffer.h"
 #include "rendering/VertexBuffer.h"
+#include "rendering/VertexArray.h"
+#include "rendering/OpenGLVertexArray.h"
 #include "systems/log.h"
 
 namespace Engine {
@@ -34,6 +36,24 @@ namespace Engine {
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGLVertexBuffer(vertices, size, layout);
+			Log::info("OpenGL Supported");
+		case RenderAPI::API::Direct3D:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		case RenderAPI::API::Vulkan:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		}
+		return nullptr;
+	}
+
+	VertexArray* VertexArray::create() {
+		switch (RenderAPI::getAPI()) {
+		case RenderAPI::API::None:
+			Log::error("NO RENDERING API INCLUDED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGLVertexArray();
 			Log::info("OpenGL Supported");
 		case RenderAPI::API::Direct3D:
 			Log::error("DIRECT3D NOT SUPPORTED");

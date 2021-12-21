@@ -11,8 +11,8 @@ namespace Engine {
 	class VertexArray {
 	public:
 		virtual ~VertexArray() = default;
-		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexbuffer);
-		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexbuffer);
+		virtual void AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexbuffer) = 0;
+		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexbuffer) = 0;
 		virtual inline uint32_t GetRenderID() const = 0;
 		virtual inline uint32_t GetDrawCount() const = 0;
 
