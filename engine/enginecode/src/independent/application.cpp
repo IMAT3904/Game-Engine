@@ -327,18 +327,11 @@ namespace Engine {
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO->GetRenderID());
 
 			
+			FCShader->UploadMat4("u_model", models[0]);
+			FCShader->UploadMat4("u_view", view);
+			FCShader->UploadMat4("u_projection", projection);
 
-			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_model");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[0])); // Must include <glm/gtc/type_ptr.hpp>
-
-			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_view");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(view));
-
-			uniformLocation = glGetUniformLocation(FCShader->GetID(), "u_projection");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(projection));
-
-			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);
-			
+			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);			
 			glUseProgram(TPShader->GetID());
 			
 
@@ -346,28 +339,16 @@ namespace Engine {
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
 
 
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_model");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(models[1]));
-
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_view");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(view));
-
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_projection");
-			glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(projection));
-
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_lightColour");
-			glUniform3f(uniformLocation, 1.f, 1.f, 1.f);
-
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_lightPos");
-			glUniform3f(uniformLocation, 1.f, 4.f, 6.f);
-
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_viewPos");
-			glUniform3f(uniformLocation, 0.f, 0.f, 0.f);
+			TPShader->UploadMat4("u_model", models[1]);
+			TPShader->UploadMat4("u_view", view);
+			TPShader->UploadMat4("u_projection", projection);
+			TPShader->UploadFloat3("u_lightColour", { 1.0f,1.0f,1.0f });
+			TPShader->UploadFloat3("u_lightPos", { -2.0f,4.0f,6.0f });
+			TPShader->UploadFloat3("u_viewPos", { 0.0f,0.0f,0.0f });
+			TPShader->UploadFloat4("u_tint", { 1.0f,0.0f,1.0f,0.0f });
+			TPShader->UploadInt("u_texData", 0);
 
 			glBindTexture(GL_TEXTURE_2D, lettertexture->getID());
-			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_texData");
-			glUniform1i(uniformLocation, 0);
-
 			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 
 			uniformLocation = glGetUniformLocation(TPShader->GetID(), "u_model");
