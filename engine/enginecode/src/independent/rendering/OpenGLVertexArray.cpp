@@ -45,7 +45,7 @@ namespace Engine {
 		}
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<OpenGLIndexBuffer>& newindexbuffer) {
+	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& newindexbuffer) {
 		indexbuffer = newindexbuffer;
 	}
 }
