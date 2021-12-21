@@ -23,7 +23,7 @@ namespace Engine {
 		glDeleteVertexArrays(1, &OpenGLID);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<OpenGLVertexBuffer>& newvertexbuffer) {
+	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& newvertexbuffer) {
 		glBindVertexArray(OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, newvertexbuffer->GetRenderID());
 

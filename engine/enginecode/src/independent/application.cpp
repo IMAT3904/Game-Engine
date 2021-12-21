@@ -22,6 +22,7 @@
 #include "rendering/OpenGLTexture.h"
 #include "rendering/SubTexture.h"
 #include "rendering/IndexBuffer.h"
+#include "rendering/VertexBuffer.h"
 
 
 
@@ -253,13 +254,13 @@ namespace Engine {
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
 
 			std::shared_ptr<OpenGLVertexArray> cubeVAO;
-			std::shared_ptr<OpenGLVertexBuffer> cubeVBO;
+			std::shared_ptr<VertexBuffer> cubeVBO;
 			std::shared_ptr<IndexBuffer> cubeIBO;
 
 			cubeVAO.reset(new OpenGLVertexArray);
 
 			BufferLayout cubeBL = { ShaderDataType::Float3,ShaderDataType::Float3,ShaderDataType::Float2 };
-			cubeVBO.reset(new OpenGLVertexBuffer(cubeVertices,sizeof(cubeVertices),cubeBL));
+			cubeVBO.reset(VertexBuffer::create(cubeVertices,sizeof(cubeVertices),cubeBL));
 
 			cubeIBO.reset(IndexBuffer::create(cubeIndices,36));
 
@@ -267,12 +268,12 @@ namespace Engine {
 			cubeVAO->SetIndexBuffer(cubeIBO);
 
 			std::shared_ptr<OpenGLVertexArray> pyramidVAO;
-			std::shared_ptr<OpenGLVertexBuffer> pyramidVBO;
+			std::shared_ptr<VertexBuffer> pyramidVBO;
 			std::shared_ptr<IndexBuffer> pyramidIBO;
 
 			pyramidVAO.reset(new OpenGLVertexArray);
 			BufferLayout pyramidBL = { ShaderDataType::Float3,ShaderDataType::Float3 };
-			pyramidVBO.reset(new OpenGLVertexBuffer(pyramidVertices, sizeof(pyramidVertices), pyramidBL));
+			pyramidVBO.reset(VertexBuffer::create(pyramidVertices, sizeof(pyramidVertices), pyramidBL));
 			pyramidIBO.reset(IndexBuffer::create(pyramidIndices, 18));
 
 			pyramidVAO->AddVertexBuffer(pyramidVBO);
