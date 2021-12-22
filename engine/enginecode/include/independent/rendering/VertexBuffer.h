@@ -8,8 +8,8 @@ namespace Engine {
 		virtual ~VertexBuffer() = default;
 		virtual void edit(void* vertices, uint32_t size, uint32_t offset) = 0;
 		virtual inline uint32_t GetRenderID() const = 0;
-		virtual inline const BufferLayout& GetLayout() const = 0;
+		virtual inline const VertexBufferLayout& GetLayout() const = 0;
 
-		static VertexBuffer* create(void* vertices, uint32_t size, BufferLayout layout);
+		static VertexBuffer* create(void* vertices, uint32_t size, VertexBufferLayout layout);
 	};
 }

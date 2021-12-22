@@ -2,17 +2,19 @@
 #include "rendering/bufferlayout.h"
 
 namespace Engine {
-	void BufferLayout::AddElement(BufferElement element) {
-		elements.push_back(element);
-		CalcStrideAndOffset();
-	}
+	//template <class G>
+	//void BufferLayout<G>::AddElement(G element) {
+	//	elements.push_back(element);
+	//	CalcStrideAndOffset();
+	//}
 
-	void BufferLayout::CalcStrideAndOffset() {
-		uint32_t offset = 0;
-		for (auto& element : elements) {
-			element.offset += offset;
-			offset += element.size;
-		}
-		stride = offset;
-	}
+	//template <class G>
+	//void BufferLayout<G>::CalcStrideAndOffset() {
+	//	uint32_t offset = 0;
+	//	for (auto& element : elements) {
+	//		element.offset += offset;
+	//		offset += element.size;
+	//	}
+	//	stride = offset;
+	//}
 }

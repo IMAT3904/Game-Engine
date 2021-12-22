@@ -2,7 +2,7 @@
 #include "rendering/OpenGLVertexBuffer.h"
 
 namespace Engine {
-	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, BufferLayout newlayout) : layout(newlayout){
+	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, VertexBufferLayout newlayout) : layout(newlayout){
 		layout = newlayout;
 		glCreateBuffers(1, &OpenGLID);
 		glBindBuffer(GL_ARRAY_BUFFER, OpenGLID);

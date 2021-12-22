@@ -10,6 +10,8 @@
 #include "rendering/Shader.h"
 #include "rendering/OpenGLTexture.h"
 #include "rendering/Texture.h"
+#include "rendering/OpenGLUniformBuffer.h"
+#include "rendering/UniformBuffer.h"
 #include "systems/log.h"
 
 namespace Engine {
@@ -33,7 +35,7 @@ namespace Engine {
 		return nullptr;
 	}
 
-	VertexBuffer* VertexBuffer::create(void* vertices, uint32_t size, BufferLayout layout) {
+	VertexBuffer* VertexBuffer::create(void* vertices, uint32_t size, VertexBufferLayout layout) {
 		switch (RenderAPI::getAPI()) {
 		case RenderAPI::API::None:
 			Log::error("NO RENDERING API INCLUDED");
@@ -130,6 +132,24 @@ namespace Engine {
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGLTexture(width, height, channels, data);
+			Log::info("OpenGL Supported");
+		case RenderAPI::API::Direct3D:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		case RenderAPI::API::Vulkan:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		}
+		return nullptr;
+	}
+
+	UniformBuffer* UniformBuffer::create(const UniformBufferLayout& layout) {
+		switch (RenderAPI::getAPI()) {
+		case RenderAPI::API::None:
+			Log::error("NO RENDERING API INCLUDED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGLUniformBuffer(layout);
 			Log::info("OpenGL Supported");
 		case RenderAPI::API::Direct3D:
 			Log::error("DIRECT3D NOT SUPPORTED");
