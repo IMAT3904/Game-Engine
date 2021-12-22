@@ -148,6 +148,9 @@ namespace Engine {
 		lettertexture.reset(Texture::create("assets/textures/letterCube.png"));
 		std::shared_ptr<Texture> numbertexture;
 		numbertexture.reset(Texture::create("assets/textures/numberCube.png"));
+		unsigned char whitepixel[4] = { 255,255,255,255 };
+		std::shared_ptr<Texture> plainwhitetexture;
+		plainwhitetexture.reset(Texture::create(1, 1, 4, whitepixel));
 
 #pragma endregion
 
@@ -324,7 +327,7 @@ namespace Engine {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			GLuint uniformLocation;
 			glUseProgram(TPShader->GetID());
-
+			glBindTexture(GL_TEXTURE_2D, plainwhitetexture->getID());
 			glBindVertexArray(pyramidVAO->GetRenderID());
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO->GetRenderID());
 
@@ -335,7 +338,7 @@ namespace Engine {
 			TPShader->UploadFloat3("u_lightColour", { 1.0f,1.0f,1.0f });
 			TPShader->UploadFloat3("u_lightPos", { -2.0f,4.0f,6.0f });
 			TPShader->UploadFloat3("u_viewPos", { 0.0f,0.0f,0.0f });
-			TPShader->UploadFloat4("u_tint", { 0.0f,1.0f,0.0f,1.0f });
+			TPShader->UploadFloat4("u_tint", { 0.4f,0.7f,0.3f,1.0f });
 			TPShader->UploadInt("u_texData", 0);
 
 			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);			
