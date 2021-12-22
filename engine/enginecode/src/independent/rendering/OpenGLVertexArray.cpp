@@ -6,10 +6,12 @@ namespace Engine {
 	namespace SDT {
 		static GLenum ToGLType(ShaderDataType type) {
 			switch (type) {
+			case ShaderDataType::Int: return GL_INT;
 			case ShaderDataType::Float: return GL_FLOAT;
 			case ShaderDataType::Float2: return GL_FLOAT;
 			case ShaderDataType::Float3: return GL_FLOAT;
 			case ShaderDataType::Float4: return GL_FLOAT;
+			case ShaderDataType::Mat4: return GL_FLOAT;
 			default: return GL_INVALID_ENUM;
 			}
 		}
