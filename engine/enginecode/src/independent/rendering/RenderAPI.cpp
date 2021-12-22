@@ -8,6 +8,8 @@
 #include "rendering/OpenGLVertexArray.h"
 #include "rendering/OpenGLShader.h"
 #include "rendering/Shader.h"
+#include "rendering/OpenGLTexture.h"
+#include "rendering/Texture.h"
 #include "systems/log.h"
 
 namespace Engine {
@@ -92,6 +94,42 @@ namespace Engine {
 			break;
 		case RenderAPI::API::OpenGL:
 			return new OpenGLShader(filepath);
+			Log::info("OpenGL Supported");
+		case RenderAPI::API::Direct3D:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		case RenderAPI::API::Vulkan:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		}
+		return nullptr;
+	}
+
+	Texture* Texture::create(const char* filepath) {
+		switch (RenderAPI::getAPI()) {
+		case RenderAPI::API::None:
+			Log::error("NO RENDERING API INCLUDED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGLTexture(filepath);
+			Log::info("OpenGL Supported");
+		case RenderAPI::API::Direct3D:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		case RenderAPI::API::Vulkan:
+			Log::error("DIRECT3D NOT SUPPORTED");
+			break;
+		}
+		return nullptr;
+	}
+
+	Texture* Texture::create(uint32_t width, uint32_t height, uint32_t channels, unsigned char* data) {
+		switch (RenderAPI::getAPI()) {
+		case RenderAPI::API::None:
+			Log::error("NO RENDERING API INCLUDED");
+			break;
+		case RenderAPI::API::OpenGL:
+			return new OpenGLTexture(width, height, channels, data);
 			Log::info("OpenGL Supported");
 		case RenderAPI::API::Direct3D:
 			Log::error("DIRECT3D NOT SUPPORTED");
