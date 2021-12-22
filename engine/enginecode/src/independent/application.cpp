@@ -304,6 +304,47 @@ namespace Engine {
 		);
 		glm::mat4 projection = glm::perspective(glm::radians(45.f), 1024.f / 800.f, 0.1f, 100.f);
 
+		//Camera UBO
+		uint32_t blocknumber = 0;
+		uint32_t cameraUBO;
+		uint32_t cameradatasize = sizeof(glm::mat4) * 2;
+
+		glGenBuffers(1, &cameraUBO);
+		glBindBuffer(GL_UNIFORM_BUFFER, cameraUBO);
+		glBufferData(GL_UNIFORM_BUFFER, cameradatasize, nullptr, GL_DYNAMIC_DRAW);
+		glBindBufferRange(GL_UNIFORM_BUFFER, blocknumber, cameraUBO, 0, cameradatasize);
+
+		uint32_t blockindex = glGetUniformBlockIndex(FCShader->GetID(), "b_camera");
+		glUniformBlockBinding(FCShader->GetID(), blockindex, blocknumber);
+
+		blockindex = glGetUniformBlockIndex(TPShader->GetID(), "b_camera");
+		glUniformBlockBinding(TPShader->GetID(), blockindex, blocknumber);
+
+		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(projection));
+		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(view));
+		
+		blocknumber++;
+		glm::vec3 lightcolour(1.0f, 1.0f, 1.0f);
+		glm::vec3 lightpos(1.0f, 4.0f, 6.0f);
+		glm::vec3 viewpos(0.0f, 0.0f, 0.0f);
+
+		uint32_t lightsUBO;
+		uint32_t lightsdatasize = sizeof(glm::vec4) * 3;
+
+		glGenBuffers(1, &lightsUBO);
+		glBindBuffer(GL_UNIFORM_BUFFER, lightsUBO);
+		glBufferData(GL_UNIFORM_BUFFER, lightsdatasize, nullptr, GL_DYNAMIC_DRAW);
+		glBindBufferRange(GL_UNIFORM_BUFFER, blocknumber, lightsUBO, 0, lightsdatasize);
+
+		blockindex = glGetUniformBlockIndex(TPShader->GetID(), "b_lights");
+		glUniformBlockBinding(TPShader->GetID(), blockindex, blocknumber);
+
+		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec3), glm::value_ptr(lightpos));
+		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4), sizeof(glm::vec3), glm::value_ptr(viewpos));
+		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4)*2, sizeof(glm::vec3), glm::value_ptr(lightcolour));
+
+
+
 		glm::mat4 models[3];
 		models[0] = glm::translate(glm::mat4(1.0f), glm::vec3(-2.f, 0.f, -6.f));
 		models[1] = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, -6.f));
@@ -333,11 +374,6 @@ namespace Engine {
 
 			
 			TPShader->UploadMat4("u_model", models[0]);
-			TPShader->UploadMat4("u_view", view);
-			TPShader->UploadMat4("u_projection", projection);
-			TPShader->UploadFloat3("u_lightColour", { 1.0f,1.0f,1.0f });
-			TPShader->UploadFloat3("u_lightPos", { -2.0f,4.0f,6.0f });
-			TPShader->UploadFloat3("u_viewPos", { 0.0f,0.0f,0.0f });
 			TPShader->UploadFloat4("u_tint", { 0.4f,0.7f,0.3f,1.0f });
 			TPShader->UploadInt("u_texData", 0);
 
