@@ -17,6 +17,7 @@ namespace Engine {
 		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexbuffer) override;
 		virtual inline uint32_t GetRenderID() const override { return OpenGLID; }
 		virtual inline uint32_t GetDrawCount() const override{ if (indexbuffer) { return indexbuffer->GetCount(); } else { return 0; Log::error("nothing to draw"); } }
+		virtual inline std::shared_ptr<IndexBuffer> GetIndexBuffer() const override { return indexbuffer; }
 	private:
 		uint32_t OpenGLID;
 		uint32_t attributeindex = 0;

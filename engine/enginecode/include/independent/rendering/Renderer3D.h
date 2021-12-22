@@ -32,8 +32,8 @@ namespace Engine {
 			SetFlags(flag_texture);
 		}
 
-		Material(const std::shared_ptr<Shader>& nshader, const std::shared_ptr<Texture>& ntexture, const glm::vec4& ntint) :
-			shader(nshader), texture(ntexture), tint(ntint)
+		Material(const std::shared_ptr<Shader>& nshader, const glm::vec4& ntint) :
+			shader(nshader), texture(nullptr), tint(ntint)
 		{
 			SetFlags(flag_tint);
 		}

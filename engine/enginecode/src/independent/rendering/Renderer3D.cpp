@@ -28,8 +28,7 @@ namespace Engine {
 			switch (sdt) {
 			case ShaderDataType::Int:
 				material->GetShader()->UploadInt(nameofuniform, *(int*)addressofvalue);
-				break;
-			
+				break;			
 			case ShaderDataType::Float3:
 				material->GetShader()->UploadFloat3(nameofuniform, *(glm::vec3*)addressofvalue);
 				break;
@@ -42,10 +41,18 @@ namespace Engine {
 			}
 		}
 		//Apply Material Uniforms
+		material->GetShader()->UploadMat4("u_model", model);
+		if (material->IsFlagSet(Material::flag_texture)) glBindTexture(GL_TEXTURE_2D, material->GetTexture()->getID());
+		else glBindTexture(GL_TEXTURE_2D, data->defaulttexture->getID());
+		material->GetShader()->UploadInt("u_texData", 0);
 
+		if (material->IsFlagSet(Material::flag_tint)) material->GetShader()->UploadFloat4("u_tint", material->GetTint());
+		else material->GetShader()->UploadFloat4("u_tint", data->defaulttint);
 		//Bind Geometry(VAO and IBO)
-
+		glBindVertexArray(geometry->GetRenderID());
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, geometry->GetIndexBuffer()->GetRenderID());
 		//Submit Draw Call
+		glDrawElements(GL_TRIANGLES, geometry->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 	}
 
 	void Renderer3D::end() {
