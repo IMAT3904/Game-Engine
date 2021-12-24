@@ -1,15 +1,8 @@
 #pragma once
-#include <glm/glm.hpp>
-#include <unordered_map>
-#include <memory>
-#include "VertexArray.h"
-#include "Texture.h"
-#include "Shader.h"
-#include "shaderdatatype.h"
 #include "RenderAPI.h"
+#include "RendererCommon.h"
 
 namespace Engine {
-	using SceneWideUniforms = std::unordered_map<const char*, std::pair<ShaderDataType, void*>>;
 	/** \class Material
 	** \brief Holds a shader and uniforms for said shader
 

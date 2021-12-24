@@ -243,26 +243,6 @@ namespace Engine {
 #pragma endregion
 
 #pragma region GL_BUFFERS
-		/*uint32_t cubeVAO, cubeVBO, cubeIBO;
-
-		glCreateVertexArrays(1, &cubeVAO);
-		glBindVertexArray(cubeVAO);
-
-		glCreateBuffers(1, &cubeVBO);
-		glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
-
-		glCreateBuffers(1, &cubeIBO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // position
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // Normal
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
-
 		std::shared_ptr<VertexArray> cubeVAO;
 		std::shared_ptr<VertexBuffer> cubeVBO;
 		std::shared_ptr<IndexBuffer> cubeIBO;
@@ -366,9 +346,8 @@ namespace Engine {
 		swu3D["u_lightColour"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[0])));
 		swu3D["u_lightPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[1])));
 		swu3D["u_viewPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[2])));
-		glEnable(GL_DEPTH_TEST);
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-		Renderer3D::init();
+		//Renderer3D::init();
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -381,11 +360,14 @@ namespace Engine {
 
 			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
 
+			/*glEnable(GL_DEPTH_TEST);
 			Renderer3D::begin(swu3D);
 			Renderer3D::submit(pyramidVAO, pyramidmat, models[0]);
 			Renderer3D::submit(cubeVAO, lettermat, models[1]);
 			Renderer3D::submit(cubeVAO, numbermat, models[2]);
-			Renderer3D::end();
+			Renderer3D::end();*/
+
+			glDisable(GL_DEPTH_TEST);
 
 
 			// Do frame stuff
