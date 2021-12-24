@@ -28,6 +28,7 @@
 #include "rendering/OpenGLUniformBuffer.h"
 #include "rendering/UniformBuffer.h"
 
+#include "rendering/Renderer3D.h"
 
 
 namespace Engine {
@@ -158,146 +159,158 @@ namespace Engine {
 
 #pragma region RAW_DATA
 
-			float cubeVertices[8 * 24] = {
-				//	 <------ Pos ------>  <--- normal --->  <-- UV -->
-					 0.5f,  0.5f, -0.5f,  0.f,  0.f, -1.f,  0.0f, 0.0f,
-					 0.5f, -0.5f, -0.5f,  0.f,  0.f, -1.f,  0.0f, 0.5f,
-					-0.5f, -0.5f, -0.5f,  0.f,  0.f, -1.f,  0.33f, 0.5f,
-					-0.5f,  0.5f, -0.5f,  0.f,  0.f, -1.f,  0.33f, 0.0f,
+		float cubeVertices[8 * 24] = {
+			//	 <------ Pos ------>  <--- normal --->  <-- UV -->
+				 0.5f,  0.5f, -0.5f,  0.f,  0.f, -1.f,  0.0f, 0.0f,
+				 0.5f, -0.5f, -0.5f,  0.f,  0.f, -1.f,  0.0f, 0.5f,
+				-0.5f, -0.5f, -0.5f,  0.f,  0.f, -1.f,  0.33f, 0.5f,
+				-0.5f,  0.5f, -0.5f,  0.f,  0.f, -1.f,  0.33f, 0.0f,
 
-					-0.5f, -0.5f, 0.5f,   0.f,  0.f,  1.f,  0.33f, 0.5f,
-					 0.5f, -0.5f, 0.5f,   0.f,  0.f,  1.f,  0.66f, 0.5f,
-					 0.5f,  0.5f, 0.5f,   0.f,  0.f,  1.f,  0.66f, 0.0f,
-					-0.5f,  0.5f, 0.5f,   0.f,  0.f,  1.f,  0.33f, 0.0f,
+				-0.5f, -0.5f, 0.5f,   0.f,  0.f,  1.f,  0.33f, 0.5f,
+				 0.5f, -0.5f, 0.5f,   0.f,  0.f,  1.f,  0.66f, 0.5f,
+				 0.5f,  0.5f, 0.5f,   0.f,  0.f,  1.f,  0.66f, 0.0f,
+				-0.5f,  0.5f, 0.5f,   0.f,  0.f,  1.f,  0.33f, 0.0f,
 
-					-0.5f, -0.5f, -0.5f,  0.f, -1.f,  0.f,  1.0f, 0.0f,
-					 0.5f, -0.5f, -0.5f,  0.f, -1.f,  0.f,  0.66f, 0.0f,
-					 0.5f, -0.5f, 0.5f,   0.f, -1.f,  0.f,  0.66f, 0.5f,
-					-0.5f, -0.5f, 0.5f,   0.f, -1.f,  0.f,  1.0f, 0.5f,
+				-0.5f, -0.5f, -0.5f,  0.f, -1.f,  0.f,  1.0f, 0.0f,
+				 0.5f, -0.5f, -0.5f,  0.f, -1.f,  0.f,  0.66f, 0.0f,
+				 0.5f, -0.5f, 0.5f,   0.f, -1.f,  0.f,  0.66f, 0.5f,
+				-0.5f, -0.5f, 0.5f,   0.f, -1.f,  0.f,  1.0f, 0.5f,
 
-					 0.5f,  0.5f, 0.5f,   0.f,  1.f,  0.f,  0.0f, 0.5f,
-					 0.5f,  0.5f, -0.5f,  0.f,  1.f,  0.f,  0.0f, 1.0f,
-					-0.5f,  0.5f, -0.5f,  0.f,  1.f,  0.f,  0.33f, 1.0f,
-					-0.5f,  0.5f, 0.5f,   0.f,  1.f,  0.f,  0.3f, 0.5f,
+				 0.5f,  0.5f, 0.5f,   0.f,  1.f,  0.f,  0.0f, 0.5f,
+				 0.5f,  0.5f, -0.5f,  0.f,  1.f,  0.f,  0.0f, 1.0f,
+				-0.5f,  0.5f, -0.5f,  0.f,  1.f,  0.f,  0.33f, 1.0f,
+				-0.5f,  0.5f, 0.5f,   0.f,  1.f,  0.f,  0.3f, 0.5f,
 
-					-0.5f,  0.5f, 0.5f,  -1.f,  0.f,  0.f,  0.66f, 0.5f,
-					-0.5f,  0.5f, -0.5f, -1.f,  0.f,  0.f,  0.33f, 0.5f,
-					-0.5f, -0.5f, -0.5f, -1.f,  0.f,  0.f,  0.33f, 1.0f,
-					-0.5f, -0.5f, 0.5f,  -1.f,  0.f,  0.f,  0.66f, 1.0f,
+				-0.5f,  0.5f, 0.5f,  -1.f,  0.f,  0.f,  0.66f, 0.5f,
+				-0.5f,  0.5f, -0.5f, -1.f,  0.f,  0.f,  0.33f, 0.5f,
+				-0.5f, -0.5f, -0.5f, -1.f,  0.f,  0.f,  0.33f, 1.0f,
+				-0.5f, -0.5f, 0.5f,  -1.f,  0.f,  0.f,  0.66f, 1.0f,
 
-					 0.5f, -0.5f, -0.5f,  1.f,  0.f,  0.f,  1.0f, 1.0f,
-					 0.5f,  0.5f, -0.5f,  1.f,  0.f,  0.f,  1.0f, 0.5f,
-					 0.5f,  0.5f, 0.5f,   1.f,  0.f,  0.f,  0.66f, 0.5f,
-					 0.5f, -0.5f, 0.5f,   1.f,  0.f,  0.f,  0.66f, 1.0f
-			};
+				 0.5f, -0.5f, -0.5f,  1.f,  0.f,  0.f,  1.0f, 1.0f,
+				 0.5f,  0.5f, -0.5f,  1.f,  0.f,  0.f,  1.0f, 0.5f,
+				 0.5f,  0.5f, 0.5f,   1.f,  0.f,  0.f,  0.66f, 0.5f,
+				 0.5f, -0.5f, 0.5f,   1.f,  0.f,  0.f,  0.66f, 1.0f
+		};
 
-			float pyramidVertices[8 * 16] = {
-				//	 <------ Pos ------>  <--- normal --->  <--- UV ---> 
-					-0.5f, -0.5f, -0.5f,  0.f, -1.f, 0.f,			0.0f, 0.0f, //  square Magneta
-					 0.5f, -0.5f, -0.5f,  0.f, -1.f, 0.f,			0.0f, 0.5f,
-					 0.5f, -0.5f,  0.5f,  0.f, -1.f, 0.f,			0.33f, 0.5f,
-					-0.5f, -0.5f,  0.5f,  0.f, -1.f, 0.f,			0.33f, 0.0f,
+		float pyramidVertices[8 * 16] = {
+			//	 <------ Pos ------>  <--- normal --->  <--- UV ---> 
+				-0.5f, -0.5f, -0.5f,  0.f, -1.f, 0.f,			0.0f, 0.0f, //  square Magneta
+				 0.5f, -0.5f, -0.5f,  0.f, -1.f, 0.f,			0.0f, 0.5f,
+				 0.5f, -0.5f,  0.5f,  0.f, -1.f, 0.f,			0.33f, 0.5f,
+				-0.5f, -0.5f,  0.5f,  0.f, -1.f, 0.f,			0.33f, 0.0f,
 
-					-0.5f, -0.5f, -0.5f,  -0.8944f, 0.4472f, 0.f,	0.33f, 0.5f,  //triangle Green
-					-0.5f, -0.5f,  0.5f,  -0.8944f, 0.4472f, 0.f,	0.66, 0.5f,
-					 0.0f,  0.5f,  0.0f,  -0.8944f, 0.4472f, 0.f,	(0.33f+0.66f)*0.5f, 0.0f,
+				-0.5f, -0.5f, -0.5f,  -0.8944f, 0.4472f, 0.f,	0.33f, 0.5f,  //triangle Green
+				-0.5f, -0.5f,  0.5f,  -0.8944f, 0.4472f, 0.f,	0.66, 0.5f,
+				 0.0f,  0.5f,  0.0f,  -0.8944f, 0.4472f, 0.f,	(0.33f + 0.66f) * 0.5f, 0.0f,
 
-					-0.5f, -0.5f,  0.5f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f, //triangle Red
-					 0.5f, -0.5f,  0.5f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f,
-					 0.0f,  0.5f,  0.0f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f,
+				-0.5f, -0.5f,  0.5f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f, //triangle Red
+				 0.5f, -0.5f,  0.5f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f,
+				 0.0f,  0.5f,  0.0f,  0.f, 0.4472f, 0.8944f,	0.0f, 0.0f,
 
-					 0.5f, -0.5f,  0.5f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f, //  triangle Yellow
-					 0.5f, -0.5f, -0.5f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f,
-					 0.0f,  0.5f,  0.0f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f,
+				 0.5f, -0.5f,  0.5f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f, //  triangle Yellow
+				 0.5f, -0.5f, -0.5f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f,
+				 0.0f,  0.5f,  0.0f,  0.8944f, 0.4472f, 0.f,	0.0f, 0.0f,
 
-					 0.5f, -0.5f, -0.5f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f,//  triangle Blue
-					-0.5f, -0.5f, -0.5f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f,
-					 0.0f,  0.5f,  0.0f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f
-			};
+				 0.5f, -0.5f, -0.5f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f,//  triangle Blue
+				-0.5f, -0.5f, -0.5f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f,
+				 0.0f,  0.5f,  0.0f,  0.f, 0.4472f, -0.8944f,	0.0f, 0.0f
+		};
 
-			uint32_t pyramidIndices[3 * 6] =
-			{
-				0, 1, 2,
-				2, 3, 0,
-				4, 5, 6,
-				7, 8, 9,
-				10, 11, 12,
-				13, 14, 15
-			};
+		uint32_t pyramidIndices[3 * 6] =
+		{
+			0, 1, 2,
+			2, 3, 0,
+			4, 5, 6,
+			7, 8, 9,
+			10, 11, 12,
+			13, 14, 15
+		};
 
-			uint32_t cubeIndices[3 * 12] = {
-				0, 1, 2,
-				2, 3, 0,
-				4, 5, 6,
-				6, 7, 4,
-				8, 9, 10,
-				10, 11, 8,
-				12, 13, 14,
-				14, 15, 12,
-				16, 17, 18,
-				18, 19, 16,
-				20, 21, 22,
-				22, 23, 20
-			};
+		uint32_t cubeIndices[3 * 12] = {
+			0, 1, 2,
+			2, 3, 0,
+			4, 5, 6,
+			6, 7, 4,
+			8, 9, 10,
+			10, 11, 8,
+			12, 13, 14,
+			14, 15, 12,
+			16, 17, 18,
+			18, 19, 16,
+			20, 21, 22,
+			22, 23, 20
+		};
 #pragma endregion
 
 #pragma region GL_BUFFERS
-			/*uint32_t cubeVAO, cubeVBO, cubeIBO;
+		/*uint32_t cubeVAO, cubeVBO, cubeIBO;
 
-			glCreateVertexArrays(1, &cubeVAO);
-			glBindVertexArray(cubeVAO);
+		glCreateVertexArrays(1, &cubeVAO);
+		glBindVertexArray(cubeVAO);
 
-			glCreateBuffers(1, &cubeVBO);
-			glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+		glCreateBuffers(1, &cubeVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
 
-			glCreateBuffers(1, &cubeIBO);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
+		glCreateBuffers(1, &cubeIBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
 
-			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // position
-			glEnableVertexAttribArray(1);
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // Normal
-			glEnableVertexAttribArray(2);
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0); // position
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float))); // Normal
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // UV co-ords*/
 
-			std::shared_ptr<VertexArray> cubeVAO;
-			std::shared_ptr<VertexBuffer> cubeVBO;
-			std::shared_ptr<IndexBuffer> cubeIBO;
+		std::shared_ptr<VertexArray> cubeVAO;
+		std::shared_ptr<VertexBuffer> cubeVBO;
+		std::shared_ptr<IndexBuffer> cubeIBO;
 
-			cubeVAO.reset(VertexArray::create());
+		cubeVAO.reset(VertexArray::create());
 
-			VertexBufferLayout cubeBL = { ShaderDataType::Float3,ShaderDataType::Float3,ShaderDataType::Float2 };
-			cubeVBO.reset(VertexBuffer::create(cubeVertices,sizeof(cubeVertices),cubeBL));
+		VertexBufferLayout cubeBL = { ShaderDataType::Float3,ShaderDataType::Float3,ShaderDataType::Float2 };
+		cubeVBO.reset(VertexBuffer::create(cubeVertices, sizeof(cubeVertices), cubeBL));
 
-			cubeIBO.reset(IndexBuffer::create(cubeIndices,36));
+		cubeIBO.reset(IndexBuffer::create(cubeIndices, 36));
 
-			cubeVAO->AddVertexBuffer(cubeVBO);
-			cubeVAO->SetIndexBuffer(cubeIBO);
+		cubeVAO->AddVertexBuffer(cubeVBO);
+		cubeVAO->SetIndexBuffer(cubeIBO);
 
-			std::shared_ptr<VertexArray> pyramidVAO;
-			std::shared_ptr<VertexBuffer> pyramidVBO;
-			std::shared_ptr<IndexBuffer> pyramidIBO;
+		std::shared_ptr<VertexArray> pyramidVAO;
+		std::shared_ptr<VertexBuffer> pyramidVBO;
+		std::shared_ptr<IndexBuffer> pyramidIBO;
 
-			pyramidVAO.reset(VertexArray::create());
-			pyramidVBO.reset(VertexBuffer::create(pyramidVertices, sizeof(pyramidVertices), cubeBL));
-			pyramidIBO.reset(IndexBuffer::create(pyramidIndices, 18));
+		pyramidVAO.reset(VertexArray::create());
+		pyramidVBO.reset(VertexBuffer::create(pyramidVertices, sizeof(pyramidVertices), cubeBL));
+		pyramidIBO.reset(IndexBuffer::create(pyramidIndices, 18));
 
-			pyramidVAO->AddVertexBuffer(pyramidVBO);
-			pyramidVAO->SetIndexBuffer(pyramidIBO);			
+		pyramidVAO->AddVertexBuffer(pyramidVBO);
+		pyramidVAO->SetIndexBuffer(pyramidIBO);
 #pragma endregion
 
 
 #pragma region SHADERS
-			std::shared_ptr<Shader> FCShader;
-			FCShader.reset(Shader::create("./assets/shaders/flatcolour.glsl"));
+		std::shared_ptr<Shader> FCShader;
+		FCShader.reset(Shader::create("./assets/shaders/flatcolour.glsl"));
 
-			std::shared_ptr<Shader> TPShader;
-			TPShader.reset(Shader::create("./assets/shaders/texturedphong.glsl"));
+		std::shared_ptr<Shader> TPShader;
+		TPShader.reset(Shader::create("./assets/shaders/texturedphong.glsl"));
 
-			
+
 #pragma endregion 
+
+#pragma region MATERIALS
+		std::shared_ptr<Material> pyramidmat;
+		std::shared_ptr<Material> lettermat;
+		std::shared_ptr<Material> numbermat;
+
+		pyramidmat.reset(new Material(TPShader, { 0.4f,0.7f,0.3f,1.0f }));
+		lettermat.reset(new Material(TPShader, lettertexture));
+		numbermat.reset(new Material(TPShader, numbertexture));
+
+
+#pragma endregion
 
 		glm::mat4 view = glm::lookAt(
 			glm::vec3(0.f, 0.f, 0.f),
@@ -308,26 +321,6 @@ namespace Engine {
 
 		//Camera UBO
 		uint32_t blocknumber = 0;
-		/*uint32_t cameraUBO;
-		uint32_t cameradatasize = sizeof(glm::mat4) * 2;
-		UniformBufferLayout cameralayout = { {"u_projection",ShaderDataType::Mat4},{"u_view",ShaderDataType::Mat4}};
-
-		glGenBuffers(1, &cameraUBO);
-		glBindBuffer(GL_UNIFORM_BUFFER, cameraUBO);
-		glBufferData(GL_UNIFORM_BUFFER, cameralayout.GetStride(), nullptr, GL_DYNAMIC_DRAW);
-		glBindBufferRange(GL_UNIFORM_BUFFER, blocknumber, cameraUBO, 0, cameralayout.GetStride());
-
-		uint32_t blockindex = glGetUniformBlockIndex(FCShader->GetID(), "b_camera");
-		glUniformBlockBinding(FCShader->GetID(), blockindex, blocknumber);
-
-		blockindex = glGetUniformBlockIndex(TPShader->GetID(), "b_camera");
-		glUniformBlockBinding(TPShader->GetID(), blockindex, blocknumber);
-
-		auto element = *cameralayout.begin();
-		glBufferSubData(GL_UNIFORM_BUFFER, element.offset, element.size, glm::value_ptr(projection));
-		element = *(cameralayout.begin() + 1);
-		glBufferSubData(GL_UNIFORM_BUFFER, element.offset, element.size, glm::value_ptr(view));
-		*/
 
 		UniformBufferLayout cameralayout = { {"u_projection",ShaderDataType::Mat4},{"u_view",ShaderDataType::Mat4} };
 
@@ -357,7 +350,7 @@ namespace Engine {
 
 		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec3), glm::value_ptr(lightpos));
 		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4), sizeof(glm::vec3), glm::value_ptr(viewpos));
-		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4)*2, sizeof(glm::vec3), glm::value_ptr(lightcolour));
+		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4) * 2, sizeof(glm::vec3), glm::value_ptr(lightcolour));
 
 
 
@@ -366,8 +359,16 @@ namespace Engine {
 		models[1] = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, -6.f));
 		models[2] = glm::translate(glm::mat4(1.0f), glm::vec3(2.f, 0.f, -6.f));
 
+		glm::vec3 lightdata[3] = { { 1.0f, 1.0f, 1.0f },{1.0f, 4.0f, 6.0f},{0.0f, 0.0f, 0.0f} };
+		SceneWideUniforms swu3D;
+		swu3D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view)));
+		swu3D["u_projection"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(projection)));
+		swu3D["u_lightColour"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[0])));
+		swu3D["u_lightPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[1])));
+		swu3D["u_viewPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[2])));
 		glEnable(GL_DEPTH_TEST);
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
+		Renderer3D::init();
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -379,6 +380,13 @@ namespace Engine {
 			//Log::trace("Current mouse pos: ({0}, {1})", InputPoller::getmousex(), InputPoller::getmousey());
 
 			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
+
+			Renderer3D::begin(swu3D);
+			Renderer3D::submit(pyramidVAO, pyramidmat, models[0]);
+			Renderer3D::submit(cubeVAO, lettermat, models[1]);
+			Renderer3D::submit(cubeVAO, numbermat, models[2]);
+			Renderer3D::end();
+
 
 			// Do frame stuff
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
