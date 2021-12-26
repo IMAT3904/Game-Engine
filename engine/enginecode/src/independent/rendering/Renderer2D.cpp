@@ -58,10 +58,24 @@ namespace Engine {
 	}
 
 	void Renderer2D::submit(const Quad& quad, const glm::vec4& tint) {
+		glBindTexture(GL_TEXTURE_2D, data->defaulttexture->getID());
+		data->model = glm::scale(glm::translate(glm::mat4(1.0f), quad.translate), quad.scale);
 
+		data->shader->UploadInt("u_texData", 0);
+		data->shader->UploadFloat4("u_tint", tint);
+		data->shader->UploadMat4("u_model", data->model);
+
+		glDrawElements(GL_QUADS, data->VAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 	}
 
 	void Renderer2D::end() {
 
+	}
+
+	Quad Quad::CreateCentreHalfExtents(const glm::vec2& centre, const glm::vec2& halfextents) {
+		Quad result;
+		result.translate = glm::vec3(centre, 0.0f);
+		result.scale = glm::vec3(halfextents * 2.0f, 1.0f);
+		return result;
 	}
 }

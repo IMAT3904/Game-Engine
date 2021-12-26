@@ -29,6 +29,8 @@
 #include "rendering/UniformBuffer.h"
 
 #include "rendering/Renderer3D.h"
+#include "rendering/Renderer2D.h"
+
 
 
 namespace Engine {
@@ -277,6 +279,9 @@ namespace Engine {
 		std::shared_ptr<Shader> TPShader;
 		TPShader.reset(Shader::create("./assets/shaders/texturedphong.glsl"));
 
+		std::shared_ptr<Shader> QuadShader;
+		QuadShader.reset(Shader::create("./assets/shaders/quad.glsl"));
+
 
 #pragma endregion 
 
@@ -328,6 +333,7 @@ namespace Engine {
 		uint32_t blockindex = glGetUniformBlockIndex(TPShader->GetID(), "b_lights");
 		glUniformBlockBinding(TPShader->GetID(), blockindex, blocknumber);
 
+
 		glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::vec3), glm::value_ptr(lightpos));
 		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4), sizeof(glm::vec3), glm::value_ptr(viewpos));
 		glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::vec4) * 2, sizeof(glm::vec3), glm::value_ptr(lightcolour));
@@ -339,6 +345,9 @@ namespace Engine {
 		models[1] = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, -6.f));
 		models[2] = glm::translate(glm::mat4(1.0f), glm::vec3(2.f, 0.f, -6.f));
 
+		glm::mat4 view2D = glm::mat4(1.0f);
+		glm::mat4 projection2D = glm::ortho(0.0f, static_cast<float>(window->getwidth()), static_cast<float>(window->getheigth()),0.0f);
+
 		glm::vec3 lightdata[3] = { { 1.0f, 1.0f, 1.0f },{1.0f, 4.0f, 6.0f},{0.0f, 0.0f, 0.0f} };
 		SceneWideUniforms swu3D;
 		swu3D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view)));
@@ -346,8 +355,16 @@ namespace Engine {
 		swu3D["u_lightColour"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[0])));
 		swu3D["u_lightPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[1])));
 		swu3D["u_viewPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[2])));
+
+		SceneWideUniforms swu2D;
+		swu2D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view2D)));
+		swu2D["u_projection"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(projection2D)));
+
+		Quad q1 = Quad::CreateCentreHalfExtents({ 400.0f,200.0f }, { 100.0f,50.0f });
+
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
-		//Renderer3D::init();
+		Renderer3D::init();
+		Renderer2D::init();
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -360,14 +377,17 @@ namespace Engine {
 
 			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
 
-			/*glEnable(GL_DEPTH_TEST);
+			glEnable(GL_DEPTH_TEST);
 			Renderer3D::begin(swu3D);
 			Renderer3D::submit(pyramidVAO, pyramidmat, models[0]);
 			Renderer3D::submit(cubeVAO, lettermat, models[1]);
 			Renderer3D::submit(cubeVAO, numbermat, models[2]);
-			Renderer3D::end();*/
+			Renderer3D::end();
 
 			glDisable(GL_DEPTH_TEST);
+			Renderer2D::begin(swu2D);
+			Renderer2D::submit(q1, { 0.0f,0.0f,1.0f,1.0f });
+			Renderer2D::end();
 
 
 			// Do frame stuff

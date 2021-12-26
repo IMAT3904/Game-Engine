@@ -1,8 +1,15 @@
 #pragma once
 #include "RendererCommon.h"
+#include <glm/gtc/matrix_transform.hpp>
 namespace Engine {
 	class Quad {
-
+	public:
+		Quad() = default;
+		static Quad CreateCentreHalfExtents(const glm::vec2& centre, const glm::vec2& halfextents);
+	private:
+		glm::vec3 translate = glm::vec3(0.0f);
+		glm::vec3 scale = glm::vec3(1.0f);
+		friend class Renderer2D;
 	};
 
 	class Renderer2D {
