@@ -60,8 +60,41 @@ namespace Engine {
 	}
 
 	void Renderer2D::submit(const Quad& quad, const glm::vec4& tint) {
-		glBindTexture(GL_TEXTURE_2D, data->defaulttexture->getID());
+		Renderer2D::submit(quad, tint, data->defaulttexture);
+	}
+
+	void Renderer2D::submit(const Quad& quad, const std::shared_ptr<Texture>& texture) {
+		Renderer2D::submit(quad, data->defaulttint, texture);
+	}
+
+	void Renderer2D::submit(const Quad& quad, const glm::vec4& tint, float angle, bool degrees) {
+		Renderer2D::submit(quad, tint, data->defaulttexture, angle, degrees);
+	}
+
+	void Renderer2D::submit(const Quad& quad, const std::shared_ptr<Texture>& texture, float angle, bool degrees) {
+		Renderer2D::submit(quad, data->defaulttint,texture, angle, degrees);
+	}
+
+	void Renderer2D::submit(const Quad& quad, const glm::vec4& tint, const std::shared_ptr<Texture>& texture) {
+		glBindTexture(GL_TEXTURE_2D, texture->getID());
 		data->model = glm::scale(glm::translate(glm::mat4(1.0f), quad.translate), quad.scale);
+
+		data->shader->UploadInt("u_texData", 0);
+		data->shader->UploadFloat4("u_tint", tint);
+		data->shader->UploadMat4("u_model", data->model);
+		auto dc = data->VAO->GetDrawCount();
+
+		glBindVertexArray(data->VAO->GetRenderID());
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data->VAO->GetIndexBuffer()->GetRenderID());
+
+		glDrawElements(GL_QUADS, data->VAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
+	}
+
+	void Renderer2D::submit(const Quad& quad, const glm::vec4& tint, const std::shared_ptr<Texture>& texture, float angle, bool degrees) {
+		if (degrees) angle = glm::radians(angle);
+
+		glBindTexture(GL_TEXTURE_2D, texture->getID());
+		data->model = glm::scale(glm::rotate(glm::translate(glm::mat4(1.0f), quad.translate), angle, { 0.0f,0.0f,1.0f }), quad.scale);
 
 		data->shader->UploadInt("u_texData", 0);
 		data->shader->UploadFloat4("u_tint", tint);

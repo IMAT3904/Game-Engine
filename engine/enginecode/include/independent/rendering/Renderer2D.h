@@ -15,7 +15,12 @@ namespace Engine {
 	public:
 		static void init();
 		static void begin(const SceneWideUniforms& swu);
-		static void submit(const Quad& quad, const glm::vec4& tint);
+		static void submit(const Quad& quad, const glm::vec4& tint); //!< render a tinted quad
+		static void submit(const Quad& quad, const std::shared_ptr<Texture>& texture); //!< render a textured quad
+		static void submit(const Quad& quad, const glm::vec4& tint, const std::shared_ptr<Texture>& texture); //!< render a textured and tinted quad
+		static void submit(const Quad& quad, const glm::vec4& tint, float angle, bool degrees = false); //!< render a tinted quad that's angled
+		static void submit(const Quad& quad, const std::shared_ptr<Texture>& texture, float angle, bool degrees = false); //!< render a textured quad that's angled
+		static void submit(const Quad& quad, const glm::vec4& tint, const std::shared_ptr<Texture>& texture, float angle, bool degrees = false); //!< render a textured and tinted quad that's angled
 		static void end();
 	private:
 		struct InternalData {

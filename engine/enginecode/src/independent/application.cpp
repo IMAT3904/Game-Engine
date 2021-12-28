@@ -358,11 +358,18 @@ namespace Engine {
 		swu2D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view2D)));
 		swu2D["u_projection"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(projection2D)));
 
-		Quad q1 = Quad::CreateCentreHalfExtents({ 400.0f,200.0f }, { 100.0f,50.0f });
+		Quad quads[6] = {
+			Quad::CreateCentreHalfExtents({ 400.0f,200.0f }, { 100.0f,50.0f }),
+			Quad::CreateCentreHalfExtents({ 200.0f,300.0f }, { 50.0f,100.0f }),
+			Quad::CreateCentreHalfExtents({ 400.0f,500.0f }, { 75.0f,75.0f }),
+			Quad::CreateCentreHalfExtents({ 100.0f,200.0f }, { 75.0f,50.0f }),
+			Quad::CreateCentreHalfExtents({ 700.0f,100.0f }, { 50.0f,25.0f }),
+			Quad::CreateCentreHalfExtents({ 600.0f,450.0f }, { 75.0f,15.0f }),
+		};
 
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		Renderer3D::init();
-		//Renderer2D::init();
+		Renderer2D::init();
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -383,10 +390,18 @@ namespace Engine {
 			Renderer3D::submit(cubeVAO, numbermat, models[2]);
 			Renderer3D::end();
 
-			//glDisable(GL_DEPTH_TEST);
-			//Renderer2D::begin(swu2D);
-			//Renderer2D::submit(q1, { 0.0f,0.0f,1.0f,1.0f });
-			//Renderer2D::end();
+			glDisable(GL_DEPTH_TEST);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			Renderer2D::begin(swu2D);
+			Renderer2D::submit(quads[0], { 0.0f,0.0f,1.0f,1.0f });
+			Renderer2D::submit(quads[1], lettertexture);
+			Renderer2D::submit(quads[2], { 0.0f,1.0f,1.0f,1.0f }, numbertexture);
+			Renderer2D::submit(quads[3], { 0.0f,1.0f,1.0f,0.5f }, numbertexture,45.0f,true);
+			Renderer2D::submit(quads[3], { 1.0f,0.0f,1.0f,0.5f }, numbertexture, glm::radians(-45.0f));
+			Renderer2D::submit(quads[4], { 1.0f,1.0f,0.0f,1.0f }, 30.0f, true);
+			Renderer2D::submit(quads[5], { 1.0f,1.0f,0.0f,1.0f },lettertexture, 90.0f, true);
+			Renderer2D::end();
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
