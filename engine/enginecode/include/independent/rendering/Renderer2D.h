@@ -1,5 +1,7 @@
 #pragma once
 #include "RendererCommon.h"
+#include "ft2build.h"
+#include "freetype/freetype.h"
 namespace Engine {
 	class Quad {
 	public:
@@ -29,6 +31,9 @@ namespace Engine {
 			std::shared_ptr<Shader> shader;
 			std::shared_ptr<VertexArray> VAO;
 			glm::mat4 model;
+			FT_Library ft;
+			FT_Face fontface;
+			std::shared_ptr<Texture> fonttexture;
 		};
 
 		static std::shared_ptr<InternalData> data;
