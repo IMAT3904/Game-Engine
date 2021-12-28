@@ -370,6 +370,7 @@ namespace Engine {
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		Renderer3D::init();
 		Renderer2D::init();
+		float advance;
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -401,6 +402,8 @@ namespace Engine {
 			Renderer2D::submit(quads[3], { 1.0f,0.0f,1.0f,0.5f }, numbertexture, glm::radians(-45.0f));
 			Renderer2D::submit(quads[4], { 1.0f,1.0f,0.0f,1.0f }, 30.0f, true);
 			Renderer2D::submit(quads[5], { 1.0f,1.0f,0.0f,1.0f },lettertexture, 90.0f, true);
+
+			Renderer2D::submit('g', glm::vec2(550.f,550.0f), advance, {0.0f,0.0f,1.0f,1.0f});
 			Renderer2D::end();
 			glDisable(GL_BLEND);
 

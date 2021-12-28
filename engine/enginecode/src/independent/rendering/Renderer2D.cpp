@@ -30,6 +30,17 @@ namespace Engine {
 		IBO.reset(IndexBuffer::create(indices, 4));
 		data->VAO->AddVertexBuffer(VBO);
 		data->VAO->SetIndexBuffer(IBO);
+		
+		//Font Filepath
+		const char* filepath = "./assets/fonts/AGENCYR.TTF";
+		//Init FreeType
+		if (FT_Init_FreeType(&data->ft)) { Log::error("FreeType could not be initialised"); }
+		if (FT_New_Face(data->ft,filepath,0,&data->fontface)) { Log::error("FreeType could not load font: {0}",filepath); }
+		int32_t charsize = 86;
+		if (FT_Set_Pixel_Sizes(data->fontface, 0, charsize)) { Log::error("FreeType could not set font size: {0}",charsize); }
+
+		data->fonttexture.reset(Texture::create(256, 256, 4, nullptr));
+		
 	}
 
 	void Renderer2D::begin(const SceneWideUniforms& swu) {
@@ -105,6 +116,31 @@ namespace Engine {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data->VAO->GetIndexBuffer()->GetRenderID());
 
 		glDrawElements(GL_QUADS, data->VAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
+	}
+
+	void Renderer2D::submit(char ch, glm::vec2& position, float& advance, const glm::vec4 tint) {
+		if (FT_Load_Char(data->fontface, ch, FT_LOAD_RENDER)) {
+			Log::error("Could not load glyph for char {0}", ch);
+		}
+		else {
+			//Glyph data
+			uint32_t glyphwidth = data->fontface->glyph->bitmap.width;
+			uint32_t glyphheight = data->fontface->glyph->bitmap.rows;
+			glm::vec2 glyphsize(glyphwidth, glyphheight);
+			glm::vec2 glyphbearing(data->fontface->glyph->bitmap_left, -data->fontface->glyph->bitmap_top);
+
+			//Calculate the advance
+			advance = static_cast<float>(data->fontface->glyph->advance.x >> 6);
+
+			//Claculate the quad
+			glm::vec2 glyphhandextents(data->fonttexture->getWidth() * 0.5f, data->fonttexture->getHeight() * 0.5f);
+			glm::vec2 glyphcentre = (position + glyphbearing) + glyphhandextents;
+			Quad quad = Quad::CreateCentreHalfExtents(glyphcentre, glyphhandextents);
+
+			//Submit quad
+			submit(quad, tint, data->fonttexture);
+
+		}
 	}
 
 	void Renderer2D::end() {

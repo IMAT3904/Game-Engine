@@ -23,6 +23,9 @@ namespace Engine {
 		static void submit(const Quad& quad, const glm::vec4& tint, float angle, bool degrees = false); //!< render a tinted quad that's angled
 		static void submit(const Quad& quad, const std::shared_ptr<Texture>& texture, float angle, bool degrees = false); //!< render a textured quad that's angled
 		static void submit(const Quad& quad, const glm::vec4& tint, const std::shared_ptr<Texture>& texture, float angle, bool degrees = false); //!< render a textured and tinted quad that's angled
+		
+		static void submit(char ch, glm::vec2& position, float& advance, const glm::vec4 tint);
+
 		static void end();
 	private:
 		struct InternalData {
