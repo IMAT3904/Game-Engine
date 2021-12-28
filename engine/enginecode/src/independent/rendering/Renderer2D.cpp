@@ -1,5 +1,7 @@
 #include "engine_pch.h"
 #include "rendering/Renderer2D.h"
+#include <glad/glad.h>
+#include <glm/gtc/matrix_transform.hpp>
 namespace Engine {
 	std::shared_ptr<Renderer2D::InternalData> Renderer2D::data = nullptr;
 
@@ -64,6 +66,10 @@ namespace Engine {
 		data->shader->UploadInt("u_texData", 0);
 		data->shader->UploadFloat4("u_tint", tint);
 		data->shader->UploadMat4("u_model", data->model);
+		auto dc = data->VAO->GetDrawCount();
+
+		glBindVertexArray(data->VAO->GetRenderID());
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, data->VAO->GetIndexBuffer()->GetRenderID());
 
 		glDrawElements(GL_QUADS, data->VAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 	}

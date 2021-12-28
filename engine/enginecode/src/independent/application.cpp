@@ -279,10 +279,6 @@ namespace Engine {
 		std::shared_ptr<Shader> TPShader;
 		TPShader.reset(Shader::create("./assets/shaders/texturedphong.glsl"));
 
-		std::shared_ptr<Shader> QuadShader;
-		QuadShader.reset(Shader::create("./assets/shaders/quad.glsl"));
-
-
 #pragma endregion 
 
 #pragma region MATERIALS
@@ -318,6 +314,8 @@ namespace Engine {
 		cameraUBO->UploadData("u_view", glm::value_ptr(view));
 
 		blocknumber++;
+
+		//Light UBO
 		glm::vec3 lightcolour(1.0f, 1.0f, 1.0f);
 		glm::vec3 lightpos(1.0f, 4.0f, 6.0f);
 		glm::vec3 viewpos(0.0f, 0.0f, 0.0f);
@@ -364,7 +362,7 @@ namespace Engine {
 
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		Renderer3D::init();
-		Renderer2D::init();
+		//Renderer2D::init();
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
@@ -375,8 +373,9 @@ namespace Engine {
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Left Mouse Button Pressed");
 			//Log::trace("Current mouse pos: ({0}, {1})", InputPoller::getmousex(), InputPoller::getmousey());
 
-			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
 
+			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glEnable(GL_DEPTH_TEST);
 			Renderer3D::begin(swu3D);
 			Renderer3D::submit(pyramidVAO, pyramidmat, models[0]);
@@ -384,43 +383,10 @@ namespace Engine {
 			Renderer3D::submit(cubeVAO, numbermat, models[2]);
 			Renderer3D::end();
 
-			glDisable(GL_DEPTH_TEST);
-			Renderer2D::begin(swu2D);
-			Renderer2D::submit(q1, { 0.0f,0.0f,1.0f,1.0f });
-			Renderer2D::end();
-
-
-			// Do frame stuff
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			GLuint uniformLocation;
-			glUseProgram(TPShader->GetID());
-			glBindTexture(GL_TEXTURE_2D, plainwhitetexture->getID());
-			glBindVertexArray(pyramidVAO->GetRenderID());
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pyramidIBO->GetRenderID());
-
-			
-			TPShader->UploadMat4("u_model", models[0]);
-			TPShader->UploadFloat4("u_tint", { 0.4f,0.7f,0.3f,1.0f });
-			TPShader->UploadInt("u_texData", 0);
-
-			glDrawElements(GL_TRIANGLES, 3 * 6, GL_UNSIGNED_INT, nullptr);			
-			
-			glBindVertexArray(cubeVAO->GetRenderID());
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeIBO->GetRenderID());
-
-			TPShader->UploadMat4("u_model", models[1]);
-			TPShader->UploadFloat4("u_tint", { 1.0f,1.0f,1.0f,1.0f });
-			TPShader->UploadInt("u_texData", 0);
-
-			glBindTexture(GL_TEXTURE_2D, lettertexture->getID());
-			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
-
-			TPShader->UploadMat4("u_model", models[2]);
-
-			glBindTexture(GL_TEXTURE_2D, numbertexture->getID());
-
-			glDrawElements(GL_TRIANGLES, cubeVAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
-
+			//glDisable(GL_DEPTH_TEST);
+			//Renderer2D::begin(swu2D);
+			//Renderer2D::submit(q1, { 0.0f,0.0f,1.0f,1.0f });
+			//Renderer2D::end();
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");

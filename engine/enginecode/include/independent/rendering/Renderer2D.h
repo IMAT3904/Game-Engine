@@ -1,6 +1,5 @@
 #pragma once
 #include "RendererCommon.h"
-#include <glm/gtc/matrix_transform.hpp>
 namespace Engine {
 	class Quad {
 	public:
