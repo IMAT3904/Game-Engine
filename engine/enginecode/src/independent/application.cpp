@@ -402,6 +402,7 @@ namespace Engine {
 			Renderer2D::submit(quads[4], { 1.0f,1.0f,0.0f,1.0f }, 30.0f, true);
 			Renderer2D::submit(quads[5], { 1.0f,1.0f,0.0f,1.0f },lettertexture, 90.0f, true);
 			Renderer2D::end();
+			glDisable(GL_BLEND);
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
