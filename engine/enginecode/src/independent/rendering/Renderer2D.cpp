@@ -32,15 +32,28 @@ namespace Engine {
 		data->VAO->SetIndexBuffer(IBO);
 		
 		//Font Filepath
-		const char* filepath = "./assets/fonts/AGENCYR.TTF";
+		const char* filepath = "./assets/fonts/arial.ttf";
+
+		//Set the dims of the glyph buffer
+		data->glyphbufferdims = { 256,256 };
+		data->glyphbuffersize = data->glyphbufferdims.x * data->glyphbufferdims.y * 4 * sizeof(unsigned char);
+		data->glyphbuffer.reset(static_cast<unsigned char*>(malloc(data->glyphbuffersize)));
+
 		//Init FreeType
 		if (FT_Init_FreeType(&data->ft)) { Log::error("FreeType could not be initialised"); }
+		//Load font
 		if (FT_New_Face(data->ft,filepath,0,&data->fontface)) { Log::error("FreeType could not load font: {0}",filepath); }
+		//Set char size
 		int32_t charsize = 86;
 		if (FT_Set_Pixel_Sizes(data->fontface, 0, charsize)) { Log::error("FreeType could not set font size: {0}",charsize); }
+		//Init font text
+		data->fonttexture.reset(Texture::create(data->glyphbufferdims.x, data->glyphbufferdims.y, 4, nullptr));
 
-		data->fonttexture.reset(Texture::create(256, 256, 4, nullptr));
-		
+		//Fill the glyph buffer 
+		memset(data->glyphbuffer.get(), 255, data->glyphbuffersize);
+
+		//Send glyph buffer to the texture on the GPU
+		data->fonttexture->edit(0, 0, data->glyphbufferdims.x, data->glyphbufferdims.y, data->glyphbuffer.get());
 	}
 
 	void Renderer2D::begin(const SceneWideUniforms& swu) {
@@ -137,6 +150,10 @@ namespace Engine {
 			glm::vec2 glyphcentre = (position + glyphbearing) + glyphhandextents;
 			Quad quad = Quad::CreateCentreHalfExtents(glyphcentre, glyphhandextents);
 
+			unsigned char* glyphRGBABuffer = RtoRGBA(data->fontface->glyph->bitmap.buffer,glyphwidth,glyphheight);
+			data->fonttexture->edit(0, 0, glyphwidth, glyphheight, glyphRGBABuffer);
+			free(glyphRGBABuffer);
+
 			//Submit quad
 			submit(quad, tint, data->fonttexture);
 
@@ -145,6 +162,14 @@ namespace Engine {
 
 	void Renderer2D::end() {
 
+	}
+
+	unsigned char* Renderer2D::RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height) {
+		uint32_t RBufferSize = width * height * 4 * sizeof(unsigned char);
+		unsigned char* result = (unsigned char*)malloc(RBufferSize);
+		memset(result, 255, RBufferSize);
+
+		return result;
 	}
 
 	Quad Quad::CreateCentreHalfExtents(const glm::vec2& centre, const glm::vec2& halfextents) {

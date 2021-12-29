@@ -37,8 +37,13 @@ namespace Engine {
 			FT_Library ft;
 			FT_Face fontface;
 			std::shared_ptr<Texture> fonttexture;
+			glm::ivec2 glyphbufferdims;
+			uint32_t glyphbuffersize;
+			std::shared_ptr<unsigned char> glyphbuffer;
 		};
 
 		static std::shared_ptr<InternalData> data;
+
+		static unsigned char* RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height);
 	};
 }
