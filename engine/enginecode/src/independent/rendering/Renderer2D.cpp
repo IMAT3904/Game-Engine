@@ -131,7 +131,7 @@ namespace Engine {
 		glDrawElements(GL_QUADS, data->VAO->GetDrawCount(), GL_UNSIGNED_INT, nullptr);
 	}
 
-	void Renderer2D::submit(char ch, glm::vec2& position, float& advance, const glm::vec4 tint) {
+	void Renderer2D::submit(char ch, glm::vec2& position, float& advance, const glm::vec4& tint) {
 		if (FT_Load_Char(data->fontface, ch, FT_LOAD_RENDER)) {
 			Log::error("Could not load glyph for char {0}", ch);
 		}
@@ -158,7 +158,15 @@ namespace Engine {
 
 			//Submit quad
 			submit(quad, tint, data->fonttexture);
+		}
+	}
 
+	void Renderer2D::submit(const char* text, glm::vec2& position, const glm::vec4& tint) {
+		uint32_t length = strlen(text);
+		float advance = 0.0f, x = position.x;
+		for (uint32_t i = 0; i < length; i++) {
+			submit(text[i], glm::vec2(x,position.y), advance, tint);
+			x += advance;
 		}
 	}
 

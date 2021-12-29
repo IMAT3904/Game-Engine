@@ -406,11 +406,13 @@ namespace Engine {
 			uint32_t x = 550.0f;
 			uint32_t y = 550.0f;
 			Renderer2D::submit('g', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
-			Renderer2D::submit('o', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('o', glm::vec2(x, y), advance, { 0.0f,1.0f,1.0f,1.0f }); x += advance;
 			Renderer2D::submit(' ', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
-			Renderer2D::submit('p', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
-			Renderer2D::submit('j', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
-			Renderer2D::submit('!', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('p', glm::vec2(x, y), advance, { 0.5f,1.0f,0.2f,1.0f }); x += advance;
+			Renderer2D::submit('j', glm::vec2(x, y), advance, { 0.2f,0.3f,0.2f,1.0f }); x += advance;
+			Renderer2D::submit('!', glm::vec2(x, y), advance, { 0.4f,0.2f,1.0f,1.0f }); x += advance;
+
+			Renderer2D::submit("Hello World", glm::vec2(200.0f, 70.0f), { 1.0f,1.0f,1.0f,1.0f });
 			Renderer2D::end();
 			glDisable(GL_BLEND);
 
