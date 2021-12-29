@@ -403,7 +403,14 @@ namespace Engine {
 			Renderer2D::submit(quads[4], { 1.0f,1.0f,0.0f,1.0f }, 30.0f, true);
 			Renderer2D::submit(quads[5], { 1.0f,1.0f,0.0f,1.0f },lettertexture, 90.0f, true);
 
-			Renderer2D::submit('g', glm::vec2(550.f,550.0f), advance, {1.0f,1.0f,1.0f,1.0f});
+			uint32_t x = 550.0f;
+			uint32_t y = 550.0f;
+			Renderer2D::submit('g', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('o', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit(' ', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('p', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('j', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
+			Renderer2D::submit('!', glm::vec2(x, y), advance, { 1.0f,1.0f,1.0f,1.0f }); x += advance;
 			Renderer2D::end();
 			glDisable(GL_BLEND);
 

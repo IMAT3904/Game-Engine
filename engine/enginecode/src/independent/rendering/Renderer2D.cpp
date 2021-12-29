@@ -50,7 +50,7 @@ namespace Engine {
 		data->fonttexture.reset(Texture::create(data->glyphbufferdims.x, data->glyphbufferdims.y, 4, nullptr));
 
 		//Fill the glyph buffer 
-		memset(data->glyphbuffer.get(), 255, data->glyphbuffersize);
+		memset(data->glyphbuffer.get(), 60, data->glyphbuffersize);
 
 		//Send glyph buffer to the texture on the GPU
 		data->fonttexture->edit(0, 0, data->glyphbufferdims.x, data->glyphbufferdims.y, data->glyphbuffer.get());
@@ -150,9 +150,11 @@ namespace Engine {
 			glm::vec2 glyphcentre = (position + glyphbearing) + glyphhandextents;
 			Quad quad = Quad::CreateCentreHalfExtents(glyphcentre, glyphhandextents);
 
-			unsigned char* glyphRGBABuffer = RtoRGBA(data->fontface->glyph->bitmap.buffer,glyphwidth,glyphheight);
-			data->fonttexture->edit(0, 0, glyphwidth, glyphheight, glyphRGBABuffer);
-			free(glyphRGBABuffer);
+			//unsigned char* glyphRGBABuffer = RtoRGBA(data->fontface->glyph->bitmap.buffer,glyphwidth,glyphheight);
+			//data->fonttexture->edit(0, 0, glyphwidth, glyphheight, glyphRGBABuffer);
+			//free(glyphRGBABuffer);
+			RtoRGBA(data->fontface->glyph->bitmap.buffer, glyphwidth, glyphheight);
+			data->fonttexture->edit(0, 0, data->glyphbufferdims.x, data->glyphbufferdims.y, data->glyphbuffer.get());
 
 			//Submit quad
 			submit(quad, tint, data->fonttexture);
@@ -164,12 +166,21 @@ namespace Engine {
 
 	}
 
-	unsigned char* Renderer2D::RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height) {
-		uint32_t RBufferSize = width * height * 4 * sizeof(unsigned char);
-		unsigned char* result = (unsigned char*)malloc(RBufferSize);
-		memset(result, 255, RBufferSize);
+	void Renderer2D::RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height) {
+		memset(data->glyphbuffer.get(), 0, data->glyphbuffersize);
 
-		return result;
+		unsigned char* pwalker = data->glyphbuffer.get();
+		for (int32_t i = 0; i < height; i++) {
+			for (int32_t j = 0; j < width; j++) {
+				*pwalker = 255; pwalker++; //go to G
+				*pwalker = 255; pwalker++; //go to B
+				*pwalker = 255; pwalker++; //go to A
+				*pwalker = *RBuffer; //set alpha channel
+				pwalker++; //go to R of next pixel
+				RBuffer++; //go to next monochrome pixel
+			}
+			pwalker += (data->glyphbufferdims.x - width)*4;
+		}
 	}
 
 	Quad Quad::CreateCentreHalfExtents(const glm::vec2& centre, const glm::vec2& halfextents) {

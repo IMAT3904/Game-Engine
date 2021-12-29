@@ -44,6 +44,6 @@ namespace Engine {
 
 		static std::shared_ptr<InternalData> data;
 
-		static unsigned char* RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height);
+		static void RtoRGBA(unsigned char* RBuffer, uint32_t width, uint32_t height);
 	};
 }
