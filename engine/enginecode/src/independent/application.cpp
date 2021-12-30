@@ -293,11 +293,23 @@ namespace Engine {
 
 #pragma endregion
 
+		//Cameras
+		glm::vec3 camerapos = glm::vec3(0.0f, 0.0f, 0.0f);
+		glm::vec3 camerafront = glm::vec3(0.0f, 0.0f, -1.0f);
+		glm::vec3 cameraup = glm::vec3(0.0f,1.0f,0.0f);
+
+		//glm::mat4 view = glm::lookAt(
+		//	glm::vec3(0.f, 0.f, 0.f),
+		//	glm::vec3(0.f, 0.f, -1.f),
+		//	glm::vec3(0.f, 1.f, 0.f)
+		//);
+
 		glm::mat4 view = glm::lookAt(
-			glm::vec3(0.f, 0.f, 0.f),
-			glm::vec3(0.f, 0.f, -1.f),
-			glm::vec3(0.f, 1.f, 0.f)
+			camerapos,
+			camerapos + camerafront,
+			cameraup
 		);
+
 		glm::mat4 projection = glm::perspective(glm::radians(45.f), 1024.f / 800.f, 0.1f, 100.f);
 
 		//Camera UBO
@@ -370,11 +382,46 @@ namespace Engine {
 		glClearColor(1.0f, 0.0f, 1.0f, 1.0f);
 		Renderer3D::init();
 		Renderer2D::init();
+
+		std::shared_ptr<RenderCommand> ClearCommand;
+		ClearCommand.reset(RenderCommandFactory::CreateCommand(RenderCommand::Commands::ClearColourAndDepthBuffer));
+
+		{
+			std::shared_ptr<RenderCommand> SetClearCommand;
+			SetClearCommand.reset(RenderCommandFactory::CreateCommand(RenderCommand::Commands::SetClearColour,1.0f,0.0f,1.0f,1.0f));
+			RendererCommon::actioncommand(SetClearCommand);
+		}
+
 		float advance;
+
+		const float cameraspeed = 0.05f;
 		while (m_running)
 		{
 			timestep = timer->getelapsedtime();
 			timer->reset();
+
+			if (InputPoller::iskeypressed(NG_KEY_W)) {
+				camerapos += cameraspeed * camerafront;
+			}
+			if (InputPoller::iskeypressed(NG_KEY_A)) {
+				camerapos -= glm::normalize(glm::cross(camerafront, cameraup)) * cameraspeed;
+			}
+			if (InputPoller::iskeypressed(NG_KEY_S)) {
+				camerapos -= cameraspeed * camerafront;
+			}
+			if (InputPoller::iskeypressed(NG_KEY_D)) {
+				camerapos += glm::normalize(glm::cross(camerafront, cameraup)) * cameraspeed;
+			}
+
+			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
+
+			blocknumber = 0;
+			view = glm::lookAt(
+				camerapos,
+				camerapos + camerafront,
+				cameraup
+			);
+
 			//Log::trace("FPS {0}", 1.0f / timestep);
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
@@ -383,7 +430,10 @@ namespace Engine {
 
 
 			for (auto& model : models) { model = glm::rotate(model, timestep, glm::vec3(0.f, 1.0, 0.f)); }
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			RendererCommon::actioncommand(ClearCommand);
+
 			glEnable(GL_DEPTH_TEST);
 			Renderer3D::begin(swu3D);
 			Renderer3D::submit(pyramidVAO, pyramidmat, models[0]);
@@ -416,8 +466,6 @@ namespace Engine {
 			Renderer2D::end();
 			glDisable(GL_BLEND);
 
-			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");
-			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
 			//Log::file("Hello world! {0} {1}", 42, "I am a string");
 			window->onupdate(timestep);
 		}
