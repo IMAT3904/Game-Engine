@@ -4,6 +4,9 @@
 #include "platform/GLFWInputPoller.h"
 #endif // NG_PLATFORM_WINDOWS
 
+/** \file inputpoller.cpp
+*/
+
 namespace Engine {
 #ifdef NG_PLATFORM_WINDOWS
 	bool InputPoller::iskeypressed(int keycode){

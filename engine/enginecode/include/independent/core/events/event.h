@@ -2,8 +2,27 @@
 #include <inttypes.h>
 #include "include/platform/codes.h"
 
+/** \file event.h
+*/
 
 namespace Engine {
+	/** \class Event
+** \brief A class to determine an events type and if it's handled
+
+
+**/
+
+/** \class EventType
+** \brief A class to get the type of event
+
+
+**/
+
+/** \class EventCategory
+** \brief A class to specify the events catagory
+
+
+**/
 	enum class EventType {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
@@ -22,12 +41,12 @@ namespace Engine {
 
 	class Event {
 	public:
-		virtual EventType gettype() const = 0;
-		virtual int32_t getcategoryflags() const = 0;
-		inline bool handled() const { return m_handled; }
-		inline void handle(bool ishandled) { m_handled = ishandled; }
-		inline bool isincategory(EventCategory category) const { return getcategoryflags() & category; }
+		virtual EventType gettype() const = 0; //!< get the type of event
+		virtual int32_t getcategoryflags() const = 0; //!< get the flags for the catagory
+		inline bool handled() const { return m_handled; } //!< is the event handled
+		inline void handle(bool ishandled) { m_handled = ishandled; } //!< handle the event
+		inline bool isincategory(EventCategory category) const { return getcategoryflags() & category; } //!< the catagory of the event
 	protected:
-		bool m_handled = false;
+		bool m_handled = false; //!< bool to determine if the event is handled
 	};
 }

@@ -5,6 +5,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+/** \file OpenGLTexture.cpp
+*/
+
 namespace Engine {
 	OpenGLTexture::OpenGLTexture(const char* filepath) {
 		int nwidth, nheight, nchannels;

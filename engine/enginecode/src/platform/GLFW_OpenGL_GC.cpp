@@ -4,7 +4,8 @@
 #include "systems/log.h"
 #include "include/platform/GLFW_OpenGL_GC.h"
 
-
+/** \file GLFW_OpenGL_GC.cpp
+*/
 namespace Engine {
 	void GLFW_OpenGL_GC::init() {
 		glfwMakeContextCurrent(m_window);

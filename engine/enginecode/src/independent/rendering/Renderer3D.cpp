@@ -1,6 +1,6 @@
 #include "engine_pch.h"
 #include "rendering/Renderer3D.h"
-/** \file renderer3D.cpp */
+/** \file Renderer3D.cpp */
 
 namespace Engine {
 	std::shared_ptr<Renderer3D::InternalData> Renderer3D::data = nullptr;

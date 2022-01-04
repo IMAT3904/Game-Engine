@@ -2,6 +2,9 @@
 #include "RenderAPI.h"
 #include "RendererCommon.h"
 
+/** \file Renderer3D.h
+*/
+
 namespace Engine {
 	/** \class Material
 	** \brief Holds a shader and uniforms for said shader
@@ -10,7 +13,7 @@ namespace Engine {
 	**/
 	class Material {
 	public:
-		Material(const std::shared_ptr<Shader>& nshader) :
+		Material(const std::shared_ptr<Shader>& nshader) : //!< Constructor with a shader
 			shader(nshader), flags(0), texture(nullptr), tint(glm::vec4(0.0f))
 		{}
 		Material(const std::shared_ptr<Shader>& nshader, const std::shared_ptr<Texture>& ntexture, const glm::vec4& ntint) :
@@ -19,25 +22,25 @@ namespace Engine {
 			SetFlags(flag_texture | flag_tint);
 		}
 
-		Material(const std::shared_ptr<Shader>& nshader, const std::shared_ptr<Texture>& ntexture) :
+		Material(const std::shared_ptr<Shader>& nshader, const std::shared_ptr<Texture>& ntexture) : //!< Constructor with a shader and a texture
 			shader(nshader), texture(ntexture), tint(glm::vec4(0.0f))
 		{
 			SetFlags(flag_texture);
 		}
 
-		Material(const std::shared_ptr<Shader>& nshader, const glm::vec4& ntint) :
+		Material(const std::shared_ptr<Shader>& nshader, const glm::vec4& ntint) : //!< Constructor with a shader and a tint
 			shader(nshader), texture(nullptr), tint(ntint)
 		{
 			SetFlags(flag_tint);
 		}
 
-		inline std::shared_ptr<Shader> GetShader() const { return shader; }
-		inline std::shared_ptr<Texture> GetTexture() const { return texture; }
-		inline glm::vec4 GetTint() const { return tint; }
-		bool IsFlagSet(uint32_t flag) const { return flags& flag; }
+		inline std::shared_ptr<Shader> GetShader() const { return shader; } //!< Returns the shader
+		inline std::shared_ptr<Texture> GetTexture() const { return texture; } //!< Returns the texture
+		inline glm::vec4 GetTint() const { return tint; } //!< Returns the tint
+		bool IsFlagSet(uint32_t flag) const { return flags& flag; } //!< Returns if the flag is set 
 
-		void SetTexture(const std::shared_ptr<Texture>& ntexture) { texture = ntexture; }
-		void SetTexture(const glm::vec4& ntint) { tint = ntint; }
+		void SetTexture(const std::shared_ptr<Texture>& ntexture) { texture = ntexture; } //!< Sets a new texture
+		void SetTexture(const glm::vec4& ntint) { tint = ntint; } //!< Sets a new texture using the tint
 
 
 		constexpr static uint32_t flag_texture = 1 << 0; //!< 00000001

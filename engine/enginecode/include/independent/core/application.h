@@ -40,19 +40,19 @@ namespace Engine {
 		virtual ~Application(); //!< Deconstructor
 		inline static Application& getInstance() { return *s_instance; } //!< Instance getter from singleton pattern
 		void run(); //!< Main loop
-		bool onclose(WindowCloseEvent& e);
-		bool onresize(WindowResizeEvent& e);
-		bool onmoved(WindowMovedEvent& e);
-		bool ongainfocus(WindowFocusEvent& e);
-		bool onlostfocus(WindowLostFocusEvent& e);
-		bool onkeypressed(KeyPressed& e);
-		bool onkeyreleased(KeyReleased& e);
-		bool onmousepressed(MouseButtonPressedEvent& e);
-		bool onmousereleased(MouseButtonReleasedEvent& e);
-		bool onmousewheel(MouseScrolledEvent& e);
-		bool onmousemoved(MouseMovedEvent& e);
+		bool onclose(WindowCloseEvent& e); //!< the on close function
+		bool onresize(WindowResizeEvent& e); //!< the on resize function
+		bool onmoved(WindowMovedEvent& e); //!< the on moved function
+		bool ongainfocus(WindowFocusEvent& e); //!< the on gain focus function
+		bool onlostfocus(WindowLostFocusEvent& e); //!< the on lost focus function
+		bool onkeypressed(KeyPressed& e); //!< the on key pressed function
+		bool onkeyreleased(KeyReleased& e); //!< the on key released function
+		bool onmousepressed(MouseButtonPressedEvent& e); //!< the on mouse pressed function
+		bool onmousereleased(MouseButtonReleasedEvent& e); //!< the on mouse released function
+		bool onmousewheel(MouseScrolledEvent& e); //!< the on mouse wheel function
+		bool onmousemoved(MouseMovedEvent& e); //!< the on mouse moved function
 
-		inline std::shared_ptr<Window>& getwindow() { return window; }
+		inline std::shared_ptr<Window>& getwindow() { return window; } //!< returns the current window
 	};
 
 	// To be defined in users code

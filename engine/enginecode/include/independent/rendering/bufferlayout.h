@@ -1,6 +1,9 @@
 #pragma once
 #include "shaderdatatype.h"
 
+/** \file bufferlayout.h
+*/
+
 namespace Engine {
 	/** \class VertexBufferElement
 ** \brief Holds data of a single element in a vertex buffer
@@ -52,15 +55,15 @@ namespace Engine {
 	template <class G>
 	class BufferLayout {
 	public:
-		BufferLayout<G>() {};
-		BufferLayout<G>(const std::initializer_list<G>& element) : elements(element) { CalcStrideAndOffset(); };
-		inline uint32_t GetStride() const { return stride; }
-		void AddElement(G element);
-		void CalcStrideAndOffset();
-		inline typename std::vector<G>::iterator begin() { return elements.begin(); }
-		inline typename std::vector<G>::iterator end() { return elements.end(); }
-		inline typename std::vector<G>::const_iterator begin() const { return elements.begin(); }
-		inline typename std::vector<G>::const_iterator end() const { return elements.begin(); }
+		BufferLayout<G>() {}; //!< Constructor without params
+		BufferLayout<G>(const std::initializer_list<G>& element) : elements(element) { CalcStrideAndOffset(); }; //!< Constructor with params
+		inline uint32_t GetStride() const { return stride; } //!< Returns the stride of the layout
+		void AddElement(G element); //!< Adds a single element
+		void CalcStrideAndOffset(); //!< Calculates the offset of the buffer as well as the required stride
+		inline typename std::vector<G>::iterator begin() { return elements.begin(); } //!< begins the iteration
+		inline typename std::vector<G>::iterator end() { return elements.end(); } //!< ends the iteration
+		inline typename std::vector<G>::const_iterator begin() const { return elements.begin(); } //!< begins the iteration as a constant
+		inline typename std::vector<G>::const_iterator end() const { return elements.begin(); } //!< ends the iteration as a constant
 	private:
 		std::vector<G> elements;
 		uint32_t stride;

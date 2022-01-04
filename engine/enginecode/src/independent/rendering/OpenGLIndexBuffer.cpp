@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include "rendering/OpenGLIndexBuffer.h"
 
+/** \file OpenGLIndexBuffer.cpp
+*/
+
 namespace Engine {
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t lcount) : count(lcount) {
 		glCreateBuffers(1, &OpenGLID);

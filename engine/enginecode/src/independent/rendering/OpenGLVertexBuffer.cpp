@@ -1,6 +1,9 @@
 #include "engine_pch.h"
 #include "rendering/OpenGLVertexBuffer.h"
 
+/** \file OpenGLVertexBuffer.cpp
+*/
+
 namespace Engine {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(void* vertices, uint32_t size, VertexBufferLayout newlayout) : layout(newlayout){
 		layout = newlayout;

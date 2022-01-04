@@ -3,6 +3,9 @@
 #include "rendering/RenderAPI.h"
 #include <glad/glad.h>
 
+/** \file RenderCommand.cpp
+*/
+
 namespace Engine {
 	std::function<void(void)> RenderCommandFactory::GetClearColourDepthBufferCommand() {
 		switch (RenderAPI::getAPI()) {

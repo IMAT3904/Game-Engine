@@ -3,7 +3,15 @@
 #include <stdint.h>
 #include <vector>
 
+/** \file shaderdatatype.h
+*/
+
 namespace Engine {
+	/** \class ShaderDataType
+** \brief Holds information of the data type of a Shader uniform
+
+
+**/
 	enum class ShaderDataType {
 		None = 0,Float,Float2,Float3,Float4,Int,Mat4
 	};

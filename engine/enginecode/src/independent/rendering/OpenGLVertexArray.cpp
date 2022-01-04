@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include "rendering/OpenGLVertexArray.h"
 
+/** \file OpenGLVertexArray.cpp
+*/
+
 namespace Engine {
 	namespace SDT {
 		static GLenum ToGLType(ShaderDataType type) {

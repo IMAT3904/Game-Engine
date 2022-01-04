@@ -2,6 +2,9 @@
 #include "rendering/Renderer2D.h"
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
+/** \file Renderer2D.cpp
+*/
+
 namespace Engine {
 	std::shared_ptr<Renderer2D::InternalData> Renderer2D::data = nullptr;
 

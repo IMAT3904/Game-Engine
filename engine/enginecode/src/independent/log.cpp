@@ -1,6 +1,8 @@
 #include "engine_pch.h"
 #include "systems/log.h"
 
+/** \file log.cpp
+*/
 namespace Engine {
 	std::shared_ptr <spdlog::logger> Log::consolelogger = nullptr;
 	std::shared_ptr <spdlog::logger> Log::filelogger = nullptr;

@@ -1,7 +1,8 @@
 #include "engine_pch.h"
 #include "platform/GLFWInputPoller.h"
 #include <GLFW/glfw3.h>
-
+/** \file GLFWInputPoller.cpp
+*/
 namespace Engine {
 	GLFWwindow* GLFWInputPoller::window = nullptr;
 	bool GLFWInputPoller::iskeypressed(int32_t keycode) {

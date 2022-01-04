@@ -3,7 +3,8 @@
 #include "platform/GLFWWindowImpl.h"
 #include "platform/GLFW_OpenGL_GC.h"
 #include "systems/log.h"
-
+/** \file GLFWWindowImpl.cpp
+*/
 namespace Engine {
 #ifdef NG_PLATFORM_WINDOWS
 	Window* Window::create(const WindowProperties& newprops) {

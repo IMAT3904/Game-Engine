@@ -1,6 +1,9 @@
 #include "engine_pch.h"
 #include "rendering/SubTexture.h"
 
+/** \file SubTexture.cpp
+*/
+
 namespace Engine {
 	SubTexture::SubTexture(const std::shared_ptr<OpenGLTexture>& ntexture, const glm::vec2& nUVStart, const glm::vec2& nUVEnd) :
 	texture(ntexture),

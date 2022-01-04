@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include "rendering/OpenGLUniformBuffer.h"
 
+/** \file OpenGLUniformBuffer.cpp
+*/
+
 namespace Engine {
 	uint32_t OpenGLUniformBuffer::sblocknumber = 0;
 	OpenGLUniformBuffer::OpenGLUniformBuffer(const UniformBufferLayout& nlayout) {

@@ -7,6 +7,9 @@
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
+/** \file OpenGLShader.cpp
+*/
+
 namespace Engine {
 	OpenGLShader::OpenGLShader(const char* vertexpath, const char* fragpath) {
 		Log::info("Loaded at path: {0}", vertexpath);

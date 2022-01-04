@@ -14,6 +14,9 @@
 #include "rendering/UniformBuffer.h"
 #include "systems/log.h"
 
+/** \file RenderAPI.cpp
+*/
+
 namespace Engine {
 	RenderAPI::API RenderAPI::sAPI = RenderAPI::API::OpenGL;
 
