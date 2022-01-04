@@ -415,6 +415,9 @@ namespace Engine {
 
 			if (InputPoller::ismousebuttonpressed(NG_MOUSE_BUTTON_1)) Log::error("Mouse left");
 
+			std::string position = (std::to_string(camerapos.x) + " " + std::to_string(camerapos.y) + " " + std::to_string(camerapos.z));
+			Log::info(position);
+
 			blocknumber = 0;
 			view = glm::lookAt(
 				camerapos,
