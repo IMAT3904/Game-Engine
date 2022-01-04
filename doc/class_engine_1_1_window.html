@@ -53,6 +53,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>a class to create and edit a window  
+ <a href="class_engine_1_1_window.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="window_8h_source.html">window.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Window:</div>
@@ -60,50 +63,64 @@ Inheritance diagram for Engine::Window:</div>
  <div class="center">
   <img src="class_engine_1_1_window.png" usemap="#Engine::Window_map" alt=""/>
   <map id="Engine::Window_map" name="Engine::Window_map">
-<area href="class_engine_1_1_g_l_f_w_window_impl.html" alt="Engine::GLFWWindowImpl" shape="rect" coords="0,56,158,80"/>
+<area href="class_engine_1_1_g_l_f_w_window_impl.html" title="a GLFW Window class that uses Window" alt="Engine::GLFWWindowImpl" shape="rect" coords="0,56,158,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:add612050cf20ef36e36881b2978b2fda"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#add612050cf20ef36e36881b2978b2fda">init</a> (const <a class="el" href="struct_engine_1_1_window_properties.html">WindowProperties</a> &amp;newprops)=0</td></tr>
+<tr class="memdesc:add612050cf20ef36e36881b2978b2fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise the window  <a href="class_engine_1_1_window.html#add612050cf20ef36e36881b2978b2fda">More...</a><br /></td></tr>
 <tr class="separator:add612050cf20ef36e36881b2978b2fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38d3c1012c983e7f276a21cff4555426"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a38d3c1012c983e7f276a21cff4555426">close</a> ()=0</td></tr>
+<tr class="memdesc:a38d3c1012c983e7f276a21cff4555426"><td class="mdescLeft">&#160;</td><td class="mdescRight">close the window  <a href="class_engine_1_1_window.html#a38d3c1012c983e7f276a21cff4555426">More...</a><br /></td></tr>
 <tr class="separator:a38d3c1012c983e7f276a21cff4555426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3723c9b47bc710f190d4cf022ce0c12"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#ab3723c9b47bc710f190d4cf022ce0c12">~Window</a> ()</td></tr>
 <tr class="separator:ab3723c9b47bc710f190d4cf022ce0c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfacbd75b17891f034db85767aee7e18"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#acfacbd75b17891f034db85767aee7e18">onupdate</a> (float timestep)=0</td></tr>
+<tr class="memdesc:acfacbd75b17891f034db85767aee7e18"><td class="mdescLeft">&#160;</td><td class="mdescRight">deconstructor  <a href="class_engine_1_1_window.html#acfacbd75b17891f034db85767aee7e18">More...</a><br /></td></tr>
 <tr class="separator:acfacbd75b17891f034db85767aee7e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7c38c3315b397a8a6dbb9ad830c5048"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#ab7c38c3315b397a8a6dbb9ad830c5048">setvsync</a> (bool vsync)=0</td></tr>
+<tr class="memdesc:ab7c38c3315b397a8a6dbb9ad830c5048"><td class="mdescLeft">&#160;</td><td class="mdescRight">change vsync  <a href="class_engine_1_1_window.html#ab7c38c3315b397a8a6dbb9ad830c5048">More...</a><br /></td></tr>
 <tr class="separator:ab7c38c3315b397a8a6dbb9ad830c5048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ee1176434e2035e9b8cab74300e84e1"><td class="memItemLeft" align="right" valign="top">virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a7ee1176434e2035e9b8cab74300e84e1">getwidth</a> () const =0</td></tr>
+<tr class="memdesc:a7ee1176434e2035e9b8cab74300e84e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the width  <a href="class_engine_1_1_window.html#a7ee1176434e2035e9b8cab74300e84e1">More...</a><br /></td></tr>
 <tr class="separator:a7ee1176434e2035e9b8cab74300e84e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89fb927da74a2a35d6ab93d6504244f"><td class="memItemLeft" align="right" valign="top">virtual unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#aa89fb927da74a2a35d6ab93d6504244f">getheigth</a> () const =0</td></tr>
+<tr class="memdesc:aa89fb927da74a2a35d6ab93d6504244f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the height  <a href="class_engine_1_1_window.html#aa89fb927da74a2a35d6ab93d6504244f">More...</a><br /></td></tr>
 <tr class="separator:aa89fb927da74a2a35d6ab93d6504244f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2627f60917476afd5ec92af15731d192"><td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a2627f60917476afd5ec92af15731d192">getnativewindow</a> () const =0</td></tr>
+<tr class="memdesc:a2627f60917476afd5ec92af15731d192"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the native window  <a href="class_engine_1_1_window.html#a2627f60917476afd5ec92af15731d192">More...</a><br /></td></tr>
 <tr class="separator:a2627f60917476afd5ec92af15731d192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1af1d717b6076040a5d6ae5213ab18e4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a1af1d717b6076040a5d6ae5213ab18e4">isfullscreen</a> () const =0</td></tr>
+<tr class="memdesc:a1af1d717b6076040a5d6ae5213ab18e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if fullscreen  <a href="class_engine_1_1_window.html#a1af1d717b6076040a5d6ae5213ab18e4">More...</a><br /></td></tr>
 <tr class="separator:a1af1d717b6076040a5d6ae5213ab18e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad61c862abc5b10324c5e061d8104d211"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#ad61c862abc5b10324c5e061d8104d211">isvsync</a> () const =0</td></tr>
+<tr class="memdesc:ad61c862abc5b10324c5e061d8104d211"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if vsync is enabled  <a href="class_engine_1_1_window.html#ad61c862abc5b10324c5e061d8104d211">More...</a><br /></td></tr>
 <tr class="separator:ad61c862abc5b10324c5e061d8104d211"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e38d49ce0b4327d45e829360bb25be4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_engine_1_1_event_handler.html">EventHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a7e38d49ce0b4327d45e829360bb25be4">gethandler</a> ()=0</td></tr>
+<tr class="memdesc:a7e38d49ce0b4327d45e829360bb25be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the event handler  <a href="class_engine_1_1_window.html#a7e38d49ce0b4327d45e829360bb25be4">More...</a><br /></td></tr>
 <tr class="separator:a7e38d49ce0b4327d45e829360bb25be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a75a20367998cdf26ce974235be1f9674"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a75a20367998cdf26ce974235be1f9674">create</a> (const <a class="el" href="struct_engine_1_1_window_properties.html">WindowProperties</a> &amp;newprops=<a class="el" href="struct_engine_1_1_window_properties.html">WindowProperties</a>())</td></tr>
+<tr class="memdesc:a75a20367998cdf26ce974235be1f9674"><td class="mdescLeft">&#160;</td><td class="mdescRight">an improvised constructor to create a new window with <a class="el" href="struct_engine_1_1_window_properties.html" title="A class to hold the data for the window.">WindowProperties</a>  <a href="class_engine_1_1_window.html#a75a20367998cdf26ce974235be1f9674">More...</a><br /></td></tr>
 <tr class="separator:a75a20367998cdf26ce974235be1f9674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a2d04b94b3aebf55d6e2cb950e9657c0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_1_1_event_handler.html">EventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#a2d04b94b3aebf55d6e2cb950e9657c0d">handler</a></td></tr>
+<tr class="memdesc:a2d04b94b3aebf55d6e2cb950e9657c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the event handler  <a href="class_engine_1_1_window.html#a2d04b94b3aebf55d6e2cb950e9657c0d">More...</a><br /></td></tr>
 <tr class="separator:a2d04b94b3aebf55d6e2cb950e9657c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab162cb1a1572464283d8327413f1e08"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_engine_1_1_graphics_context.html">GraphicsContext</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_window.html#aab162cb1a1572464283d8327413f1e08">m_context</a></td></tr>
+<tr class="memdesc:aab162cb1a1572464283d8327413f1e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphics context  <a href="class_engine_1_1_window.html#aab162cb1a1572464283d8327413f1e08">More...</a><br /></td></tr>
 <tr class="separator:aab162cb1a1572464283d8327413f1e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00014">14</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<div class="textblock"><p>a class to create and edit a window </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00028">28</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab3723c9b47bc710f190d4cf022ce0c12"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3723c9b47bc710f190d4cf022ce0c12">&#9670;&nbsp;</a></span>~Window()</h2>
@@ -128,7 +145,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00018">18</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00032">32</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 
 </div>
 </div>
@@ -155,6 +172,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>close the window </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#a7de899d771d169db2a239def86238dc3">Engine::GLFWWindowImpl</a>.</p>
 
@@ -184,6 +203,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>an improvised constructor to create a new window with <a class="el" href="struct_engine_1_1_window_properties.html" title="A class to hold the data for the window.">WindowProperties</a> </p>
+
 </div>
 </div>
 <a id="a7e38d49ce0b4327d45e829360bb25be4"></a>
@@ -208,6 +229,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get the event handler </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#a5339c73336b10fd4b219c2e7ec1430f6">Engine::GLFWWindowImpl</a>.</p>
 
@@ -236,6 +259,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>get the height </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#afa1f357597f608dee872b24d3618a545">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -263,6 +288,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>get the native window </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#acedf46e1712306bf47ff3487e304242e">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -289,6 +316,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>get the width </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#ac10353f1679f58fe999f4270774538d8">Engine::GLFWWindowImpl</a>.</p>
 
@@ -318,6 +347,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>initialise the window </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#ae2cc9bcfb4c4e91e2888a8700963a3d4">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -345,6 +376,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>check if fullscreen </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#a93e958d493f2355cc06e7ebc7be94d26">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -371,6 +404,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>check if vsync is enabled </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#a0e8c5c928771f68a2ba2c78b547fc3c7">Engine::GLFWWindowImpl</a>.</p>
 
@@ -400,6 +435,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>deconstructor </p>
+<p>on every update </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#add5d1f8400c0f64d7b2ac52a1cffa8f5">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -428,6 +466,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>change vsync </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_g_l_f_w_window_impl.html#a6185fb9fc2ab9171044353babacca3bb">Engine::GLFWWindowImpl</a>.</p>
 
 </div>
@@ -453,7 +493,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00031">31</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p>the event handler </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00045">45</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +519,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00032">32</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
+<p>the graphics context </p>
+
+<p class="definition">Definition at line <a class="el" href="window_8h_source.html#l00046">46</a> of file <a class="el" href="window_8h_source.html">window.h</a>.</p>
 
 </div>
 </div>

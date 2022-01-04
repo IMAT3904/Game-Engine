@@ -51,6 +51,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>An override class that contains a list of keyboard events.  
+ <a href="class_engine_1_1_keyboard_event.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="keyboardevent_8h_source.html">keyboardevent.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::KeyboardEvent:</div>
@@ -58,33 +61,40 @@ Inheritance diagram for Engine::KeyboardEvent:</div>
  <div class="center">
   <img src="class_engine_1_1_keyboard_event.png" usemap="#Engine::KeyboardEvent_map" alt=""/>
   <map id="Engine::KeyboardEvent_map" name="Engine::KeyboardEvent_map">
-<area href="class_engine_1_1_event.html" alt="Engine::Event" shape="rect" coords="0,0,144,24"/>
+<area href="class_engine_1_1_event.html" title="A class to determine an events type and if it&#39;s handled." alt="Engine::Event" shape="rect" coords="0,0,144,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7bbe492e17cf6aacd8b28d4ed0de67a6"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_keyboard_event.html#a7bbe492e17cf6aacd8b28d4ed0de67a6">getcategoryflags</a> () const override</td></tr>
+<tr class="memdesc:a7bbe492e17cf6aacd8b28d4ed0de67a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets a list of the flags  <a href="class_engine_1_1_keyboard_event.html#a7bbe492e17cf6aacd8b28d4ed0de67a6">More...</a><br /></td></tr>
 <tr class="separator:a7bbe492e17cf6aacd8b28d4ed0de67a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_methods_class_engine_1_1_event"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_1_1_event')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_1_1_event.html">Engine::Event</a></td></tr>
 <tr class="memitem:a6866630b1e7ddbd53498fadd00109e36 inherit pub_methods_class_engine_1_1_event"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_engine.html#a77fa362c4492c2c28f1bd41256002f16">EventType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#a6866630b1e7ddbd53498fadd00109e36">gettype</a> () const =0</td></tr>
+<tr class="memdesc:a6866630b1e7ddbd53498fadd00109e36 inherit pub_methods_class_engine_1_1_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of event  <a href="class_engine_1_1_event.html#a6866630b1e7ddbd53498fadd00109e36">More...</a><br /></td></tr>
 <tr class="separator:a6866630b1e7ddbd53498fadd00109e36 inherit pub_methods_class_engine_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a567dbec7ac0102867152648f672b0578 inherit pub_methods_class_engine_1_1_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#a567dbec7ac0102867152648f672b0578">handled</a> () const</td></tr>
+<tr class="memdesc:a567dbec7ac0102867152648f672b0578 inherit pub_methods_class_engine_1_1_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">is the event handled  <a href="class_engine_1_1_event.html#a567dbec7ac0102867152648f672b0578">More...</a><br /></td></tr>
 <tr class="separator:a567dbec7ac0102867152648f672b0578 inherit pub_methods_class_engine_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accc3ce00dd9740b88728bf7eb3f47e02 inherit pub_methods_class_engine_1_1_event"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#accc3ce00dd9740b88728bf7eb3f47e02">handle</a> (bool ishandled)</td></tr>
+<tr class="memdesc:accc3ce00dd9740b88728bf7eb3f47e02 inherit pub_methods_class_engine_1_1_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle the event  <a href="class_engine_1_1_event.html#accc3ce00dd9740b88728bf7eb3f47e02">More...</a><br /></td></tr>
 <tr class="separator:accc3ce00dd9740b88728bf7eb3f47e02 inherit pub_methods_class_engine_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1fc400825faa40fad460dbcb96472e3 inherit pub_methods_class_engine_1_1_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#ae1fc400825faa40fad460dbcb96472e3">isincategory</a> (<a class="el" href="namespace_engine.html#a629eac9f8d060a1f7261a9b912e0fa77">EventCategory</a> category) const</td></tr>
+<tr class="memdesc:ae1fc400825faa40fad460dbcb96472e3 inherit pub_methods_class_engine_1_1_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">the catagory of the event  <a href="class_engine_1_1_event.html#ae1fc400825faa40fad460dbcb96472e3">More...</a><br /></td></tr>
 <tr class="separator:ae1fc400825faa40fad460dbcb96472e3 inherit pub_methods_class_engine_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_engine_1_1_event"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_engine_1_1_event')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_engine_1_1_event.html">Engine::Event</a></td></tr>
 <tr class="memitem:abe5dac716f5d3bdf4b3fadfa0e625351 inherit pro_attribs_class_engine_1_1_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#abe5dac716f5d3bdf4b3fadfa0e625351">m_handled</a> = false</td></tr>
+<tr class="memdesc:abe5dac716f5d3bdf4b3fadfa0e625351 inherit pro_attribs_class_engine_1_1_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to determine if the event is handled  <a href="class_engine_1_1_event.html#abe5dac716f5d3bdf4b3fadfa0e625351">More...</a><br /></td></tr>
 <tr class="separator:abe5dac716f5d3bdf4b3fadfa0e625351 inherit pro_attribs_class_engine_1_1_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="keyboardevent_8h_source.html#l00006">6</a> of file <a class="el" href="keyboardevent_8h_source.html">keyboardevent.h</a>.</p>
+<div class="textblock"><p>An override class that contains a list of keyboard events. </p>
+
+<p class="definition">Definition at line <a class="el" href="keyboardevent_8h_source.html#l00026">26</a> of file <a class="el" href="keyboardevent_8h_source.html">keyboardevent.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7bbe492e17cf6aacd8b28d4ed0de67a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7bbe492e17cf6aacd8b28d4ed0de67a6">&#9670;&nbsp;</a></span>getcategoryflags()</h2>
@@ -109,9 +119,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>gets a list of the flags </p>
+
 <p>Implements <a class="el" href="class_engine_1_1_event.html#abb52639a15b32d3e624e34cd2c8a2579">Engine::Event</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="keyboardevent_8h_source.html#l00007">7</a> of file <a class="el" href="keyboardevent_8h_source.html">keyboardevent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="keyboardevent_8h_source.html#l00027">27</a> of file <a class="el" href="keyboardevent_8h_source.html">keyboardevent.h</a>.</p>
 
 </div>
 </div>

@@ -52,6 +52,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Base class of a Vertex Array object that's pure virtual.  
+ <a href="class_engine_1_1_vertex_array.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_vertex_array_8h_source.html">VertexArray.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::VertexArray:</div>
@@ -59,33 +62,41 @@ Inheritance diagram for Engine::VertexArray:</div>
  <div class="center">
   <img src="class_engine_1_1_vertex_array.png" usemap="#Engine::VertexArray_map" alt=""/>
   <map id="Engine::VertexArray_map" name="Engine::VertexArray_map">
-<area href="class_engine_1_1_open_g_l_vertex_array.html" title="OpenGL iteration of a uniform buffer object that allows uniforms to be implemented in blocks." alt="Engine::OpenGLVertexArray" shape="rect" coords="0,56,174,80"/>
+<area href="class_engine_1_1_open_g_l_vertex_array.html" title="OpenGL iteration of a Vertex Array." alt="Engine::OpenGLVertexArray" shape="rect" coords="0,56,174,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae6df72fca31c4d9039d1d080701f5faf"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#ae6df72fca31c4d9039d1d080701f5faf">~VertexArray</a> ()=default</td></tr>
+<tr class="memdesc:ae6df72fca31c4d9039d1d080701f5faf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="class_engine_1_1_vertex_array.html#ae6df72fca31c4d9039d1d080701f5faf">More...</a><br /></td></tr>
 <tr class="separator:ae6df72fca31c4d9039d1d080701f5faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a8956e53d12309f527b45214a1c7b41"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a0a8956e53d12309f527b45214a1c7b41">AddVertexBuffer</a> (const std::shared_ptr&lt; <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> &gt; &amp;vertexbuffer)=0</td></tr>
+<tr class="memdesc:a0a8956e53d12309f527b45214a1c7b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attatches a vertex buffer to the VAO.  <a href="class_engine_1_1_vertex_array.html#a0a8956e53d12309f527b45214a1c7b41">More...</a><br /></td></tr>
 <tr class="separator:a0a8956e53d12309f527b45214a1c7b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa79578437b2d185bd2ee05c842810e92"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#aa79578437b2d185bd2ee05c842810e92">SetIndexBuffer</a> (const std::shared_ptr&lt; <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> &gt; &amp;indexbuffer)=0</td></tr>
+<tr class="memdesc:aa79578437b2d185bd2ee05c842810e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attatches an index buffer to the VAO.  <a href="class_engine_1_1_vertex_array.html#aa79578437b2d185bd2ee05c842810e92">More...</a><br /></td></tr>
 <tr class="separator:aa79578437b2d185bd2ee05c842810e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac958d0790bf84b9e4c92fc87ce413c5"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#aac958d0790bf84b9e4c92fc87ce413c5">GetRenderID</a> () const =0</td></tr>
+<tr class="memdesc:aac958d0790bf84b9e4c92fc87ce413c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns OpenGLID.  <a href="class_engine_1_1_vertex_array.html#aac958d0790bf84b9e4c92fc87ce413c5">More...</a><br /></td></tr>
 <tr class="separator:aac958d0790bf84b9e4c92fc87ce413c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf749c8ce4d3d07490cdf2b0f0a4e32a"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#abf749c8ce4d3d07490cdf2b0f0a4e32a">GetDrawCount</a> () const =0</td></tr>
+<tr class="memdesc:abf749c8ce4d3d07490cdf2b0f0a4e32a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns draw count.  <a href="class_engine_1_1_vertex_array.html#abf749c8ce4d3d07490cdf2b0f0a4e32a">More...</a><br /></td></tr>
 <tr class="separator:abf749c8ce4d3d07490cdf2b0f0a4e32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a179b30b15530de11644c2332dccf0cbf"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="class_engine_1_1_index_buffer.html">IndexBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a179b30b15530de11644c2332dccf0cbf">GetIndexBuffer</a> () const =0</td></tr>
+<tr class="memdesc:a179b30b15530de11644c2332dccf0cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns index buffer.  <a href="class_engine_1_1_vertex_array.html#a179b30b15530de11644c2332dccf0cbf">More...</a><br /></td></tr>
 <tr class="separator:a179b30b15530de11644c2332dccf0cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a602266ed8242c057923b5bd39fe2d41a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_vertex_array.html">VertexArray</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_array.html#a602266ed8242c057923b5bd39fe2d41a">create</a> ()</td></tr>
+<tr class="memdesc:a602266ed8242c057923b5bd39fe2d41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improvised constructor.  <a href="class_engine_1_1_vertex_array.html#a602266ed8242c057923b5bd39fe2d41a">More...</a><br /></td></tr>
 <tr class="separator:a602266ed8242c057923b5bd39fe2d41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_vertex_array_8h_source.html#l00011">11</a> of file <a class="el" href="_vertex_array_8h_source.html">VertexArray.h</a>.</p>
+<div class="textblock"><p>Base class of a Vertex Array object that's pure virtual. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vertex_array_8h_source.html#l00019">19</a> of file <a class="el" href="_vertex_array_8h_source.html">VertexArray.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae6df72fca31c4d9039d1d080701f5faf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6df72fca31c4d9039d1d080701f5faf">&#9670;&nbsp;</a></span>~VertexArray()</h2>
@@ -109,6 +120,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deconstructor. </p>
 
 </div>
 </div>
@@ -137,6 +150,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Attatches a vertex buffer to the VAO. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_array.html#a5aafab7599e3f025b9f90d90c3f34a28">Engine::OpenGLVertexArray</a>.</p>
 
 </div>
@@ -164,7 +179,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00056">56</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
+<p>Improvised constructor. </p>
+
+<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00059">59</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,6 +207,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns draw count. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_array.html#ad0f39d373163d303577aa5e6a338d94f">Engine::OpenGLVertexArray</a>.</p>
 
@@ -218,6 +237,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns index buffer. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_array.html#a544b511aa6f1b629deed86d75cdf7569">Engine::OpenGLVertexArray</a>.</p>
 
 </div>
@@ -244,6 +265,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns OpenGLID. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_array.html#aadda6f82ccec106679a5f3c6f7b44b2f">Engine::OpenGLVertexArray</a>.</p>
 
@@ -272,6 +295,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Attatches an index buffer to the VAO. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_array.html#aab7f7bd29105d4d98e915c786e197ff1">Engine::OpenGLVertexArray</a>.</p>
 

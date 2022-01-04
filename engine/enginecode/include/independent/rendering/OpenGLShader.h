@@ -26,6 +26,6 @@ namespace Engine {
 		virtual void UploadMat4(const char* name, const glm::mat4& value) override; //!< Uploads a mat4
 	private:
 		uint32_t OpenGLID;
-		void CompileAndLink(const char* vertexpath, const char* fragpath);
+		void CompileAndLink(const char* vertexpath, const char* fragpath); //!< Compiles and links the vertex shader and the fragment shader
 	};
 }

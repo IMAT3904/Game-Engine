@@ -52,6 +52,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Base class of a Vertex Buffer object that's pure virtual.  
+ <a href="class_engine_1_1_vertex_buffer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_vertex_buffer_8h_source.html">VertexBuffer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::VertexBuffer:</div>
@@ -66,22 +69,28 @@ Inheritance diagram for Engine::VertexBuffer:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad77bd7e530a2c2b50bfb06dd1224fdbe"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_buffer.html#ad77bd7e530a2c2b50bfb06dd1224fdbe">~VertexBuffer</a> ()=default</td></tr>
+<tr class="memdesc:ad77bd7e530a2c2b50bfb06dd1224fdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="class_engine_1_1_vertex_buffer.html#ad77bd7e530a2c2b50bfb06dd1224fdbe">More...</a><br /></td></tr>
 <tr class="separator:ad77bd7e530a2c2b50bfb06dd1224fdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa18c6bfcb6ee16722bc80b6942a74411"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_buffer.html#aa18c6bfcb6ee16722bc80b6942a74411">edit</a> (void *vertices, uint32_t size, uint32_t offset)=0</td></tr>
+<tr class="memdesc:aa18c6bfcb6ee16722bc80b6942a74411"><td class="mdescLeft">&#160;</td><td class="mdescRight">edit the object with vertices, size and offset  <a href="class_engine_1_1_vertex_buffer.html#aa18c6bfcb6ee16722bc80b6942a74411">More...</a><br /></td></tr>
 <tr class="separator:aa18c6bfcb6ee16722bc80b6942a74411"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a252012650278327447f372096cfa42da"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_buffer.html#a252012650278327447f372096cfa42da">GetRenderID</a> () const =0</td></tr>
+<tr class="memdesc:a252012650278327447f372096cfa42da"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns OpenGLID  <a href="class_engine_1_1_vertex_buffer.html#a252012650278327447f372096cfa42da">More...</a><br /></td></tr>
 <tr class="separator:a252012650278327447f372096cfa42da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5344fa474a22a542fa6b6e1bacfabb2e"><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespace_engine.html#aae00a807f1bbaa9cff0d002c9f397844">VertexBufferLayout</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_buffer.html#a5344fa474a22a542fa6b6e1bacfabb2e">GetLayout</a> () const =0</td></tr>
+<tr class="memdesc:a5344fa474a22a542fa6b6e1bacfabb2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns VertexBufferLayout  <a href="class_engine_1_1_vertex_buffer.html#a5344fa474a22a542fa6b6e1bacfabb2e">More...</a><br /></td></tr>
 <tr class="separator:a5344fa474a22a542fa6b6e1bacfabb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ab3fd803fe94118139d72e03933bdfaef"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_vertex_buffer.html">VertexBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_vertex_buffer.html#ab3fd803fe94118139d72e03933bdfaef">create</a> (void *vertices, uint32_t size, <a class="el" href="namespace_engine.html#aae00a807f1bbaa9cff0d002c9f397844">VertexBufferLayout</a> layout)</td></tr>
+<tr class="memdesc:ab3fd803fe94118139d72e03933bdfaef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improvised constructor that takes the vertices, size and vertex buffer layout to create an object.  <a href="class_engine_1_1_vertex_buffer.html#ab3fd803fe94118139d72e03933bdfaef">More...</a><br /></td></tr>
 <tr class="separator:ab3fd803fe94118139d72e03933bdfaef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_vertex_buffer_8h_source.html#l00006">6</a> of file <a class="el" href="_vertex_buffer_8h_source.html">VertexBuffer.h</a>.</p>
+<div class="textblock"><p>Base class of a Vertex Buffer object that's pure virtual. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vertex_buffer_8h_source.html#l00014">14</a> of file <a class="el" href="_vertex_buffer_8h_source.html">VertexBuffer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad77bd7e530a2c2b50bfb06dd1224fdbe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad77bd7e530a2c2b50bfb06dd1224fdbe">&#9670;&nbsp;</a></span>~VertexBuffer()</h2>
@@ -105,6 +114,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deconstructor. </p>
 
 </div>
 </div>
@@ -149,7 +160,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00038">38</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
+<p>Improvised constructor that takes the vertices, size and vertex buffer layout to create an object. </p>
+
+<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00041">41</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,6 +206,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>edit the object with vertices, size and offset </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_buffer.html#ad342a8d23be08dc12a45df8dc8a89309">Engine::OpenGLVertexBuffer</a>.</p>
 
 </div>
@@ -220,6 +235,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>returns VertexBufferLayout </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_buffer.html#a71fae3f30e7ff4ab4660bc59f683bf8c">Engine::OpenGLVertexBuffer</a>.</p>
 
 </div>
@@ -246,6 +263,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>returns OpenGLID </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_vertex_buffer.html#a7073ec1868060a32c803e60e343967c4">Engine::OpenGLVertexBuffer</a>.</p>
 

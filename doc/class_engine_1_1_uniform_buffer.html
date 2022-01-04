@@ -53,6 +53,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Base class of a Uniform Buffer object that's pure virtual.  
+ <a href="class_engine_1_1_uniform_buffer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::UniformBuffer:</div>
@@ -67,34 +70,43 @@ Inheritance diagram for Engine::UniformBuffer:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c8e55a4ccd427c4430ec8b14f5bde20"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a7c8e55a4ccd427c4430ec8b14f5bde20">~UniformBuffer</a> ()=default</td></tr>
+<tr class="memdesc:a7c8e55a4ccd427c4430ec8b14f5bde20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="class_engine_1_1_uniform_buffer.html#a7c8e55a4ccd427c4430ec8b14f5bde20">More...</a><br /></td></tr>
 <tr class="separator:a7c8e55a4ccd427c4430ec8b14f5bde20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1eff2263812eef366fb45e289d80fc1d"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a1eff2263812eef366fb45e289d80fc1d">GetRenderID</a> ()=0</td></tr>
+<tr class="memdesc:a1eff2263812eef366fb45e289d80fc1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets OpenGLID.  <a href="class_engine_1_1_uniform_buffer.html#a1eff2263812eef366fb45e289d80fc1d">More...</a><br /></td></tr>
 <tr class="separator:a1eff2263812eef366fb45e289d80fc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ef14b572fe58152110e2bae61a9de37"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_engine.html#a3f17b8af97679f789eabe46299a03aba">UniformBufferLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a9ef14b572fe58152110e2bae61a9de37">GetLayout</a> ()=0</td></tr>
+<tr class="memdesc:a9ef14b572fe58152110e2bae61a9de37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns layout.  <a href="class_engine_1_1_uniform_buffer.html#a9ef14b572fe58152110e2bae61a9de37">More...</a><br /></td></tr>
 <tr class="separator:a9ef14b572fe58152110e2bae61a9de37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a269ddebcce09e45c374aa431925f66a6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a269ddebcce09e45c374aa431925f66a6">AttachShaderBlock</a> (const std::shared_ptr&lt; <a class="el" href="class_engine_1_1_shader.html">Shader</a> &gt; &amp;shader, const char *blockname)=0</td></tr>
+<tr class="memdesc:a269ddebcce09e45c374aa431925f66a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows a shader to be attatched with the name of the block where the uniforms will be stored.  <a href="class_engine_1_1_uniform_buffer.html#a269ddebcce09e45c374aa431925f66a6">More...</a><br /></td></tr>
 <tr class="separator:a269ddebcce09e45c374aa431925f66a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8e36a8ef4af07c102937c3d50bae28"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a8b8e36a8ef4af07c102937c3d50bae28">UploadData</a> (const char *uniformname, void *data)=0</td></tr>
+<tr class="memdesc:a8b8e36a8ef4af07c102937c3d50bae28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upload data to the uniform block with param name and data.  <a href="class_engine_1_1_uniform_buffer.html#a8b8e36a8ef4af07c102937c3d50bae28">More...</a><br /></td></tr>
 <tr class="separator:a8b8e36a8ef4af07c102937c3d50bae28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a03584439d954afbdfff6e2dbf999c445"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_uniform_buffer.html">UniformBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a03584439d954afbdfff6e2dbf999c445">create</a> (const <a class="el" href="namespace_engine.html#a3f17b8af97679f789eabe46299a03aba">UniformBufferLayout</a> &amp;<a class="el" href="class_engine_1_1_uniform_buffer.html#a967f768741a00130856238ff73a80583">layout</a>)</td></tr>
+<tr class="memdesc:a03584439d954afbdfff6e2dbf999c445"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improvised constructor that takes a uniform buffer layout to create an object.  <a href="class_engine_1_1_uniform_buffer.html#a03584439d954afbdfff6e2dbf999c445">More...</a><br /></td></tr>
 <tr class="separator:a03584439d954afbdfff6e2dbf999c445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a967f768741a00130856238ff73a80583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_engine.html#a3f17b8af97679f789eabe46299a03aba">UniformBufferLayout</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a967f768741a00130856238ff73a80583">layout</a></td></tr>
+<tr class="memdesc:a967f768741a00130856238ff73a80583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uniform buffer layout.  <a href="class_engine_1_1_uniform_buffer.html#a967f768741a00130856238ff73a80583">More...</a><br /></td></tr>
 <tr class="separator:a967f768741a00130856238ff73a80583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cc3576f350fadf13d06ae6dcc011bc8"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; const char *, std::pair&lt; uint32_t, uint32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a0cc3576f350fadf13d06ae6dcc011bc8">uniformcache</a></td></tr>
+<tr class="memdesc:a0cc3576f350fadf13d06ae6dcc011bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uniform Buffer cache.  <a href="class_engine_1_1_uniform_buffer.html#a0cc3576f350fadf13d06ae6dcc011bc8">More...</a><br /></td></tr>
 <tr class="separator:a0cc3576f350fadf13d06ae6dcc011bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40a66ce3094c70073a4cf914e9221bb2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_uniform_buffer.html#a40a66ce3094c70073a4cf914e9221bb2">blocknumber</a></td></tr>
 <tr class="memdesc:a40a66ce3094c70073a4cf914e9221bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block number for this UBO.  <a href="class_engine_1_1_uniform_buffer.html#a40a66ce3094c70073a4cf914e9221bb2">More...</a><br /></td></tr>
 <tr class="separator:a40a66ce3094c70073a4cf914e9221bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00009">9</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
+<div class="textblock"><p>Base class of a Uniform Buffer object that's pure virtual. </p>
+
+<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00017">17</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c8e55a4ccd427c4430ec8b14f5bde20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c8e55a4ccd427c4430ec8b14f5bde20">&#9670;&nbsp;</a></span>~UniformBuffer()</h2>
@@ -118,6 +130,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deconstructor. </p>
 
 </div>
 </div>
@@ -156,6 +170,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Allows a shader to be attatched with the name of the block where the uniforms will be stored. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_uniform_buffer.html#adbab4296591f18ca639cf49017b3cd98">Engine::OpenGLUniformBuffer</a>.</p>
 
 </div>
@@ -184,7 +200,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00146">146</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
+<p>Improvised constructor that takes a uniform buffer layout to create an object. </p>
+
+<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00149">149</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
 
 </div>
 </div>
@@ -210,6 +228,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns layout. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_uniform_buffer.html#a6d3ad1dddd3c7c644c2cd1fd99efcced">Engine::OpenGLUniformBuffer</a>.</p>
 
@@ -237,6 +257,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets OpenGLID. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_uniform_buffer.html#aebaf60ad5e3fabd3a9502d6fad2acd7c">Engine::OpenGLUniformBuffer</a>.</p>
 
@@ -276,6 +298,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Upload data to the uniform block with param name and data. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_uniform_buffer.html#a7143a81fdd888f03e69a4534cf382531">Engine::OpenGLUniformBuffer</a>.</p>
 
 </div>
@@ -303,7 +327,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Block number for this UBO. </p>
 
-<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00021">21</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00029">29</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
 
 </div>
 </div>
@@ -327,7 +351,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00019">19</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
+<p>Uniform buffer layout. </p>
+
+<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00027">27</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
 
 </div>
 </div>
@@ -351,7 +377,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00020">20</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
+<p>Uniform Buffer cache. </p>
+
+<p class="definition">Definition at line <a class="el" href="_uniform_buffer_8h_source.html#l00028">28</a> of file <a class="el" href="_uniform_buffer_8h_source.html">UniformBuffer.h</a>.</p>
 
 </div>
 </div>

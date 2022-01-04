@@ -52,6 +52,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A class to determine an events type and if it's handled.  
+ <a href="class_engine_1_1_event.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="event_8h_source.html">event.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Event:</div>
@@ -59,43 +62,50 @@ Inheritance diagram for Engine::Event:</div>
  <div class="center">
   <img src="class_engine_1_1_event.png" usemap="#Engine::Event_map" alt=""/>
   <map id="Engine::Event_map" name="Engine::Event_map">
-<area href="class_engine_1_1_keyboard_event.html" alt="Engine::KeyboardEvent" shape="rect" coords="224,56,438,80"/>
-<area href="class_engine_1_1_key_pressed.html" alt="Engine::KeyPressed" shape="rect" coords="224,112,438,136"/>
-<area href="class_engine_1_1_key_released.html" alt="Engine::KeyReleased" shape="rect" coords="224,168,438,192"/>
-<area href="class_engine_1_1_mouse_button_pressed_event.html" alt="Engine::MouseButtonPressedEvent" shape="rect" coords="224,224,438,248"/>
-<area href="class_engine_1_1_mouse_button_released_event.html" alt="Engine::MouseButtonReleasedEvent" shape="rect" coords="224,280,438,304"/>
-<area href="class_engine_1_1_mouse_event.html" alt="Engine::MouseEvent" shape="rect" coords="224,336,438,360"/>
-<area href="class_engine_1_1_mouse_moved_event.html" alt="Engine::MouseMovedEvent" shape="rect" coords="224,392,438,416"/>
-<area href="class_engine_1_1_mouse_scrolled_event.html" alt="Engine::MouseScrolledEvent" shape="rect" coords="224,448,438,472"/>
-<area href="class_engine_1_1_window_close_event.html" alt="Engine::WindowCloseEvent" shape="rect" coords="224,504,438,528"/>
-<area href="class_engine_1_1_window_focus_event.html" alt="Engine::WindowFocusEvent" shape="rect" coords="224,560,438,584"/>
-<area href="class_engine_1_1_window_lost_focus_event.html" alt="Engine::WindowLostFocusEvent" shape="rect" coords="224,616,438,640"/>
-<area href="class_engine_1_1_window_moved_event.html" alt="Engine::WindowMovedEvent" shape="rect" coords="224,672,438,696"/>
-<area href="class_engine_1_1_window_resize_event.html" alt="Engine::WindowResizeEvent" shape="rect" coords="224,728,438,752"/>
+<area href="class_engine_1_1_keyboard_event.html" title="An override class that contains a list of keyboard events." alt="Engine::KeyboardEvent" shape="rect" coords="224,56,438,80"/>
+<area href="class_engine_1_1_key_pressed.html" title="A class to handle keyboard pressing functionalities." alt="Engine::KeyPressed" shape="rect" coords="224,112,438,136"/>
+<area href="class_engine_1_1_key_released.html" title="A class to handle keyboard releasing functionalities." alt="Engine::KeyReleased" shape="rect" coords="224,168,438,192"/>
+<area href="class_engine_1_1_mouse_button_pressed_event.html" title="A class that holds the information for the Mouse Button Pressed Event." alt="Engine::MouseButtonPressedEvent" shape="rect" coords="224,224,438,248"/>
+<area href="class_engine_1_1_mouse_button_released_event.html" title="A class that holds the information for the Mouse Button Released Event." alt="Engine::MouseButtonReleasedEvent" shape="rect" coords="224,280,438,304"/>
+<area href="class_engine_1_1_mouse_event.html" title="A class that controls the Mouse Events." alt="Engine::MouseEvent" shape="rect" coords="224,336,438,360"/>
+<area href="class_engine_1_1_mouse_moved_event.html" title="A class that holds the information for the Mouse Moved Event." alt="Engine::MouseMovedEvent" shape="rect" coords="224,392,438,416"/>
+<area href="class_engine_1_1_mouse_scrolled_event.html" title="A class that holds the information for the Mouse Scrolled Event." alt="Engine::MouseScrolledEvent" shape="rect" coords="224,448,438,472"/>
+<area href="class_engine_1_1_window_close_event.html" title="An override class that contains the data for the Window Close Event." alt="Engine::WindowCloseEvent" shape="rect" coords="224,504,438,528"/>
+<area href="class_engine_1_1_window_focus_event.html" title="An override class that contains the data for the Window Focus Event." alt="Engine::WindowFocusEvent" shape="rect" coords="224,560,438,584"/>
+<area href="class_engine_1_1_window_lost_focus_event.html" title="An override class that contains the data for the Window Lost Focus Event." alt="Engine::WindowLostFocusEvent" shape="rect" coords="224,616,438,640"/>
+<area href="class_engine_1_1_window_moved_event.html" title="An override class that contains the data for the Window Moved Event." alt="Engine::WindowMovedEvent" shape="rect" coords="224,672,438,696"/>
+<area href="class_engine_1_1_window_resize_event.html" title="An override class that contains the data for the Window Resize Event." alt="Engine::WindowResizeEvent" shape="rect" coords="224,728,438,752"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6866630b1e7ddbd53498fadd00109e36"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_engine.html#a77fa362c4492c2c28f1bd41256002f16">EventType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#a6866630b1e7ddbd53498fadd00109e36">gettype</a> () const =0</td></tr>
+<tr class="memdesc:a6866630b1e7ddbd53498fadd00109e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of event  <a href="class_engine_1_1_event.html#a6866630b1e7ddbd53498fadd00109e36">More...</a><br /></td></tr>
 <tr class="separator:a6866630b1e7ddbd53498fadd00109e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb52639a15b32d3e624e34cd2c8a2579"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#abb52639a15b32d3e624e34cd2c8a2579">getcategoryflags</a> () const =0</td></tr>
+<tr class="memdesc:abb52639a15b32d3e624e34cd2c8a2579"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the flags for the catagory  <a href="class_engine_1_1_event.html#abb52639a15b32d3e624e34cd2c8a2579">More...</a><br /></td></tr>
 <tr class="separator:abb52639a15b32d3e624e34cd2c8a2579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a567dbec7ac0102867152648f672b0578"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#a567dbec7ac0102867152648f672b0578">handled</a> () const</td></tr>
+<tr class="memdesc:a567dbec7ac0102867152648f672b0578"><td class="mdescLeft">&#160;</td><td class="mdescRight">is the event handled  <a href="class_engine_1_1_event.html#a567dbec7ac0102867152648f672b0578">More...</a><br /></td></tr>
 <tr class="separator:a567dbec7ac0102867152648f672b0578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accc3ce00dd9740b88728bf7eb3f47e02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#accc3ce00dd9740b88728bf7eb3f47e02">handle</a> (bool ishandled)</td></tr>
+<tr class="memdesc:accc3ce00dd9740b88728bf7eb3f47e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle the event  <a href="class_engine_1_1_event.html#accc3ce00dd9740b88728bf7eb3f47e02">More...</a><br /></td></tr>
 <tr class="separator:accc3ce00dd9740b88728bf7eb3f47e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1fc400825faa40fad460dbcb96472e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#ae1fc400825faa40fad460dbcb96472e3">isincategory</a> (<a class="el" href="namespace_engine.html#a629eac9f8d060a1f7261a9b912e0fa77">EventCategory</a> category) const</td></tr>
+<tr class="memdesc:ae1fc400825faa40fad460dbcb96472e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the catagory of the event  <a href="class_engine_1_1_event.html#ae1fc400825faa40fad460dbcb96472e3">More...</a><br /></td></tr>
 <tr class="separator:ae1fc400825faa40fad460dbcb96472e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:abe5dac716f5d3bdf4b3fadfa0e625351"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_event.html#abe5dac716f5d3bdf4b3fadfa0e625351">m_handled</a> = false</td></tr>
+<tr class="memdesc:abe5dac716f5d3bdf4b3fadfa0e625351"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to determine if the event is handled  <a href="class_engine_1_1_event.html#abe5dac716f5d3bdf4b3fadfa0e625351">More...</a><br /></td></tr>
 <tr class="separator:abe5dac716f5d3bdf4b3fadfa0e625351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00023">23</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<div class="textblock"><p>A class to determine an events type and if it's handled. </p>
+
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00042">42</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="abb52639a15b32d3e624e34cd2c8a2579"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb52639a15b32d3e624e34cd2c8a2579">&#9670;&nbsp;</a></span>getcategoryflags()</h2>
@@ -120,7 +130,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_engine_1_1_mouse_button_released_event.html#a6114fb1f037874a7e58e45b6ef1632c2">Engine::MouseButtonReleasedEvent</a>, <a class="el" href="class_engine_1_1_window_moved_event.html#aafcba9de01b8ea0b4fc3bdb5db590b6a">Engine::WindowMovedEvent</a>, <a class="el" href="class_engine_1_1_mouse_button_pressed_event.html#ac2af9cfff1a73bdc4e98df2e4b8125a0">Engine::MouseButtonPressedEvent</a>, <a class="el" href="class_engine_1_1_window_lost_focus_event.html#ad90cfbd0a6771370621bb84306126a4d">Engine::WindowLostFocusEvent</a>, <a class="el" href="class_engine_1_1_window_focus_event.html#a5aa559037c5febe4ca469a42c49db79a">Engine::WindowFocusEvent</a>, <a class="el" href="class_engine_1_1_mouse_scrolled_event.html#addc7364a004854dca8698d9a05932d4d">Engine::MouseScrolledEvent</a>, <a class="el" href="class_engine_1_1_key_released.html#aed044b91da384064789632b6d81dd625">Engine::KeyReleased</a>, <a class="el" href="class_engine_1_1_window_resize_event.html#aae6596d8bcf8f0d45c530f4db53b00e6">Engine::WindowResizeEvent</a>, <a class="el" href="class_engine_1_1_key_pressed.html#a7cde2d934cb0af4a8b82e2bb34b67e48">Engine::KeyPressed</a>, <a class="el" href="class_engine_1_1_mouse_moved_event.html#ab2d3b3365e6fa5ab0db27ae25a90314b">Engine::MouseMovedEvent</a>, <a class="el" href="class_engine_1_1_window_close_event.html#af36745c433c4cc094710992489ac8cef">Engine::WindowCloseEvent</a>, <a class="el" href="class_engine_1_1_keyboard_event.html#a7bbe492e17cf6aacd8b28d4ed0de67a6">Engine::KeyboardEvent</a>, and <a class="el" href="class_engine_1_1_mouse_event.html#ac25fa885e65f0b52e0d3abdbffaaf92f">Engine::MouseEvent</a>.</p>
+<p>get the flags for the catagory </p>
+
+<p>Implemented in <a class="el" href="class_engine_1_1_mouse_button_released_event.html#a6114fb1f037874a7e58e45b6ef1632c2">Engine::MouseButtonReleasedEvent</a>, <a class="el" href="class_engine_1_1_window_moved_event.html#aafcba9de01b8ea0b4fc3bdb5db590b6a">Engine::WindowMovedEvent</a>, <a class="el" href="class_engine_1_1_mouse_button_pressed_event.html#ac2af9cfff1a73bdc4e98df2e4b8125a0">Engine::MouseButtonPressedEvent</a>, <a class="el" href="class_engine_1_1_window_lost_focus_event.html#ad90cfbd0a6771370621bb84306126a4d">Engine::WindowLostFocusEvent</a>, <a class="el" href="class_engine_1_1_window_focus_event.html#a5aa559037c5febe4ca469a42c49db79a">Engine::WindowFocusEvent</a>, <a class="el" href="class_engine_1_1_key_released.html#aed044b91da384064789632b6d81dd625">Engine::KeyReleased</a>, <a class="el" href="class_engine_1_1_mouse_scrolled_event.html#addc7364a004854dca8698d9a05932d4d">Engine::MouseScrolledEvent</a>, <a class="el" href="class_engine_1_1_key_pressed.html#a7cde2d934cb0af4a8b82e2bb34b67e48">Engine::KeyPressed</a>, <a class="el" href="class_engine_1_1_window_resize_event.html#aae6596d8bcf8f0d45c530f4db53b00e6">Engine::WindowResizeEvent</a>, <a class="el" href="class_engine_1_1_mouse_moved_event.html#ab2d3b3365e6fa5ab0db27ae25a90314b">Engine::MouseMovedEvent</a>, <a class="el" href="class_engine_1_1_keyboard_event.html#a7bbe492e17cf6aacd8b28d4ed0de67a6">Engine::KeyboardEvent</a>, <a class="el" href="class_engine_1_1_window_close_event.html#af36745c433c4cc094710992489ac8cef">Engine::WindowCloseEvent</a>, and <a class="el" href="class_engine_1_1_mouse_event.html#ac25fa885e65f0b52e0d3abdbffaaf92f">Engine::MouseEvent</a>.</p>
 
 </div>
 </div>
@@ -147,7 +159,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_engine_1_1_mouse_button_released_event.html#a08bd143572b8875a80a2ff83a0c8cccf">Engine::MouseButtonReleasedEvent</a>, <a class="el" href="class_engine_1_1_window_moved_event.html#ad342ae75c93e4c594c1ef37225382eca">Engine::WindowMovedEvent</a>, <a class="el" href="class_engine_1_1_mouse_button_pressed_event.html#a945714c5cf0ad2b814cd220280b57b90">Engine::MouseButtonPressedEvent</a>, <a class="el" href="class_engine_1_1_window_lost_focus_event.html#a054dcf97b211ce5846eaed4c810aaa44">Engine::WindowLostFocusEvent</a>, <a class="el" href="class_engine_1_1_window_focus_event.html#a11f166637b3396cbcfd26709983e84ff">Engine::WindowFocusEvent</a>, <a class="el" href="class_engine_1_1_mouse_scrolled_event.html#a9e6953e8ba5dc95dc00209034029003b">Engine::MouseScrolledEvent</a>, <a class="el" href="class_engine_1_1_key_released.html#a41987c3ba5dd810b22c82d8973e644c5">Engine::KeyReleased</a>, <a class="el" href="class_engine_1_1_window_resize_event.html#a52adbecaac06bc303b9cb7f3c297f22d">Engine::WindowResizeEvent</a>, <a class="el" href="class_engine_1_1_key_pressed.html#a8ffd1f2f7cf38b3b70acdf0bdd82ef1b">Engine::KeyPressed</a>, <a class="el" href="class_engine_1_1_mouse_moved_event.html#a46ff929a446f9b01afa81fdce57a6971">Engine::MouseMovedEvent</a>, and <a class="el" href="class_engine_1_1_window_close_event.html#ae8b329649ba5f869770436f18916c69d">Engine::WindowCloseEvent</a>.</p>
+<p>get the type of event </p>
+
+<p>Implemented in <a class="el" href="class_engine_1_1_mouse_button_released_event.html#a08bd143572b8875a80a2ff83a0c8cccf">Engine::MouseButtonReleasedEvent</a>, <a class="el" href="class_engine_1_1_window_moved_event.html#ad342ae75c93e4c594c1ef37225382eca">Engine::WindowMovedEvent</a>, <a class="el" href="class_engine_1_1_mouse_button_pressed_event.html#a945714c5cf0ad2b814cd220280b57b90">Engine::MouseButtonPressedEvent</a>, <a class="el" href="class_engine_1_1_window_lost_focus_event.html#a054dcf97b211ce5846eaed4c810aaa44">Engine::WindowLostFocusEvent</a>, <a class="el" href="class_engine_1_1_window_focus_event.html#a11f166637b3396cbcfd26709983e84ff">Engine::WindowFocusEvent</a>, <a class="el" href="class_engine_1_1_key_released.html#a41987c3ba5dd810b22c82d8973e644c5">Engine::KeyReleased</a>, <a class="el" href="class_engine_1_1_mouse_scrolled_event.html#a9e6953e8ba5dc95dc00209034029003b">Engine::MouseScrolledEvent</a>, <a class="el" href="class_engine_1_1_key_pressed.html#a8ffd1f2f7cf38b3b70acdf0bdd82ef1b">Engine::KeyPressed</a>, <a class="el" href="class_engine_1_1_window_resize_event.html#a52adbecaac06bc303b9cb7f3c297f22d">Engine::WindowResizeEvent</a>, <a class="el" href="class_engine_1_1_mouse_moved_event.html#a46ff929a446f9b01afa81fdce57a6971">Engine::MouseMovedEvent</a>, and <a class="el" href="class_engine_1_1_window_close_event.html#ae8b329649ba5f869770436f18916c69d">Engine::WindowCloseEvent</a>.</p>
 
 </div>
 </div>
@@ -175,7 +189,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00028">28</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p>handle the event </p>
+
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00047">47</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +218,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00027">27</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p>is the event handled </p>
+
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00046">46</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -230,7 +248,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00029">29</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p>the catagory of the event </p>
+
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00048">48</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +275,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00031">31</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p>bool to determine if the event is handled </p>
+
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00050">50</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>

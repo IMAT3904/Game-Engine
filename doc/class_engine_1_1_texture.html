@@ -52,6 +52,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Base class of a <a class="el" href="class_engine_1_1_texture.html" title="Base class of a Texture object that&#39;s pure virtual.">Texture</a> object that's pure virtual.  
+ <a href="class_engine_1_1_texture.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_texture_8h_source.html">Texture.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Engine::Texture:</div>
@@ -66,28 +69,37 @@ Inheritance diagram for Engine::Texture:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa74010a0819ea01d3c2a81ac728ca674"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#aa74010a0819ea01d3c2a81ac728ca674">~Texture</a> ()=default</td></tr>
+<tr class="memdesc:aa74010a0819ea01d3c2a81ac728ca674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="class_engine_1_1_texture.html#aa74010a0819ea01d3c2a81ac728ca674">More...</a><br /></td></tr>
 <tr class="separator:aa74010a0819ea01d3c2a81ac728ca674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1632800501f4c02044cd67b85a36689d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a1632800501f4c02044cd67b85a36689d">edit</a> (uint32_t xoffset, uint32_t yoffset, uint32_t width, uint32_t height, unsigned char *data)=0</td></tr>
+<tr class="memdesc:a1632800501f4c02044cd67b85a36689d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with data paramaters that modify the object.  <a href="class_engine_1_1_texture.html#a1632800501f4c02044cd67b85a36689d">More...</a><br /></td></tr>
 <tr class="separator:a1632800501f4c02044cd67b85a36689d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85967164f86c2b7ad9114f366b625aae"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a85967164f86c2b7ad9114f366b625aae">getID</a> () const =0</td></tr>
+<tr class="memdesc:a85967164f86c2b7ad9114f366b625aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets OpenGLID.  <a href="class_engine_1_1_texture.html#a85967164f86c2b7ad9114f366b625aae">More...</a><br /></td></tr>
 <tr class="separator:a85967164f86c2b7ad9114f366b625aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d6f79c36536ee99f34640237123496"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#ad7d6f79c36536ee99f34640237123496">getWidth</a> () const =0</td></tr>
+<tr class="memdesc:ad7d6f79c36536ee99f34640237123496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets width.  <a href="class_engine_1_1_texture.html#ad7d6f79c36536ee99f34640237123496">More...</a><br /></td></tr>
 <tr class="separator:ad7d6f79c36536ee99f34640237123496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab47c976f1b5d2feea8ce7c97163fcf49"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#ab47c976f1b5d2feea8ce7c97163fcf49">getHeight</a> () const =0</td></tr>
+<tr class="memdesc:ab47c976f1b5d2feea8ce7c97163fcf49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets height.  <a href="class_engine_1_1_texture.html#ab47c976f1b5d2feea8ce7c97163fcf49">More...</a><br /></td></tr>
 <tr class="separator:ab47c976f1b5d2feea8ce7c97163fcf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6085e48cd77d559d30f2646ec80c014b"><td class="memItemLeft" align="right" valign="top">virtual uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a6085e48cd77d559d30f2646ec80c014b">getChannels</a> () const =0</td></tr>
+<tr class="memdesc:a6085e48cd77d559d30f2646ec80c014b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets channels.  <a href="class_engine_1_1_texture.html#a6085e48cd77d559d30f2646ec80c014b">More...</a><br /></td></tr>
 <tr class="separator:a6085e48cd77d559d30f2646ec80c014b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a52ca8aff0fef4869ff7cb2abef5206db"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a52ca8aff0fef4869ff7cb2abef5206db">create</a> (const char *filepath)</td></tr>
+<tr class="memdesc:a52ca8aff0fef4869ff7cb2abef5206db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improvised constructor that takes 1 filepath that creates an object.  <a href="class_engine_1_1_texture.html#a52ca8aff0fef4869ff7cb2abef5206db">More...</a><br /></td></tr>
 <tr class="separator:a52ca8aff0fef4869ff7cb2abef5206db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9252fcc8a458d2a22d38ae0fd7d64e26"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_engine_1_1_texture.html">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_1_1_texture.html#a9252fcc8a458d2a22d38ae0fd7d64e26">create</a> (uint32_t width, uint32_t height, uint32_t channels, unsigned char *data)</td></tr>
+<tr class="memdesc:a9252fcc8a458d2a22d38ae0fd7d64e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improvised constructor that creates a new texture using a width, height, channels and texture data.  <a href="class_engine_1_1_texture.html#a9252fcc8a458d2a22d38ae0fd7d64e26">More...</a><br /></td></tr>
 <tr class="separator:a9252fcc8a458d2a22d38ae0fd7d64e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00005">5</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
+<div class="textblock"><p>Base class of a <a class="el" href="class_engine_1_1_texture.html" title="Base class of a Texture object that&#39;s pure virtual.">Texture</a> object that's pure virtual. </p>
+
+<p class="definition">Definition at line <a class="el" href="_texture_8h_source.html#l00013">13</a> of file <a class="el" href="_texture_8h_source.html">Texture.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa74010a0819ea01d3c2a81ac728ca674"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa74010a0819ea01d3c2a81ac728ca674">&#9670;&nbsp;</a></span>~Texture()</h2>
@@ -111,6 +123,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Deconstructor. </p>
 
 </div>
 </div>
@@ -139,7 +153,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00110">110</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
+<p>Improvised constructor that takes 1 filepath that creates an object. </p>
+
+<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00113">113</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +205,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00128">128</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
+<p>Improvised constructor that creates a new texture using a width, height, channels and texture data. </p>
+
+<p class="definition">Definition at line <a class="el" href="_render_a_p_i_8cpp_source.html#l00131">131</a> of file <a class="el" href="_render_a_p_i_8cpp_source.html">RenderAPI.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,6 +263,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Constructor with data paramaters that modify the object. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_texture.html#a15c689846a12ac77e4308f81bf1b0307">Engine::OpenGLTexture</a>.</p>
 
 </div>
@@ -271,6 +291,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets channels. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_texture.html#ab559061c5d757eed19f61a82d41f37ac">Engine::OpenGLTexture</a>.</p>
 
@@ -299,6 +321,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Gets height. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_texture.html#a9e39078723da3f155389ba2b070c9179">Engine::OpenGLTexture</a>.</p>
 
 </div>
@@ -326,6 +350,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Gets OpenGLID. </p>
+
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_texture.html#ae44e79a97e63ff96fa3d4dcfa220ad65">Engine::OpenGLTexture</a>.</p>
 
 </div>
@@ -352,6 +378,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets width. </p>
 
 <p>Implemented in <a class="el" href="class_engine_1_1_open_g_l_texture.html#afe3704137e5972fb73ebce52b4ec5374">Engine::OpenGLTexture</a>.</p>
 
