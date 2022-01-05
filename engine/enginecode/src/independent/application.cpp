@@ -140,6 +140,8 @@ namespace Engine {
 
 	Application::~Application()
 	{
+		windowsystem->stop();
+
 		log->stop();
 	}
 
@@ -360,11 +362,11 @@ namespace Engine {
 
 		glm::vec3 lightdata[3] = { { 1.0f, 1.0f, 1.0f },{1.0f, 4.0f, 6.0f},{0.0f, 0.0f, 0.0f} };
 		SceneWideUniforms swu3D;
-		swu3D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view)));
-		swu3D["u_projection"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(projection)));
-		swu3D["u_lightColour"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[0])));
-		swu3D["u_lightPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[1])));
-		swu3D["u_viewPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[2])));
+		//swu3D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view)));
+		//swu3D["u_projection"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(projection)));
+		//swu3D["u_lightColour"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[0])));
+		//swu3D["u_lightPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[1])));
+		//swu3D["u_viewPos"] = std::pair<ShaderDataType, void*>(ShaderDataType::Float3, static_cast<void*>(glm::value_ptr(lightdata[2])));
 
 		SceneWideUniforms swu2D;
 		swu2D["u_view"] = std::pair<ShaderDataType, void*>(ShaderDataType::Mat4, static_cast<void*>(glm::value_ptr(view2D)));
@@ -418,13 +420,13 @@ namespace Engine {
 			std::string position = (std::to_string(camerapos.x) + " " + std::to_string(camerapos.y) + " " + std::to_string(camerapos.z));
 			Log::info(position);
 
-			blocknumber = 0;
+			//blocknumber = 0;
 			view = glm::lookAt(
 				camerapos,
 				camerapos + camerafront,
 				cameraup
 			);
-
+			cameraUBO->UploadData("u_view", glm::value_ptr(view));
 			//Log::trace("FPS {0}", 1.0f / timestep);
 
 			if (InputPoller::iskeypressed(NG_KEY_W)) Log::error("W Pressed");

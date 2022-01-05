@@ -32,6 +32,7 @@ namespace Engine {
 	}
 
 	void OpenGLUniformBuffer::UploadData(const char* uniformname, void* data) {
+		glBindBuffer(GL_UNIFORM_BUFFER, OpenGLID);
 		auto& pair = uniformcache[uniformname];
 		glBufferSubData(GL_UNIFORM_BUFFER, pair.first, pair.second, data);
 	}
