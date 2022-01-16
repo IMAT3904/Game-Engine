@@ -1,5 +1,6 @@
 #include "EventTests.h"
 
+//Function Tests
 TEST(Events, ResizeContructor) {
 	Engine::WindowResizeEvent e(800, 600);
 	int32_t width1 = e.getsize().x;
